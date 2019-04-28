@@ -1,38 +1,33 @@
-const watching = process.env.WATCHING;
+import buble from "rollup-plugin-buble";
+import serve from "rollup-plugin-serve";
+import livereload from "rollup-plugin-livereload";
+import cjs from "rollup-plugin-commonjs";
+import resolve from "rollup-plugin-node-resolve";
+import svelte from "rollup-plugin-svelte";
 
-module.exports = {
-    input: "./src/index.js",
-    
+export default {
+    input : "./src/index.js",
+
     output : {
-      file      : "./dist/bundle.js",
-      format    : "iife",
-      name      : "deckeditor",
-      banner    : `/* eslint-disable */`
+        file      : "./dist/bundle.js",
+        format    : "iife",
+        name      : "editor",
+        sourcemap : "inline",
     },
 
-    plugins: [
-      require("rollup-plugin-node-resolve")(),
-      require("rollup-plugin-commonjs")(),
+    plugins : [
+        // Play nice with the Node.js ecosystem
+        resolve(),
+        cjs(),
 
-      require("rollup-plugin-svelte")({
-        css : false
-      }),
+        // lol so bored
+        svelte(),
 
-      require("modular-css-rollup")({
-        css : "./dist/bundle.css",
-      }),
+        // Turns es2015 into ES5
+        buble(),
 
-      require("rollup-plugin-buble")({
-          exclude : ["**/node_modules/**"]
-      }),
-
-      watching && require("rollup-plugin-serve")({
-        contentBase : [ "./" ],
-        historyApiFallback : true
-      }),
-
-      watching && require("rollup-plugin-livereload")({
-        watch : "./build"
-      })
-    ]
-  };
+        // Hot-reload blah blah idc.
+        serve(),
+        livereload({ watch : [ "./dist" ] }),
+    ],
+};
