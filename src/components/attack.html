@@ -1,0 +1,75 @@
+<script>
+    export const modifiers = [ "A", "F", "B" ];
+</script>
+
+<style>
+    .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        position: relative;
+        padding: 0.2rem;
+
+        /* TODO: Border when highlighted */
+        border: 0.2rem solid gray;
+    }
+
+    .container:hover {
+        border-color: goldenrod;
+    }
+
+    .attack {
+        padding: 0.2rem;
+
+        height: 8rem;
+        width: 8rem;
+
+        background-color: gray;
+    }
+
+    .empty {
+        background-image: url("../img/empty-attack-icon.svg");
+        background-color: gold;
+    }
+
+    .data {
+        position: absolute;
+        bottom: 0.2rem;
+
+        width: 100%;
+    }
+
+    .damage {
+        font-size: 0.8rem;
+        font-weight: bold;
+        
+        color: white;
+    }
+
+    .modifiers {
+
+    }
+</style>
+
+<div class="flex container">
+    <div class="flex attack">
+        <div class="iconography">
+
+        </div>
+        
+        <div class="data">
+            <div class="flex damage">
+                108
+            </div>
+
+            <div class="flex modifiers">
+                {#each modifiers as modifier}
+                    {modifier}
+                {/each}
+            </div>
+        </div>    
+    </div>
+</div>

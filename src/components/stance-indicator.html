@@ -1,0 +1,35 @@
+<script>
+    export const position = "TR";
+
+    const stances = {
+        TL : "10 10",
+        TR : "90 10",
+        BL : "10 90",
+        BR : "90 90",
+    };
+
+    const stancify = (pos) => `M 50 50 L ${stances[pos]}`;
+</script>
+
+<style>
+    /* .group {
+        display: none;
+    }
+
+    .group:target {
+        display: inline;
+    } */
+
+    .svg {
+        width: 3rem;
+        height: 3rem;
+    }
+</style>
+
+
+<svg class="svg" viewBox="0 0 100 100">
+    <g class="group" fill="gray">
+        <polygon points="0 50, 50 0, 100 50, 50 100" />
+        <path d="{stancify(position)}" stroke="black" stroke-width="2"/>
+    </g>
+</svg>

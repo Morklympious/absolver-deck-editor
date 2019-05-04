@@ -4,6 +4,7 @@ import livereload from "rollup-plugin-livereload";
 import cjs from "rollup-plugin-commonjs";
 import resolve from "rollup-plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
+import globsync from "rollup-plugin-globsync";
 
 export default {
     input : "./src/index.js",
@@ -25,6 +26,16 @@ export default {
 
         // Turns es2015 into ES5
         buble(),
+
+        globsync({
+            patterns : [
+                "**/*.svg",
+            ],
+            dest : "./dist",
+            options : {
+                dir : process.cwd() + "./src"
+            }
+        }),
 
         // Hot-reload blah blah idc.
         serve(),

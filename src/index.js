@@ -1,6 +1,10 @@
-import Test from "./components/test.html";
+import Attack from "./components/attack.html";
+import Stance from "./components/stance-indicator.html";
 
-console.log("TEST TIME", Test);
-new Test({
+new Attack({
     target : document.body,
 });
+
+new Stance({
+    target : document.body,
+})

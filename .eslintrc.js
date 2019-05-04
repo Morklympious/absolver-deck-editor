@@ -24,5 +24,8 @@ module.exports = {
     },
 
     rules : {
+        // Table stakes for Svelte Computed properties. 
+        "no-labels" : 0,
+        "no-undef"  : 0.
     }
 };
