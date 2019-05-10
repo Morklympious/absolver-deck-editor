@@ -1,0 +1,104 @@
+<div class="layout">
+    <div class="strings">
+        <div class="string">
+            <div class="string-one"><Attack /></div>
+            <div class="string-two"><Attack /></div>
+            <div class="string-three"><Attack /></div>
+        </div>
+        <div class="string">
+            <div class="string-one"><Attack /></div>
+            <div class="string-two"><Attack /></div>
+            <div class="string-three"><Attack /></div>
+        </div>
+        <div class="string">
+            <div class="string-one"><Attack /></div>
+            <div class="string-two"><Attack /></div>
+            <div class="string-three"><Attack /></div>
+        </div>
+        <div class="string">
+            <div class="string-one"><Attack /></div>
+            <div class="string-two"><Attack /></div>
+            <div class="string-three"><Attack /></div>
+        </div>
+    </div>
+
+    <div class="alts">
+            <Attack />
+            <Attack />
+            <Attack />
+            <Attack />
+    </div>
+</div>
+
+<style>
+    .layout {
+        height: 100%;
+        width: 100%;
+
+        padding: 2rem;
+
+        display: grid;
+        grid-template:
+            "strings . alts" 100% 
+            / 6fr 3fr 1fr
+    }
+
+    .strings {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-direction: column;
+
+        grid-area: strings;
+
+        background: gray;
+    }
+
+    .string {
+        display: grid;
+
+        width: 100%;
+        height: 25%;
+
+        grid-template: 
+            "one two three" 100%
+            / 1fr 1fr 1fr;
+
+        background: hotpink
+    }
+
+    .string-one {
+        grid-area: one;
+    }
+
+    .string-two {
+        grid-area: two;
+    }
+
+    .string-three {
+        grid-area: three
+    }
+
+    .bridge {
+        grid-area: bridge;
+        background: forestgreen;
+    }
+
+    .alts {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-direction: column;
+
+        grid-area: alts;
+
+
+        background: orange;
+    }
+</style>
+
+<script>
+    import Attack from "./components/attack.html";
+</script>
