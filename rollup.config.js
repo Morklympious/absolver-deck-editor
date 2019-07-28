@@ -11,7 +11,7 @@ const { preprocess, processor } = require("@modular-css/svelte")({
 
 import mcss from "@modular-css/rollup";
 import globsync from "rollup-plugin-globsync";
-import alias from "rollup-plugin-alias";
+import alias from "./build/aliases.js";
 
 export default {
     input : "./src/index.js",
@@ -35,8 +35,8 @@ export default {
         buble(),
 
         alias({
-            resolve : [ ".svelte", ".js" ],
-            images  : path.resolve(__dirname, "./src/img"),
+            components : path.resolve(__dirname, "./src/components/"),
+            stores     : path.resolve(__dirname, "./src/stores/")
         }),
 
         globsync({
