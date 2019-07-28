@@ -1,8 +1,6 @@
-import { writable, readable } from 'svelte/store';
+import { readable } from "svelte/store";
+import baremoves from "../data/barehands.js";
 
-export const count = writable(0, (set) => {
-    console.log("subscriber get!");
-    return () => console.log("UNSUB", set);
-});
+const barehands = readable(false, (set) => set(baremoves));
 
-export const increment = () => count.set(count + 1);
+export { barehands };

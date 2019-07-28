@@ -1,5 +1,15 @@
 <script>
-    export const modifiers = [ "A", "F", "B" ];
+    import Stance from "./stance.html";
+    import { barehands } from "../stores/store.js";
+
+    // eslint-disable-next-line
+    export let properties = [];
+    export let name;
+    export let height;
+    export let type;
+
+    $: art = name && true ? name.split(" ").join("-")
+.toLowerCase() : "empty-attack";
 </script>
 
 <style>
@@ -12,13 +22,13 @@
     .container {
         position: relative;
 
-        height: 100%;
-        width: 100%;
-        
+        height: 8rem;
+        width: 8rem;
+
         padding: 0.2rem;
 
         /* TODO: Border when highlighted */
-        border: 0.2rem solid gray;
+        border: 0.2rem solid #444;
     }
 
     .attack {
@@ -27,48 +37,45 @@
         height: 100%;
         width: 100%;
 
-        background-color: gray;
+        background-color: #444;
     }
 
     .empty {
-        background-image: url("../img/empty-attack-icon.svg");
+        background-image: url("img/empty-attack-icon.svg");
         background-color: gold;
     }
 
     .data {
         position: absolute;
-        bottom: 0.2rem;
+        top: 0.2rem;
+        left: 0.2rem;
 
         width: 100%;
     }
 
-    .damage {
-        font-size: 0.8rem;
+    .name {
+        padding: 0.1rem;
+        font-size: 0.6rem;
         font-weight: bold;
         
         color: white;
     }
 
     .modifiers {
-
+        top: 0.2rem;
+        left: 0.2rem;
     }
 </style>
 
 <div class="flex container">
-    <div class="flex attack">
+    <div class="flex attack" style="background-image: url(images/barehands/{art}.png)">
         <div class="iconography">
 
         </div>
         
         <div class="data">
-            <div class="flex damage">
-                108
-            </div>
-
-            <div class="flex modifiers">
-                {#each modifiers as modifier}
-                    {modifier}
-                {/each}
+            <div class="data name">
+                {name}
             </div>
         </div>    
     </div>
