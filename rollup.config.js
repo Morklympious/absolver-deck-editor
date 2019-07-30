@@ -9,6 +9,8 @@ import globsync from "rollup-plugin-globsync";
 import alias from "./build/alias.js";
 import aliases from "./build/aliases.js";
 
+const watching = process.env.ROLLUP_WATCH;
+
 export default {
     input : "./src/index.js",
 
@@ -36,12 +38,18 @@ export default {
             patterns : [
                 "**/*.svg",
                 "**/*.png",
+                "**/index.html",
             ],
             dest : "./dist",
+
+            options : {
+                transform : (path) => path.replace("src/", ""),
+                clean     : true,
+            }
         }),
 
         // Hot-reload blah blah idc.
-        serve(),
-        livereload({ watch : [ "./dist" ] }),
+        watching && serve("dist"),
+        watching && livereload({ watch : [ "./dist" ] }),
     ],
 };
