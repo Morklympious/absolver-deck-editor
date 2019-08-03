@@ -47,13 +47,13 @@ module.exports = [
     style   : "forsaken",
     stances : [
       {
-        begins : "FR",
-        ends   : "BR",
+        begins : "BR",
+        ends   : "FL",
         hits   : "R"
       },
       {
-        begins : "FL",
-        ends   : "BL",
+        begins : "BL",
+        ends   : "FR",
         hits   : "L"
       }
     ],
@@ -1513,9 +1513,20 @@ module.exports = [
     properties : []
   },
   {
-    name       : "Spinning Wide Hook",
-    style      : "forsaken",
-    stances    : null,
+    name    : "Spinning Wide Hook",
+    style   : "forsaken",
+    stances : [
+      {
+        begins : "BR",
+        ends   : "FR",
+        hits   : "L"
+      },
+      {
+        begins : "BL",
+        ends   : "FL",
+        hits   : "R"
+      }
+    ],
     height     : "high",
     type       : "horizontal",
     properties : []

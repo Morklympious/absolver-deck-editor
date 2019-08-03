@@ -1,14 +1,28 @@
 <script>
-    import { barehands } from "stores/store.js";
+import { barehands } from "stores/store.js";
 
+import Stance from "./stance.html";
+
+// eslint-disable-next-line
+export let properties = [];
+export let name;
+export let height;
+export let type;
+// eslint-disable-next-line
+export let stances = [];
+
+let art;
+let start;
+
+
+$: {
     // eslint-disable-next-line
-    export let properties = [];
-    export let name;
-    export let height;
-    export let type;
+    art = name ? name.split(" ").join("-").toLowerCase() : "empty-attack";
+    console.log(stances[0]);
+    start = stances[0].begins;
+}
 
-    $: art = name && true ? name.split(" ").join("-")
-.toLowerCase() : "empty-attack";
+
 </script>
 
 <style>
@@ -73,10 +87,12 @@
 
 <div class="flex container">
     <div class="flex attack" style="background-image: url(images/barehands/{art}.png)">
+        <Stance position="{start}"/>
         <div class="data">
             <div class="data name">
-                {name}
+                {name} {start}
             </div>
         </div>    
+        <Stance position="{stances[0].ends}" />
     </div>
 </div>
