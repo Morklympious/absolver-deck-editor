@@ -1,26 +1,23 @@
 <script>
 import { barehands } from "stores/store.js";
 
-import Stance from "./stance.html";
+import Stance from "./stance.svelte";
 
 // eslint-disable-next-line
 export let properties = [];
-export let name;
+
+export let name = "";
 export let height;
 export let type;
+export let filter;
+
 // eslint-disable-next-line
-export let stances = [];
-
-let art;
-let start;
+export let stance = {};
 
 
-$: {
-    // eslint-disable-next-line
-    art = name ? name.split(" ").join("-").toLowerCase() : "empty-attack";
-    console.log(stances[0]);
-    start = stances[0].begins;
-}
+// eslint-disable-next-line
+$: art = name.split(" ").join("-").toLowerCase()
+$: start = stance.begins;
 
 
 </script>
@@ -35,9 +32,6 @@ $: {
     .container {
         position: relative;
 
-        margin: 0.2rem;
-        padding: 0.2rem;
-
         height: 8rem;
         width: 8rem;
 
@@ -47,8 +41,6 @@ $: {
     }
 
     .attack {
-        margin: 0.2rem;
-
         height: 100%;
         width: 100%;
 
@@ -59,7 +51,6 @@ $: {
     }
 
     .empty {
-        background-image: url("src/images/empty-attack.svg");
         background-color: gold;
     }
 
@@ -85,14 +76,12 @@ $: {
     }
 </style>
 
-<div class="flex container">
+<div class="flex container" on:click="{() => console.log('wow', filter)}">
     <div class="flex attack" style="background-image: url(images/barehands/{art}.png)">
-        <Stance position="{start}"/>
         <div class="data">
             <div class="data name">
                 {name} {start}
             </div>
         </div>    
-        <Stance position="{stances[0].ends}" />
     </div>
 </div>

@@ -13,14 +13,6 @@
 </script>
 
 <style>
-    /* .group {
-        display: none;
-    }
-
-    .group:target {
-        display: inline;
-    } */
-
     .svg {
         width: 3rem;
         height: 3rem;
@@ -31,6 +23,6 @@
 <svg class="svg" viewBox="0 0 100 100">
     <g class="group" fill="gray">
         <polygon points="0 50, 50 0, 100 50, 50 100" />
-        <path d="{stance}" stroke="black" stroke-width="2"/>
+        <path d="{stance}" stroke="black" stroke-width="4"/>
     </g>
 </svg>

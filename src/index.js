@@ -1,5 +1,5 @@
 
-import Layout from "./components/layout.html";
+import Layout from "./components/layout.svelte";
 
 new Layout({
     target : document.body

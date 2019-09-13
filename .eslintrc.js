@@ -17,7 +17,14 @@ module.exports = {
         },
     },
 
-    plugins: ["eslint-plugin-html"],
+    plugins: ["eslint-plugin-html", "svelte3"],
+
+    overrides: [
+        {
+            files: ['**/*.svelte'],
+            processor: 'svelte3/svelte3'
+        }
+    ],
     
     globals : {
         "UIDelegate": true
@@ -26,6 +33,7 @@ module.exports = {
     rules : {
         // Table stakes for Svelte Computed properties. 
         "no-labels" : 0,
-        "no-undef"  : 0.
+        "no-undef"  : 0,
+        "prefer-const" : 0,
     }
 };

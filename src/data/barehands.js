@@ -1,19 +1,13 @@
 module.exports = [
   {
-    name    : "360 Tornado Kick",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
+    name   : "360 Tornado Kick",
+    style  : "forsaken",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : true
+    },
+    hits      : "same",
     damage    : 119.8,
     speed     : 0.8,
     range     : 2.2,
@@ -24,96 +18,66 @@ module.exports = [
     ]
   },
   {
-    name    : "Ankle Stamp",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
-    height     : "low",
-    type       : "thrust",
-    properties : []
+    name   : "Ankle Stamp",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits      : "same",
+    height    : "low",
+    type      : "thrust",
+    modifiers : []
   },
   {
-    name    : "Axe Kick",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Axe Kick",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : []
   },
   {
-    name    : "Back Fist",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Back Fist",
+    style  : "kahlt",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Back Hop Wrist",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
+    name   : "Back Hop Wrist",
+    style  : "stagger",
+    stance : {
+      begins : "BF",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Back Tripped Kick",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Back Tripped Kick",
+    style  : "kahlt",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "low",
     type       : "horizontal",
     properties : [
@@ -121,39 +85,27 @@ module.exports = [
     ]
   },
   {
-    name    : "Back Turn Wrist",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Back Turn Wrist",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Backfall Strike",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "BL",
-        hits   : "R"
-      }
-    ],
+    name   : "Backfall Strike",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "diff",
     lands      : "high",
     type       : "thrust",
     properties : [
@@ -161,20 +113,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Bending Palm",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Bending Palm",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -182,20 +128,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Body Blow",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "R"
-      }
-    ],
+    name   : "Body Blow",
+    style  : "kahlt",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -203,20 +143,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Bounce Knee",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "BR",
-        hits   : "L"
-      }
-    ],
+    name   : "Bounce Knee",
+    style  : "kahlt",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
@@ -224,20 +158,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Calbot",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Calbot",
+    style  : "forsaken",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : [
@@ -245,20 +173,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Charged Haymaker",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Charged Haymaker",
+    style  : "kahlt",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
@@ -266,58 +188,55 @@ module.exports = [
     ]
   },
   {
-    name    : "Chin Palm",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Chin Palm",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : []
   },
   {
-    name    : "Cleaver Blow",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Cleaver Blow",
+    style  : "kahlt",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : []
   },
   {
-    name    : "Cross Punch",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Cleaver Blow",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
+    height     : "high",
+    type       : "thrust",
+    properties : [
+      "break"
+    ]
+  },
+  {
+    name   : "Cross Punch",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
@@ -325,39 +244,27 @@ module.exports = [
     ]
   },
   {
-    name    : "Crouching Elbow",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "R"
-      }
-    ],
+    name   : "Crouching Elbow",
+    style  : "kahlt",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Crushing Palm",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "R"
-      }
-    ],
+    name   : "Crushing Palm",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -365,58 +272,40 @@ module.exports = [
     ]
   },
   {
-    name    : "Curled Up Uppercut",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Curled Up Uppercut",
+    style  : "kahlt",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : []
   },
   {
-    name    : "Direct Punch",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Direct Punch",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Donkey Slap",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
+    name   : "Donkey Slap",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : [
@@ -424,20 +313,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Double Fist Stretch",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Double Fist Stretch",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : [
@@ -445,20 +328,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Double Palm",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Double Palm",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -466,20 +343,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Double Spike Kick",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Double Spike Kick",
+    style  : "stagger",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -487,20 +358,27 @@ module.exports = [
     ]
   },
   {
-    name    : "Drunk Stomp",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Double Fist Stretch",
+    style  : "stagger",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
+    height     : "mid",
+    type       : "thrust",
+    properties : []
+  },
+  {
+    name   : "Drunk Stomp",
+    style  : "stagger",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -508,39 +386,42 @@ module.exports = [
     ]
   },
   {
-    name    : "Drunken Smash",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FR",
-        hits   : "R"
-      }
-    ],
+    name   : "Double Fist Stretch",
+    style  : "stagger",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "diff",
+    height     : "high",
+    type       : "horizontal",
+    properties : [
+      "strafe"
+    ]
+  },
+  {
+    name   : "Drunken Smash",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Dwit Chagi",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Dwit Chagi",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -548,39 +429,27 @@ module.exports = [
     ]
   },
   {
-    name    : "Elbow Stumble",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "R"
-      }
-    ],
+    name   : "Elbow Stumble",
+    style  : "stagger",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Eye Poke",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Eye Poke",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
@@ -588,20 +457,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Falcon Punch",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Falcon Punch",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
@@ -609,77 +472,53 @@ module.exports = [
     ]
   },
   {
-    name    : "Fast Back Fist",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Fast Back Fist",
+    style  : "kahlt",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Fast Elbow",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
+    name   : "Fast Elbow",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Fast Punch",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Fast Punch",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Foot Slap",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "BR",
-        hits   : "L"
-      }
-    ],
+    name   : "Foot Slap",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : [
@@ -687,20 +526,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Front Kick",
-    style   : "khalt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Front Kick",
+    style  : "khalt",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -708,20 +541,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Front Sweep",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
+    name   : "Front Sweep",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "low",
     type       : "horizontal",
     properties : [
@@ -729,20 +556,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Furious Uppercut",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "BR",
-        hits   : "L"
-      }
-    ],
+    name   : "Furious Uppercut",
+    style  : "forsaken",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : [
@@ -750,58 +571,40 @@ module.exports = [
     ]
   },
   {
-    name    : "Grab Punch",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Grab Punch",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Gut Punch",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Gut Punch",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Hadrunken",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Hadrunken",
+    style  : "stagger",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
@@ -809,20 +612,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Hammer Kick",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Hammer Kick",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : [
@@ -830,20 +627,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Handstand Kick",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Handstand Kick",
+    style  : "stagger",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : [
@@ -852,39 +643,27 @@ module.exports = [
     ]
   },
   {
-    name    : "Hook",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Hook",
+    style  : "forsaken",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : false
+    },
+    side       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Illusion Twist Kick",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Illusion Twist Kick",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "vertical",
     properties : [
@@ -892,39 +671,27 @@ module.exports = [
     ]
   },
   {
-    name    : "Jab Punch",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Jab Punch",
+    style  : "forsaken",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Jackhammer Punch",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Jackhammer Punch",
+    style  : "kahlt",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "vertical",
     properties : [
@@ -932,39 +699,27 @@ module.exports = [
     ]
   },
   {
-    name    : "Jar Bash",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "R"
-      }
-    ],
+    name   : "Jar Bash",
+    style  : "stagger",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Jump Out Elbow",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "R"
-      }
-    ],
+    name   : "Jump Out Elbow",
+    style  : "kahlt",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "vertical",
     properties : [
@@ -973,20 +728,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Jumped Light Kick",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Jumped Light Kick",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -994,20 +743,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Jumped Spin kick",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BL",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "BR",
-        hits   : "L"
-      }
-    ],
+    name   : "Jumped Spin kick",
+    style  : "kahlt",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : [
@@ -1015,20 +758,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Knee Strike",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FR",
-        hits   : "R"
-      }
-    ],
+    name   : "Knee Strike",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "vertical",
     properties : [
@@ -1037,96 +774,66 @@ module.exports = [
     ]
   },
   {
-    name    : "Knife Hand Strike",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
+    name   : "Knife Hand Strike",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Leg Breaker",
-    style   : "khalt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Leg Breaker",
+    style  : "khalt",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "low",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Liver Knee",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FR",
-        hits   : "R"
-      }
-    ],
+    name   : "Liver Knee",
+    style  : "kahlt",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Low Kick",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "BR",
-        hits   : "L"
-      }
-    ],
+    name   : "Low Kick",
+    style  : "forsaken",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "low",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Low Spin Heel",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Low Spin Heel",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "low",
     type       : "horizontal",
     properties : [
@@ -1134,39 +841,27 @@ module.exports = [
     ]
   },
   {
-    name    : "Mawashi",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "BR",
-        hits   : "L"
-      }
-    ],
+    name   : "Mawashi",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Meia Lua",
-    style   : "khalt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Meia Lua",
+    style  : "khalt",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : [
@@ -1174,20 +869,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Mill Punch",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Mill Punch",
+    style  : "forsaken",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : true
+    },
+    side       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -1195,20 +884,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Parry & Strike",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Parry & Strike",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    side       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
@@ -1216,20 +899,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Pulmonary Palm",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Pulmonary Palm",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -1237,20 +914,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Pushed Back Kick",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
+    name   : "Pushed Back Kick",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : [
@@ -1258,58 +929,40 @@ module.exports = [
     ]
   },
   {
-    name    : "Pushed Elbow",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Pushed Elbow",
+    style  : "kahlt",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : true
+    },
+    side       : "diff",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Rising Kick",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "R"
-      }
-    ],
+    name   : "Rising Kick",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "vertical",
     properties : []
   },
   {
-    name    : "Roll Back Fist",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Roll Back Fist",
+    style  : "windfall",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : [
@@ -1317,20 +970,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Roll Punch",
-    style   : "khalt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Roll Punch",
+    style  : "khalt",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -1338,20 +985,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Roll Uppercut",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FR",
-        hits   : "R"
-      }
-    ],
+    name   : "Roll Uppercut",
+    style  : "kahlt",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -1359,58 +1000,40 @@ module.exports = [
     ]
   },
   {
-    name    : "Scissor Kick",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BL",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "BR",
-        hits   : "L"
-      }
-    ],
+    name   : "Scissor Kick",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Side Kick",
-    style   : "khalt",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Side Kick",
+    style  : "khalt",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Slap Kick",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "BL",
-        hits   : "R"
-      }
-    ],
+    name   : "Slap Kick",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : [
@@ -1418,153 +1041,105 @@ module.exports = [
     ]
   },
   {
-    name    : "Soto-uke",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Soto-uke",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Spin Back Fist",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Spin Back Fist",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Spin Elbow",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Spin Elbow",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Spinning Flute Swing",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Spinning Flute Swing",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Spinning High Kick",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "R"
-      }
-    ],
+    name   : "Spinning High Kick",
+    style  : "forsaken",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Spinning Wide Hook",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Spinning Wide Hook",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Spiral Back Punch",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "R"
-      }
-    ],
+    name   : "Spiral Back Punch",
+    style  : "stagger",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Spiral Palm",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FR",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "FL",
-        hits   : "L"
-      }
-    ],
+    name   : "Spiral Palm",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -1572,58 +1147,40 @@ module.exports = [
     ]
   },
   {
-    name    : "Straight Punch",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Straight Punch",
+    style  : "forsaken",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Stretch Out Hook",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FL",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "FR",
-        hits   : "L"
-      }
-    ],
+    name   : "Stretch Out Hook",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Surging Palm",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Surging Palm",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -1631,20 +1188,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Tetsuzanko",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BL",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "BR",
-        hits   : "L"
-      }
-    ],
+    name   : "Tetsuzanko",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -1652,20 +1203,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Tripped Kick",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FL",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "FR",
-        hits   : "R"
-      }
-    ],
+    name   : "Tripped Kick",
+    style  : "forsaken",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "low",
     type       : "horizontal",
     properties : [
@@ -1673,39 +1218,27 @@ module.exports = [
     ]
   },
   {
-    name    : "Twist Back Kick",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
+    name   : "Twist Back Kick",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Twist Parry Strike",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "BL",
-        hits   : "R"
-      }
-    ],
+    name   : "Twist Parry Strike",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : [
@@ -1713,96 +1246,66 @@ module.exports = [
     ]
   },
   {
-    name    : "Underknee kick",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BR",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "BL",
-        hits   : "R"
-      }
-    ],
+    name   : "Underknee kick",
+    style  : "forsaken",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "low",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Upper Elbow",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "BR",
-        hits   : "R"
-      }
-    ],
+    name   : "Upper Elbow",
+    style  : "kahlt",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Uramawashi",
-    style   : "windfall",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "FL",
-        hits   : "L"
-      },
-      {
-        begins : "BL",
-        ends   : "FR",
-        hits   : "R"
-      }
-    ],
+    name   : "Uramawashi",
+    style  : "windfall",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : true
+    },
+    hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Wallop Blow",
-    style   : "kahlt",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
+    name   : "Wallop Blow",
+    style  : "kahlt",
+    stance : {
+      begins : "B",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : []
   },
   {
-    name    : "Whirlwind Double Punch",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "BR",
-        ends   : "BL",
-        hits   : "R"
-      },
-      {
-        begins : "BL",
-        ends   : "BR",
-        hits   : "L"
-      }
-    ],
+    name   : "Whirlwind Double Punch",
+    style  : "stagger",
+    stance : {
+      begins : "B",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "low",
     type       : "horizontal",
     properties : [
@@ -1811,20 +1314,14 @@ module.exports = [
     ]
   },
   {
-    name    : "Winged Back Kick",
-    style   : "forsaken",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
+    name   : "Winged Back Kick",
+    style  : "forsaken",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
@@ -1832,39 +1329,27 @@ module.exports = [
     ]
   },
   {
-    name    : "Wobble Low Kick",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "BR",
-        hits   : "R"
-      },
-      {
-        begins : "FL",
-        ends   : "BL",
-        hits   : "L"
-      }
-    ],
+    name   : "Wobble Low Kick",
+    style  : "stagger",
+    stance : {
+      begins : "F",
+      ends   : "B",
+      pivot  : false
+    },
+    hits       : "same",
     height     : "low",
     type       : "horizontal",
     properties : []
   },
   {
-    name    : "Wrist Jab",
-    style   : "stagger",
-    stances : [
-      {
-        begins : "FR",
-        ends   : "FR",
-        hits   : "L"
-      },
-      {
-        begins : "FL",
-        ends   : "FL",
-        hits   : "R"
-      }
-    ],
+    name   : "Wrist Jab",
+    style  : "stagger",
+    stance : {
+      begins : "F",
+      ends   : "F",
+      pivot  : false
+    },
+    hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : []
