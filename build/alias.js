@@ -27,7 +27,6 @@ const alias = (aliases = {}) => {
                 return null;
             }
 
-            
             const [ key ] = match;
             const resolved = path.normalize(source.replace(key, aliases[key]));
 

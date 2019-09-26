@@ -1,26 +1,12 @@
-<script>
-import { barehands } from "stores/store.js";
-
-import Stance from "./stance.svelte";
-
-// eslint-disable-next-line
-export let properties = [];
-
-export let name = "";
-export let height;
-export let type;
-export let filter;
-
-// eslint-disable-next-line
-export let stance = {};
-
-
-// eslint-disable-next-line
-$: art = name.split(" ").join("-").toLowerCase()
-$: start = stance.begins;
-
-
-</script>
+<div class="flex container" on:click="{() => console.log("options for a follow up", stance.begins === "F" ? $front : $back)}">
+    <div class="flex attack" style="background-image: url(images/barehands/{art}.png)">
+        <div class="data">
+            <div class="data name" >
+                {name} {start}
+            </div>
+        </div>    
+    </div>
+</div>
 
 <style>
     .flex {
@@ -76,12 +62,27 @@ $: start = stance.begins;
     }
 </style>
 
-<div class="flex container" on:click="{() => console.log('wow', filter)}">
-    <div class="flex attack" style="background-image: url(images/barehands/{art}.png)">
-        <div class="data">
-            <div class="data name">
-                {name} {start}
-            </div>
-        </div>    
-    </div>
-</div>
+
+<script>
+import { barehands, front, back } from "stores/store.js";
+
+import Stance from "./stance.svelte";
+
+// eslint-disable-next-line
+export let properties = [];
+
+export let name = "";
+export let height = "";
+export let type = [];
+export let filter = [];
+
+// eslint-disable-next-line
+export let stance = {};
+
+
+// eslint-disable-next-line
+$: art = name.split(" ").join("-").toLowerCase()
+$: start = stance.begins;
+
+
+</script>

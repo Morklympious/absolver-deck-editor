@@ -1,8 +1,8 @@
 <div class="layout">
-    <String begins="FR" attacks="{$barehands}" />
-    <String begins="FL" attacks="{$barehands.slice(6)}" />
-    <String begins="BL" attacks="{$barehands.slice(12)}" />
-    <String begins="BR" attacks="{$barehands.slice(15)}" />
+    <String begins="FR" />
+    <String begins="FL" />
+    <String begins="BL" />
+    <String begins="BR" />
 </div>
 
 <style>
