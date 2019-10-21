@@ -21,9 +21,34 @@ export default {
         sourcemap : "inline",
     },
 
+    onwarn(warning, warn) {
+        const {
+            code = "",
+            id = "",
+            importer = "",
+            pluginCode = "",
+            plugin = "",
+        } = warning;
+
+        // xstate ಠ_ಠ
+        if(code === "THIS_IS_UNDEFINED" && id.includes("\\xstate")) {
+            return;
+        }
+
+        // xstate ಠ_ಠ
+        if(code === "CIRCULAR_DEPENDENCY" && importer.includes("\\xstate")) {
+            return;
+        }
+
+        warn(warning);
+    },
+
     plugins : [
         // Play nice with the Node.js ecosystem
-        resolve(),
+        resolve({
+            browser : true,
+        }),
+
         cjs(),
 
         // lol so bored
@@ -31,6 +56,14 @@ export default {
 
         // Turns es2015 into ES5
         buble(),
+
+        // Environmental transforms for dependencies
+        require("rollup-plugin-replace")({
+            values : {
+                "process.env.NODE_ENV" : JSON.stringify("production"),
+            },
+            include : "node_modules/**",
+        }),
 
         alias(aliases),
 
@@ -45,7 +78,7 @@ export default {
             options : {
                 transform : (path) => path.replace("src/", ""),
                 clean     : true,
-            }
+            },
         }),
 
         // Hot-reload blah blah idc.

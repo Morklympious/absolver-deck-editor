@@ -22,7 +22,6 @@
     <Stance position="{begins}" />
     <Attack {...first} stance="{{ begins : "F" }}"  />
     <Stance position="{ending(first)}" />
-    <Attack {...second} stance="{{ begins " />
     <Stance position="{ending(second)}" />
     <Attack {...third}  />
     <Stance position="{ending(third)}" />
