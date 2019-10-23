@@ -3,8 +3,8 @@ module.exports = [
     name   : "360 Tornado Kick",
     style  : "forsaken",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : true
     },
     hits      : "same",
@@ -21,8 +21,8 @@ module.exports = [
     name   : "Ankle Stamp",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits      : "same",
@@ -34,8 +34,8 @@ module.exports = [
     name   : "Axe Kick",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -47,8 +47,8 @@ module.exports = [
     name   : "Back Fist",
     style  : "kahlt",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "same",
@@ -60,8 +60,8 @@ module.exports = [
     name   : "Back Hop Wrist",
     style  : "stagger",
     stance : {
-      begins : "BF",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "",
       pivot  : false
     },
     hits       : "same",
@@ -73,8 +73,8 @@ module.exports = [
     name   : "Back Tripped Kick",
     style  : "kahlt",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "diff",
@@ -88,8 +88,8 @@ module.exports = [
     name   : "Back Turn Wrist",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "diff",
@@ -101,8 +101,8 @@ module.exports = [
     name   : "Backfall Strike",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "diff",
@@ -116,8 +116,8 @@ module.exports = [
     name   : "Bending Palm",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "diff",
@@ -131,8 +131,8 @@ module.exports = [
     name   : "Body Blow",
     style  : "kahlt",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "diff",
@@ -146,8 +146,8 @@ module.exports = [
     name   : "Bounce Knee",
     style  : "kahlt",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "same",
@@ -161,8 +161,8 @@ module.exports = [
     name   : "Calbot",
     style  : "forsaken",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -176,8 +176,8 @@ module.exports = [
     name   : "Charged Haymaker",
     style  : "kahlt",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -191,8 +191,8 @@ module.exports = [
     name   : "Chin Palm",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -204,8 +204,8 @@ module.exports = [
     name   : "Cleaver Blow",
     style  : "kahlt",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "same",
@@ -217,8 +217,8 @@ module.exports = [
     name   : "Cleaver Blow",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -232,8 +232,8 @@ module.exports = [
     name   : "Cross Punch",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -247,8 +247,8 @@ module.exports = [
     name   : "Crouching Elbow",
     style  : "kahlt",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "diff",
@@ -260,8 +260,8 @@ module.exports = [
     name   : "Crushing Palm",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "diff",
@@ -275,8 +275,8 @@ module.exports = [
     name   : "Curled Up Uppercut",
     style  : "kahlt",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -288,8 +288,8 @@ module.exports = [
     name   : "Direct Punch",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "same",
@@ -301,8 +301,8 @@ module.exports = [
     name   : "Donkey Slap",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -316,8 +316,8 @@ module.exports = [
     name   : "Double Fist Stretch",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "diff",
@@ -331,8 +331,8 @@ module.exports = [
     name   : "Double Palm",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "same",
@@ -346,8 +346,8 @@ module.exports = [
     name   : "Double Spike Kick",
     style  : "stagger",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "diff",
@@ -361,8 +361,8 @@ module.exports = [
     name   : "Double Fist Stretch",
     style  : "stagger",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -374,8 +374,8 @@ module.exports = [
     name   : "Drunk Stomp",
     style  : "stagger",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -389,8 +389,8 @@ module.exports = [
     name   : "Double Fist Stretch",
     style  : "stagger",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "diff",
@@ -404,8 +404,8 @@ module.exports = [
     name   : "Drunken Smash",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "diff",
@@ -417,8 +417,8 @@ module.exports = [
     name   : "Dwit Chagi",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "diff",
@@ -432,8 +432,8 @@ module.exports = [
     name   : "Elbow Stumble",
     style  : "stagger",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "diff",
@@ -445,8 +445,8 @@ module.exports = [
     name   : "Eye Poke",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "same",
@@ -460,8 +460,8 @@ module.exports = [
     name   : "Falcon Punch",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -475,8 +475,8 @@ module.exports = [
     name   : "Fast Back Fist",
     style  : "kahlt",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "same",
@@ -488,8 +488,8 @@ module.exports = [
     name   : "Fast Elbow",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -501,8 +501,8 @@ module.exports = [
     name   : "Fast Punch",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "same",
@@ -514,8 +514,8 @@ module.exports = [
     name   : "Foot Slap",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -529,8 +529,8 @@ module.exports = [
     name   : "Front Kick",
     style  : "khalt",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -544,8 +544,8 @@ module.exports = [
     name   : "Front Sweep",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -559,8 +559,8 @@ module.exports = [
     name   : "Furious Uppercut",
     style  : "forsaken",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "same",
@@ -574,8 +574,8 @@ module.exports = [
     name   : "Grab Punch",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "diff",
@@ -587,8 +587,8 @@ module.exports = [
     name   : "Gut Punch",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -600,8 +600,8 @@ module.exports = [
     name   : "Hadrunken",
     style  : "stagger",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "same",
@@ -615,8 +615,8 @@ module.exports = [
     name   : "Hammer Kick",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -630,8 +630,8 @@ module.exports = [
     name   : "Handstand Kick",
     style  : "stagger",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "diff",
@@ -646,8 +646,8 @@ module.exports = [
     name   : "Hook",
     style  : "forsaken",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : false
     },
     side       : "diff",
@@ -659,8 +659,8 @@ module.exports = [
     name   : "Illusion Twist Kick",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "diff",
@@ -674,8 +674,8 @@ module.exports = [
     name   : "Jab Punch",
     style  : "forsaken",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "diff",
@@ -687,8 +687,8 @@ module.exports = [
     name   : "Jackhammer Punch",
     style  : "kahlt",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "diff",
@@ -702,8 +702,8 @@ module.exports = [
     name   : "Jar Bash",
     style  : "stagger",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "diff",
@@ -715,8 +715,8 @@ module.exports = [
     name   : "Jump Out Elbow",
     style  : "kahlt",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "diff",
@@ -731,8 +731,8 @@ module.exports = [
     name   : "Jumped Light Kick",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -746,8 +746,8 @@ module.exports = [
     name   : "Jumped Spin kick",
     style  : "kahlt",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "same",
@@ -761,8 +761,8 @@ module.exports = [
     name   : "Knee Strike",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "diff",
@@ -777,8 +777,8 @@ module.exports = [
     name   : "Knife Hand Strike",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -790,8 +790,8 @@ module.exports = [
     name   : "Leg Breaker",
     style  : "khalt",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -803,8 +803,8 @@ module.exports = [
     name   : "Liver Knee",
     style  : "kahlt",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "diff",
@@ -816,8 +816,8 @@ module.exports = [
     name   : "Low Kick",
     style  : "forsaken",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "same",
@@ -829,8 +829,8 @@ module.exports = [
     name   : "Low Spin Heel",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "diff",
@@ -844,8 +844,8 @@ module.exports = [
     name   : "Mawashi",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "same",
@@ -857,8 +857,8 @@ module.exports = [
     name   : "Meia Lua",
     style  : "khalt",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -872,8 +872,8 @@ module.exports = [
     name   : "Mill Punch",
     style  : "forsaken",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : true
     },
     side       : "diff",
@@ -887,8 +887,8 @@ module.exports = [
     name   : "Parry & Strike",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     side       : "same",
@@ -902,8 +902,8 @@ module.exports = [
     name   : "Pulmonary Palm",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -917,8 +917,8 @@ module.exports = [
     name   : "Pushed Back Kick",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -932,8 +932,8 @@ module.exports = [
     name   : "Pushed Elbow",
     style  : "kahlt",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : true
     },
     side       : "diff",
@@ -945,8 +945,8 @@ module.exports = [
     name   : "Rising Kick",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "diff",
@@ -958,8 +958,8 @@ module.exports = [
     name   : "Roll Back Fist",
     style  : "windfall",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "diff",
@@ -973,8 +973,8 @@ module.exports = [
     name   : "Roll Punch",
     style  : "khalt",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -988,8 +988,8 @@ module.exports = [
     name   : "Roll Uppercut",
     style  : "kahlt",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "diff",
@@ -1003,8 +1003,8 @@ module.exports = [
     name   : "Scissor Kick",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "same",
@@ -1016,8 +1016,8 @@ module.exports = [
     name   : "Side Kick",
     style  : "khalt",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -1029,8 +1029,8 @@ module.exports = [
     name   : "Slap Kick",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "diff",
@@ -1044,8 +1044,8 @@ module.exports = [
     name   : "Soto-uke",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -1057,8 +1057,8 @@ module.exports = [
     name   : "Spin Back Fist",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "diff",
@@ -1070,8 +1070,8 @@ module.exports = [
     name   : "Spin Elbow",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "diff",
@@ -1083,8 +1083,8 @@ module.exports = [
     name   : "Spinning Flute Swing",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "diff",
@@ -1096,8 +1096,8 @@ module.exports = [
     name   : "Spinning High Kick",
     style  : "forsaken",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "diff",
@@ -1109,8 +1109,8 @@ module.exports = [
     name   : "Spinning Wide Hook",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "diff",
@@ -1122,8 +1122,8 @@ module.exports = [
     name   : "Spiral Back Punch",
     style  : "stagger",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "diff",
@@ -1135,8 +1135,8 @@ module.exports = [
     name   : "Spiral Palm",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "same",
@@ -1150,8 +1150,8 @@ module.exports = [
     name   : "Straight Punch",
     style  : "forsaken",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -1163,8 +1163,8 @@ module.exports = [
     name   : "Stretch Out Hook",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "same",
@@ -1176,8 +1176,8 @@ module.exports = [
     name   : "Surging Palm",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "diff",
@@ -1191,8 +1191,8 @@ module.exports = [
     name   : "Tetsuzanko",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "same",
@@ -1206,8 +1206,8 @@ module.exports = [
     name   : "Tripped Kick",
     style  : "forsaken",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "diff",
@@ -1221,8 +1221,8 @@ module.exports = [
     name   : "Twist Back Kick",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -1234,8 +1234,8 @@ module.exports = [
     name   : "Twist Parry Strike",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "diff",
@@ -1249,8 +1249,8 @@ module.exports = [
     name   : "Underknee kick",
     style  : "forsaken",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "diff",
@@ -1262,8 +1262,8 @@ module.exports = [
     name   : "Upper Elbow",
     style  : "kahlt",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : true
     },
     hits       : "diff",
@@ -1275,8 +1275,8 @@ module.exports = [
     name   : "Uramawashi",
     style  : "windfall",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : true
     },
     hits       : "diff",
@@ -1288,8 +1288,8 @@ module.exports = [
     name   : "Wallop Blow",
     style  : "kahlt",
     stance : {
-      begins : "B",
-      ends   : "B",
+      begins : "BACK",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -1301,8 +1301,8 @@ module.exports = [
     name   : "Whirlwind Double Punch",
     style  : "stagger",
     stance : {
-      begins : "B",
-      ends   : "F",
+      begins : "BACK",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "same",
@@ -1317,8 +1317,8 @@ module.exports = [
     name   : "Winged Back Kick",
     style  : "forsaken",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -1332,8 +1332,8 @@ module.exports = [
     name   : "Wobble Low Kick",
     style  : "stagger",
     stance : {
-      begins : "F",
-      ends   : "B",
+      begins : "FRONT",
+      ends   : "BACK",
       pivot  : false
     },
     hits       : "same",
@@ -1345,8 +1345,8 @@ module.exports = [
     name   : "Wrist Jab",
     style  : "stagger",
     stance : {
-      begins : "F",
-      ends   : "F",
+      begins : "FRONT",
+      ends   : "FRONT",
       pivot  : false
     },
     hits       : "diff",

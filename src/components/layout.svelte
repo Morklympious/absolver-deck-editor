@@ -23,9 +23,6 @@
 
 <script>
     import { barehands } from "stores/store.js";
-    import state from "stores/fsm.js";
     
-    window.state = state;
-    state.start();
     import String from "components/string/string.svelte";
 </script>
