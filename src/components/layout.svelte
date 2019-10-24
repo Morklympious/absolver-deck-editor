@@ -1,8 +1,8 @@
 <div class="layout">
-    <String begins="FR" />
-    <String begins="FL" />
-    <String begins="BL" />
-    <String begins="BR" />
+    <String stance="{{face : "FRONT", look : "RIGHT"}}" />
+    <String stance="{{face : "FRONT", look : "LEFT"}}"  />
+    <String stance="{{face : "BACK", look : "LEFT"}}"  />
+    <String stance="{{face : "BACK", look : "RIGHT"}}"  />
 </div>
 
 <style>

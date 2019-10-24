@@ -3,11 +3,12 @@
     import Stance from "components/stance.svelte";
 
     export let attacks = [];
-    export let begins = "F";
-
-    const ending = ({ stance }) => (stance ? `${stance.ends}${stance.pivot ? "L" : "R"}` : "FR");
+    export let stance = { face : "FRONT", look : "RIGHT" };
 
     $: [ first = false, second = false, third = false ] = attacks;
+
+    //TODO: This component will probably want to set all of its data in a store. 
+    // Since multiple components are gonna modify the store data.
 </script>
             
 <style>
@@ -19,10 +20,9 @@
 </style>
         
 <div class="string">
-    <Stance position="{begins}" />
-    <Attack {...first} stance="{{ begins : "F" }}"  />
-    <Stance position="{ending(first)}" />
-    <Stance position="{ending(second)}" />
-    <Attack {...third}  />
-    <Stance position="{ending(third)}" />
+    <Stance {stance}/>
+    <Attack begins="{stance}" />
+    <Stance />
+    <Attack />
+    <Stance />
 </div>

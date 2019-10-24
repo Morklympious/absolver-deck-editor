@@ -1,12 +1,21 @@
-<div class="flex container">
-    <div class="flex attack" style="background-image: url(images/barehands/{art}.png)">
-        <div class="data">
-            <div class="data name" >
-                {name} {start}
-            </div>
-        </div>    
-    </div>
+<div class="flex container" on:click="{() => console.log($possibilities)}">
+    {name}
 </div>
+
+<script>
+import { barehands, followups } from "stores/store.js";
+
+export let name = "";
+export let height = "";
+export let type = "";
+export let stance = {};
+export let modifiers = [];
+
+// The move really only cares where it originates (for followups), not where it goes.
+export let begins = {};
+
+$: possibilities = followups(begins);
+</script>
 
 <style>
     .flex {
@@ -61,22 +70,3 @@
         left: 0.2rem;
     }
 </style>
-
-
-<script>
-import { barehands, front, back } from "stores/store.js";
-
-import Stance from "./stance.svelte";
-
-export let modifiers = [];
-
-export let name = "";
-export let height = "";
-export let type = "thrust";
-export let stance = {};
-
-$: art = name.split(" ").join("-").toLowerCase()
-$: start = stance.begins;
-
-
-</script>

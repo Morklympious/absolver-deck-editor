@@ -50,6 +50,7 @@ const followups = (source) => {
         set(map);
     }, new Map());
 
+    // Set this key for the cache so we can save off this stuff for later.
     cache.set(key, store);
 
     return store;
