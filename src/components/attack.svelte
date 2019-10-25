@@ -1,9 +1,12 @@
-<div class="flex container" on:click="{() => console.log($possibilities)}">
+<div class="flex container" on:click="{() => {
+    console.log(stance, begins);
+    console.log(followups(begins))
+    }}">
     {name}
 </div>
 
 <script>
-import { barehands, followups } from "stores/store.js";
+import followups from "utilities/followups.js";
 
 export let name = "";
 export let height = "";
@@ -14,7 +17,6 @@ export let modifiers = [];
 // The move really only cares where it originates (for followups), not where it goes.
 export let begins = {};
 
-$: possibilities = followups(begins);
 </script>
 
 <style>

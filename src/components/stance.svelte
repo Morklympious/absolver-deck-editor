@@ -1,3 +1,10 @@
+<svg class="svg" viewBox="0 0 100 100">
+    <g class="group" fill="gray">
+        <polygon points="0 50, 50 0, 100 50, 50 100" />
+        <path d="{path}" stroke="black" stroke-width="4"/>
+    </g>
+</svg>
+
 <script>
     export let stance = { face: "FRONT", look: "RIGHT" };
     
@@ -18,11 +25,3 @@
         height: 3rem;
     }
 </style>
-
-
-<svg class="svg" viewBox="0 0 100 100">
-    <g class="group" fill="gray">
-        <polygon points="0 50, 50 0, 100 50, 50 100" />
-        <path d="{path}" stroke="black" stroke-width="4"/>
-    </g>
-</svg>

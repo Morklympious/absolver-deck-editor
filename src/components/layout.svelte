@@ -5,6 +5,10 @@
     <String stance="{{face : "BACK", look : "RIGHT"}}"  />
 </div>
 
+<script>
+    import String from "components/string.svelte";
+</script>
+
 <style>
     .layout {
         height: 100%;
@@ -20,9 +24,3 @@
         align-items: center;
     }
 </style>
-
-<script>
-    import { barehands } from "stores/store.js";
-    
-    import String from "components/string/string.svelte";
-</script>

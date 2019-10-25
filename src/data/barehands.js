@@ -5,7 +5,7 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits      : "same",
     damage    : 119.8,
@@ -14,8 +14,8 @@ module.exports = [
     height    : "high",
     type      : "horizontal",
     modifiers : [
-      "jump"
-    ]
+      "jump",
+    ],
   },
   {
     name   : "Ankle Stamp",
@@ -23,12 +23,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits      : "same",
     height    : "low",
     type      : "thrust",
-    modifiers : []
+    modifiers : [],
   },
   {
     name   : "Axe Kick",
@@ -36,12 +36,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "mid",
     type       : "vertical",
-    properties : []
+    properties : [],
   },
   {
     name   : "Back Fist",
@@ -49,25 +49,25 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Back Hop Wrist",
     style  : "stagger",
     stance : {
       begins : "BACK",
-      ends   : "",
-      pivot  : false
+      ends   : "BACK",
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Back Tripped Kick",
@@ -75,14 +75,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "low",
     type       : "horizontal",
     properties : [
-      "duck"
-    ]
+      "duck",
+    ],
   },
   {
     name   : "Back Turn Wrist",
@@ -90,12 +90,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Backfall Strike",
@@ -103,14 +103,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     lands      : "high",
     type       : "thrust",
     properties : [
-      "double"
-    ]
+      "double",
+    ],
   },
   {
     name   : "Bending Palm",
@@ -118,14 +118,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "stop"
-    ]
+      "stop",
+    ],
   },
   {
     name   : "Body Blow",
@@ -133,14 +133,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "strafe"
-    ]
+      "strafe",
+    ],
   },
   {
     name   : "Bounce Knee",
@@ -148,14 +148,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
-      "strafe"
-    ]
+      "strafe",
+    ],
   },
   {
     name   : "Calbot",
@@ -163,14 +163,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : [
-      "strafe"
-    ]
+      "strafe",
+    ],
   },
   {
     name   : "Charged Haymaker",
@@ -178,14 +178,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
-      "charge"
-    ]
+      "charge",
+    ],
   },
   {
     name   : "Chin Palm",
@@ -193,12 +193,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "mid",
     type       : "vertical",
-    properties : []
+    properties : [],
   },
   {
     name   : "Cleaver Blow",
@@ -206,42 +206,42 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "mid",
     type       : "vertical",
-    properties : []
+    properties : [],
   },
   {
-    name   : "Cleaver Blow",
+    name   : "Collar Chop",
     style  : "windfall",
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
-      "break"
-    ]
+      "break",
+    ],
   },
   {
     name   : "Cross Punch",
     style  : "forsaken",
     stance : {
-      begins : "BACK",
-      ends   : "BACK",
-      pivot  : false
+      begins : "FRONT",
+      ends   : "FRONT",
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
-      "stop"
-    ]
+      "stop",
+    ],
   },
   {
     name   : "Crouching Elbow",
@@ -249,12 +249,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "mid",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Crushing Palm",
@@ -262,14 +262,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "stop"
-    ]
+      "stop",
+    ],
   },
   {
     name   : "Curled Up Uppercut",
@@ -277,12 +277,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "mid",
     type       : "vertical",
-    properties : []
+    properties : [],
   },
   {
     name   : "Direct Punch",
@@ -290,12 +290,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Donkey Slap",
@@ -303,14 +303,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : [
-      "double"
-    ]
+      "double",
+    ],
   },
   {
     name   : "Double Fist Stretch",
@@ -318,14 +318,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : [
-      "double"
-    ]
+      "double",
+    ],
   },
   {
     name   : "Double Palm",
@@ -333,14 +333,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "double"
-    ]
+      "double",
+    ],
   },
   {
     name   : "Double Spike Kick",
@@ -348,14 +348,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "double"
-    ]
+      "double",
+    ],
   },
   {
     name   : "Double Fist Stretch",
@@ -363,12 +363,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Drunk Stomp",
@@ -376,14 +376,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "stop"
-    ]
+      "stop",
+    ],
   },
   {
     name   : "Double Fist Stretch",
@@ -391,14 +391,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : [
-      "strafe"
-    ]
+      "strafe",
+    ],
   },
   {
     name   : "Drunken Smash",
@@ -406,12 +406,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Dwit Chagi",
@@ -419,14 +419,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "stop"
-    ]
+      "stop",
+    ],
   },
   {
     name   : "Elbow Stumble",
@@ -434,12 +434,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Eye Poke",
@@ -447,29 +447,29 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
-      "stop"
-    ]
+      "stop",
+    ],
   },
   {
     name   : "Falcon Punch",
     style  : "forsaken",
     stance : {
-      begins : "BACK",
-      ends   : "BACK",
-      pivot  : false
+      begins : "FRONT",
+      ends   : "FRONT",
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
-      "jump"
-    ]
+      "jump",
+    ],
   },
   {
     name   : "Fast Back Fist",
@@ -477,12 +477,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Fast Elbow",
@@ -490,12 +490,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Fast Punch",
@@ -503,12 +503,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Foot Slap",
@@ -516,14 +516,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : [
-      "jump"
-    ]
+      "jump",
+    ],
   },
   {
     name   : "Front Kick",
@@ -531,14 +531,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "break"
-    ]
+      "break",
+    ],
   },
   {
     name   : "Front Sweep",
@@ -546,14 +546,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "low",
     type       : "horizontal",
     properties : [
-      "duck"
-    ]
+      "duck",
+    ],
   },
   {
     name   : "Furious Uppercut",
@@ -561,14 +561,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : [
-      "charge"
-    ]
+      "charge",
+    ],
   },
   {
     name   : "Grab Punch",
@@ -576,12 +576,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Gut Punch",
@@ -589,12 +589,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Hadrunken",
@@ -602,14 +602,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
-      "charge"
-    ]
+      "charge",
+    ],
   },
   {
     name   : "Hammer Kick",
@@ -617,14 +617,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : [
-      "break"
-    ]
+      "break",
+    ],
   },
   {
     name   : "Handstand Kick",
@@ -632,15 +632,15 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : [
       "double",
-      "low"
-    ]
+      "low",
+    ],
   },
   {
     name   : "Hook",
@@ -648,12 +648,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     side       : "diff",
     height     : "high",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Illusion Twist Kick",
@@ -661,14 +661,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "mid",
     type       : "vertical",
     properties : [
-      "jump"
-    ]
+      "jump",
+    ],
   },
   {
     name   : "Jab Punch",
@@ -676,12 +676,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Jackhammer Punch",
@@ -689,14 +689,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "mid",
     type       : "vertical",
     properties : [
-      "double"
-    ]
+      "double",
+    ],
   },
   {
     name   : "Jar Bash",
@@ -704,12 +704,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "high",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Jump Out Elbow",
@@ -717,15 +717,15 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "mid",
     type       : "vertical",
     properties : [
       "break",
-      "jump"
-    ]
+      "jump",
+    ],
   },
   {
     name   : "Jumped Light Kick",
@@ -733,14 +733,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "jump"
-    ]
+      "jump",
+    ],
   },
   {
     name   : "Jumped Spin kick",
@@ -748,14 +748,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : [
-      "jump"
-    ]
+      "jump",
+    ],
   },
   {
     name   : "Knee Strike",
@@ -763,15 +763,15 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "mid",
     type       : "vertical",
     properties : [
       "break",
-      "jump"
-    ]
+      "jump",
+    ],
   },
   {
     name   : "Knife Hand Strike",
@@ -779,12 +779,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Leg Breaker",
@@ -792,12 +792,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "low",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Liver Knee",
@@ -805,12 +805,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "mid",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Low Kick",
@@ -818,12 +818,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "low",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Low Spin Heel",
@@ -831,14 +831,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "low",
     type       : "horizontal",
     properties : [
-      "duck"
-    ]
+      "duck",
+    ],
   },
   {
     name   : "Mawashi",
@@ -846,12 +846,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Meia Lua",
@@ -859,14 +859,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "high",
     type       : "horizontal",
     properties : [
-      "duck"
-    ]
+      "duck",
+    ],
   },
   {
     name   : "Mill Punch",
@@ -874,14 +874,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     side       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "double"
-    ]
+      "double",
+    ],
   },
   {
     name   : "Parry & Strike",
@@ -889,29 +889,29 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     side       : "same",
     height     : "high",
     type       : "thrust",
     properties : [
-      "parry"
-    ]
+      "parry",
+    ],
   },
   {
     name   : "Pulmonary Palm",
     style  : "windfall",
     stance : {
-      begins : "BACK",
-      ends   : "BACK",
-      pivot  : false
+      begins : "FRONT",
+      ends   : "FRONT",
+      pivot  : false,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "stop"
-    ]
+      "stop",
+    ],
   },
   {
     name   : "Pushed Back Kick",
@@ -919,14 +919,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "mid",
     type       : "vertical",
     properties : [
-      "break"
-    ]
+      "break",
+    ],
   },
   {
     name   : "Pushed Elbow",
@@ -934,12 +934,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     side       : "diff",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Rising Kick",
@@ -947,12 +947,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "mid",
     type       : "vertical",
-    properties : []
+    properties : [],
   },
   {
     name   : "Roll Back Fist",
@@ -960,14 +960,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : [
-      "strafe"
-    ]
+      "strafe",
+    ],
   },
   {
     name   : "Roll Punch",
@@ -975,14 +975,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "duck"
-    ]
+      "duck",
+    ],
   },
   {
     name   : "Roll Uppercut",
@@ -990,14 +990,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "duck"
-    ]
+      "duck",
+    ],
   },
   {
     name   : "Scissor Kick",
@@ -1005,12 +1005,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "high",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Side Kick",
@@ -1018,12 +1018,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "high",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Slap Kick",
@@ -1031,14 +1031,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "high",
     type       : "horizontal",
     properties : [
-      "jump"
-    ]
+      "jump",
+    ],
   },
   {
     name   : "Soto-uke",
@@ -1046,12 +1046,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Spin Back Fist",
@@ -1059,12 +1059,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "high",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Spin Elbow",
@@ -1072,12 +1072,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Spinning Flute Swing",
@@ -1085,12 +1085,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "high",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Spinning High Kick",
@@ -1098,12 +1098,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "high",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Spinning Wide Hook",
@@ -1111,12 +1111,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "high",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Spiral Back Punch",
@@ -1124,12 +1124,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "mid",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Spiral Palm",
@@ -1137,14 +1137,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "break"
-    ]
+      "break",
+    ],
   },
   {
     name   : "Straight Punch",
@@ -1152,12 +1152,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Stretch Out Hook",
@@ -1165,12 +1165,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "high",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Surging Palm",
@@ -1178,14 +1178,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "strafe"
-    ]
+      "strafe",
+    ],
   },
   {
     name   : "Tetsuzanko",
@@ -1193,14 +1193,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "strafe"
-    ]
+      "strafe",
+    ],
   },
   {
     name   : "Tripped Kick",
@@ -1208,14 +1208,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "low",
     type       : "horizontal",
     properties : [
-      "duck"
-    ]
+      "duck",
+    ],
   },
   {
     name   : "Twist Back Kick",
@@ -1223,12 +1223,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "high",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Twist Parry Strike",
@@ -1236,14 +1236,14 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "high",
     type       : "thrust",
     properties : [
-      "parry"
-    ]
+      "parry",
+    ],
   },
   {
     name   : "Underknee kick",
@@ -1251,12 +1251,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "low",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Upper Elbow",
@@ -1264,12 +1264,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "high",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Uramawashi",
@@ -1277,12 +1277,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : true
+      pivot  : true,
     },
     hits       : "diff",
     height     : "high",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Wallop Blow",
@@ -1290,12 +1290,12 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
-    properties : []
+    properties : [],
   },
   {
     name   : "Whirlwind Double Punch",
@@ -1303,15 +1303,15 @@ module.exports = [
     stance : {
       begins : "BACK",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "low",
     type       : "horizontal",
     properties : [
       "duck",
-      "double"
-    ]
+      "double",
+    ],
   },
   {
     name   : "Winged Back Kick",
@@ -1319,14 +1319,14 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "mid",
     type       : "thrust",
     properties : [
-      "stop"
-    ]
+      "stop",
+    ],
   },
   {
     name   : "Wobble Low Kick",
@@ -1334,12 +1334,12 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "same",
     height     : "low",
     type       : "horizontal",
-    properties : []
+    properties : [],
   },
   {
     name   : "Wrist Jab",
@@ -1347,11 +1347,11 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "FRONT",
-      pivot  : false
+      pivot  : false,
     },
     hits       : "diff",
     height     : "high",
     type       : "thrust",
-    properties : []
-  }
+    properties : [],
+  },
 ];
