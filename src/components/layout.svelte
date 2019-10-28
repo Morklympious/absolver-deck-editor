@@ -6,7 +6,7 @@
 </div>
 
 <script>
-    import String from "components/string.svelte";
+import String from "components/string.svelte";
 </script>
 
 <style>
