@@ -1,4 +1,4 @@
-import buble from "rollup-plugin-buble";
+import babel from "rollup-plugin-babel";
 import serve from "rollup-plugin-serve";
 import livereload from "rollup-plugin-livereload";
 import cjs from "rollup-plugin-commonjs";
@@ -12,7 +12,7 @@ import aliases from "./build/aliases.js";
 const watching = process.env.ROLLUP_WATCH;
 
 export default {
-    input : "./src/index.js",
+    input : "./src/editor.js",
 
     output : {
         file      : "./dist/bundle.js",
@@ -55,7 +55,9 @@ export default {
         svelte(),
 
         // Turns es2015 into ES5
-        buble(),
+        babel({
+            exclude : "node_modules/**",
+        }),
 
         // Environmental transforms for dependencies
         require("rollup-plugin-replace")({

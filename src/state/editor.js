@@ -9,6 +9,10 @@ const machine = Machine;
 const statechart = machine({
     initial : "idle",
 
+    on : {
+        IDLE : ".idle",
+    },
+    
     states : {
         idle : {
             meta : {
@@ -20,6 +24,8 @@ const statechart = machine({
 });
 
 const service = interpret(statechart);
+
+service.start();
 
 // Should I even be doing this lmao.
 export default (callback) => tree(service, callback);
