@@ -5,8 +5,20 @@
     <String stance="{{face : "BACK", look : "RIGHT"}}"  />
 </div>
 
+{#each children as child}
+    DESCENDERINO
+{/each}
+
 <script>
 import String from "components/string.svelte";
+
+export let children;
+export let props;
+export let component;
+
+$: console.log("PROPS", $$props);
+$: console.log("[LAYOUT]", $$props);
+
 </script>
 
 <style>
@@ -15,12 +27,5 @@ import String from "components/string.svelte";
         width: 100%;
 
         padding: 2rem;
-    }
-
-    .string {
-        display: flex;
-        flex-wrap: wrap;
-
-        align-items: center;
     }
 </style>

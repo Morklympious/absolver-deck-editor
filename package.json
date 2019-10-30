@@ -27,7 +27,7 @@
     "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-svelte": "^5.1.0",
     "svelte": "^3.12.1",
-    "xstate": "^4.6.7",
+    "xstate": "^4.7.0-rc5",
     "xstate-component-tree": "^1.0.0"
   },
   "scripts": {
