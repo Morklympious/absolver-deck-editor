@@ -1,7 +1,4 @@
-<div class="flex container" on:click="{() => {
-    console.log(stance, begins);
-    console.log(followups(begins))
-    }}">
+<div class="flex container" on:click="{process}">
     {name}
 </div>
 
@@ -16,6 +13,10 @@ export let modifiers = [];
 
 // The move really only cares where it originates (for followups), not where it goes.
 export let begins = {};
+
+const process = () => {
+    service.send("SELECTION");
+}
 
 </script>
 

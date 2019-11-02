@@ -1,4 +1,4 @@
-import Editor from "components/editor.svelte";
+import Editor from "components/application.svelte";
 
 new Editor({
     target : document.body,

@@ -25,10 +25,4 @@ $: console.log("[LAYOUT] PROPS", $$props);
 </script>
 
 <style>
-    .layout {
-        height: 100%;
-        width: 100%;
-
-        padding: 2rem;
-    }
 </style>

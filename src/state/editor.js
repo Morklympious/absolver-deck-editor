@@ -16,28 +16,23 @@ const statechart = machine({
     
     states : {
         overview : {
-            initial : "idle",
-
+            on : {
+                SELECTION : "selection",
+            },
+           
             meta : {
                 component : Layout,
                 props     : { one : 1 },
             },
+        },
 
+        selection : {
             on : {
-                IDLE      : ".idle",
-                SELECTION : ".selection",
+                OVERVIEW : "overview",
             },
 
-            states : {
-                idle : {
-                   
-                },
-
-                selection : {
-                    meta : {
-                        component : Selection,
-                    },
-                },
+            meta : {
+                component : Selection,
             },
         },
     },

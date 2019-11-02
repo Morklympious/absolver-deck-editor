@@ -3,7 +3,9 @@
 </div>
 
 <script>
+    export let followups;
 
+    $: console.log($$props);
 </script>
 
 <style>
