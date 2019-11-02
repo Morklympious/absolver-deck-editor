@@ -1,6 +1,9 @@
 
 {#each quadrants as { face, look }}
-    <String stance="{{face, look}}" />
+    <String 
+        stance="{{face, look}}" 
+        on:selection={({ detail : attack }) => console.log("atak", attack)}
+    />
 {/each}
 
 <script>

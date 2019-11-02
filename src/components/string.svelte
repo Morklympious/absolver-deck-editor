@@ -1,6 +1,6 @@
 <div class="string">
     <Stance {stance}/>
-    <Attack begins="{stance}" />
+    <Attack on:selection="{({ detail }) => bubble("selection", detail)}" begins="{stance}" />
     <Stance />
     <Attack />
     <Stance />
@@ -9,8 +9,11 @@
 </div>
 
 <script>
+    import { createEventDispatcher } from "svelte";
     import Attack from "components/attack.svelte";
     import Stance from "components/stance.svelte";
+
+    const bubble = createEventDispatcher();
 
     export let attacks = [];
     export let stance = { face : "FRONT", look : "RIGHT" };

@@ -20,7 +20,7 @@ const equipped = derived([ primaries, alternates ], ([ _primaries, _alternates ]
     set(names);
 });
 
-const pool = writable(false);
+const pool = writable(new Map());
 
 export {
     barehands,

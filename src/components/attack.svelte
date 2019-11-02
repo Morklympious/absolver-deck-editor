@@ -1,24 +1,28 @@
-<div class="flex container" on:click="{process}">
+<div class="flex container" on:click="{() => bubble("selection")}">
     {name}
 </div>
 
 <script>
+import { createEventDispatcher } from "svelte";
 import followups from "utilities/followups.js";
 import { pool } from "stores/deck.js";
 
-export let name = "";
-export let height = "";
-export let type = "";
-export let stance = {};
-export let modifiers = [];
+// Dispatch events that parents will do things with.
+const bubble = createEventDispatcher();
 
 // The move really only cares where it originates (for followups), not where it goes.
 export let begins = {};
 
-const process = () => {
-    service.send("SELECTION");
-    pool.set(followups(begins));
-}
+export let attack = false;
+
+$: ({
+    name,
+    height,
+    type,
+    stance,
+    modifiers
+} = attack);
+
 
 </script>
 

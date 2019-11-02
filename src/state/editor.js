@@ -1,14 +1,18 @@
-import { Machine, interpret } from "xstate";
+import { Machine, interpret, actions } from "xstate";
 import tree from "xstate-component-tree";
 
 import Overview from "components/deck-overview.svelte";
 import Selection from "components/selection.svelte";
+
+const { assign } = actions;
 
 // Lol fuck you eslint
 const machine = Machine;
 
 const statechart = machine({
     initial : "overview",
+
+    context : { pool : false },
 
     on : {
         OVERVIEW : ".overview",
@@ -30,6 +34,12 @@ const statechart = machine({
             on : {
                 OVERVIEW : "overview",
             },
+
+            entry : [
+                assign({
+                    pool : (context, { pool }) => pool,
+                }),
+            ],
 
             meta : {
                 component : Selection,
