@@ -38,7 +38,6 @@ const statechart = machine({
            
             meta : {
                 component : Overview,
-                props     : { one : 1 },
             },
         },
 
@@ -55,6 +54,7 @@ const statechart = machine({
 
             meta : {
                 component : Selection,
+                props     : (context) => context,
             },
         },
     },
