@@ -1,5 +1,5 @@
 import barehands from "../data/barehands.js";
-import quadrants from "utilities/quadrants.js";
+import { quadrants } from "utilities/quadrants.js";
 
 // Cache for memoizing input to followups
 const cache = new Map();
@@ -13,7 +13,7 @@ const cache = new Map();
  * @param {String} source.face - The way you're facing: either "FRONT" or "BACK"
  * @param {String} source.look - The way you're looking: either "LEFT" or "RIGHT"
  *
- * @returns {Object} A Svelte 3 derived store that contains a Map of move options
+ * @returns {Object} A Map of move options that can originate from the source
  */
 const followups = (source) => {
     if(!source) {

@@ -5,4 +5,9 @@ const quadrants = [
     { face : "BACK",  look : "RIGHT" },
 ];
 
-export default quadrants;
+const qmap = new Map(quadrants.map((q) => [ `${q.face}_${q.look}`, q ]));
+
+export {
+    quadrants,
+    qmap,
+};

@@ -1,12 +1,22 @@
 <div class="string">
-    <Stance {stance}/>
-    <Attack on:selection="{({ detail }) => bubble("selection", detail)}" begins="{stance}" />
-    <Stance />
-    <Attack />
-    <Stance />
-    <Attack />
-    <Stance />
+    <!-- 
+        <Stance /> here is outside the each loop because it's inherent to the 
+        String and not necessarily the attack that gets slotted. 
+
+        Meanwhile, we're assuming after that that every attack will be followed by
+        a "where do I end up" (Stance) indicator
+    -->
+    <Stance {stance} />
+    {#each attacks as attack, column (attack.name)}
+        <Attack 
+            {attack} 
+            on:selection={({ detail : attack }) => bubble("selection", { attack, column })}
+        />
+        <Stance />
+    {/each}
 </div>
+
+
 
 <script>
     import { createEventDispatcher } from "svelte";

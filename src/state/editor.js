@@ -1,5 +1,5 @@
 import { Machine, interpret, actions } from "xstate";
-import tree from "xstate-component-tree";
+import xct from "xstate-component-tree";
 
 import Overview from "components/deck-overview.svelte";
 import Selection from "components/selection.svelte";
@@ -12,7 +12,9 @@ const machine = Machine;
 const statechart = machine({
     initial : "overview",
 
-    context : { pool : false },
+    context : {
+        pool : new Map(),
+    },
 
     on : {
         OVERVIEW : ".overview",
@@ -23,6 +25,16 @@ const statechart = machine({
             on : {
                 SELECTION : "selection",
             },
+
+            entry : [
+                assign({
+                    pool : ({ pool }) => {
+                        pool.clear();
+
+                        return pool;
+                    },
+                }),
+            ],
            
             meta : {
                 component : Overview,
@@ -54,5 +66,10 @@ service.start();
 
 window.service = service;
 
-// Should I even be doing this lmao.
-export default (callback) => tree(service, callback);
+
+const tree = (callback) => xct(service, callback);
+
+export {
+    service,
+    tree,
+};

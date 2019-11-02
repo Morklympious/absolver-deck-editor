@@ -1,17 +1,15 @@
-<div class="flex container" on:click="{() => bubble("selection")}">
+<div class="flex container" on:click="{() => bubble("selection", attack)}">
     {name}
 </div>
 
 <script>
 import { createEventDispatcher } from "svelte";
 import followups from "utilities/followups.js";
-import { pool } from "stores/deck.js";
 
 // Dispatch events that parents will do things with.
 const bubble = createEventDispatcher();
 
 // The move really only cares where it originates (for followups), not where it goes.
-export let begins = {};
 
 export let attack = false;
 
@@ -23,6 +21,8 @@ $: ({
     modifiers
 } = attack);
 
+// Determine whether or not this attack has any data in it.
+$: empty = !Boolean(attack);
 
 </script>
 

@@ -1,7 +1,7 @@
 import { writable, readable, derived } from "svelte/store";
-import quadrants from "utilities/quadrants.js";
+import { quadrants } from "utilities/quadrants.js";
 
-const STANCE_MAP = quadrants.map(({ face, look }) => [ `${face}_${look}`, []]);
+const STANCE_MAP = quadrants.map(({ face, look }) => [ `${face}_${look}`, [ false, false, false ]]);
 
 // Straightup barehands data for (soon-to-be) every barehands attack in the game
 const barehands = readable(false, (set) => set(baremoves));

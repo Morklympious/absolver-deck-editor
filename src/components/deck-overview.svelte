@@ -1,17 +1,28 @@
 
-{#each quadrants as { face, look }}
+{#each [...$primaries.entries() ] as [ stance, attacks ], row (stance)}
     <String 
-        stance="{{face, look}}" 
-        on:selection={({ detail : attack }) => console.log("atak", attack)}
+        stance={qmap.get(stance)}
+        {attacks}
+        on:selection={({ detail }) => update({ 
+            attack : detail.attack, 
+            column : detail.column, 
+            row, 
+        })}
     />
 {/each}
 
 <script>
-import quadrants from "utilities/quadrants.js";
+import { qmap, quadrants } from "utilities/quadrants.js";
 import String from "components/string.svelte";
+
+import { primaries } from "stores/deck.js";
 
 export let children;
 export let props;
 export let component;
+
+const update = ({ attack, row, column }) => {
+    console.log({ attack, row, column })
+}
 </script>
 
