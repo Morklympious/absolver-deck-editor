@@ -1,11 +1,14 @@
 <div class="selection">
-
+    {#each [...$pool.entries() ] as [ stance, attacks ] (stance)}
+        <h2>Destination: {stance}</h2>
+        {#each attacks as attack (attack.name)}
+            <p>{attack.name}</p>
+        {/each} 
+    {/each}
 </div>
 
 <script>
-    export let followups;
-
-    $: console.log($$props);
+import { pool } from "stores/deck.js";
 </script>
 
 <style>

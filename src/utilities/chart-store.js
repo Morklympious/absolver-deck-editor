@@ -27,6 +27,7 @@ const statechart = (machine, options) => {
     const service = interpret(machine, options);
 
     const matching = matches.bind(null, service);
+    
     const store = writable({
         __proto__ : null,
 

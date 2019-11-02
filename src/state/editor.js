@@ -1,7 +1,7 @@
 import { Machine, interpret } from "xstate";
 import tree from "xstate-component-tree";
 
-import Layout from "components/layout.svelte";
+import Overview from "components/deck-overview.svelte";
 import Selection from "components/selection.svelte";
 
 // Lol fuck you eslint
@@ -21,7 +21,7 @@ const statechart = machine({
             },
            
             meta : {
-                component : Layout,
+                component : Overview,
                 props     : { one : 1 },
             },
         },
@@ -43,7 +43,6 @@ const service = interpret(statechart);
 service.start();
 
 window.service = service;
-window.tree = tree;
 
 // Should I even be doing this lmao.
 export default (callback) => tree(service, callback);

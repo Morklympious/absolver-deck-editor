@@ -4,6 +4,7 @@
 
 <script>
 import followups from "utilities/followups.js";
+import { pool } from "stores/deck.js";
 
 export let name = "";
 export let height = "";
@@ -16,6 +17,7 @@ export let begins = {};
 
 const process = () => {
     service.send("SELECTION");
+    pool.set(followups(begins));
 }
 
 </script>

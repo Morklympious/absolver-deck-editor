@@ -1,4 +1,4 @@
-import { writable, derived } from "svelte/store";
+import { writable, readable, derived } from "svelte/store";
 import quadrants from "utilities/quadrants.js";
 
 const STANCE_MAP = quadrants.map(({ face, look }) => [ `${face}_${look}`, []]);
