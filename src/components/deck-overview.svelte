@@ -1,15 +1,13 @@
 
 {#each [...$primaries.entries() ] as [ stance, attacks ], row (stance)}
     <String 
-        stance={qmap.get(stance)}
+        origin={qmap.get(stance)}
         {attacks}
         on:selection={({ detail }) => update({ 
             attack : detail.attack, 
             column : detail.column, 
-            row, 
-
-            // Which row does this belong to.
-            originator : qmap.get(stance),
+            row,
+            origin : qmap.get(stance) 
         })}
     />
 {/each}
@@ -27,8 +25,9 @@ export let children;
 export let props;
 export let component;
 
-const update = ({ attack, row, column, originator }) => {
-    service.send("SELECTION", { pool : followups(originator)})
+const update = ({ attack, row, column, origin }) => {
+
+    service.send("SELECTION", { pool : followups(origin)})
 }
 
 // NOTE: if we click an attack and it's empty, we have to look at the "last known stance"

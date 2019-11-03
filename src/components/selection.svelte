@@ -8,18 +8,13 @@
 </div>
 
 <script>
-// import { pool } from "stores/deck.js";
 
+// pool comes from the context in the statechart.
 export let pool;
 </script>
 
 <style>
     .selection {
-        position: absolute;
-        
-        height: 100%;
-        width: 100%;
-
         background: rgba(0,0,0, 0.3);
     }
 </style>

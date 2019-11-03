@@ -6,7 +6,7 @@
         Meanwhile, we're assuming after that that every attack will be followed by
         a "where do I end up" (Stance) indicator
     -->
-    <Stance {stance} />
+    <Stance {origin} />
     {#each attacks as attack, column (attack.name)}
         <Attack 
             {attack} 
@@ -26,7 +26,7 @@
     const bubble = createEventDispatcher();
 
     export let attacks = [];
-    export let stance = { face : "FRONT", look : "RIGHT" };
+    export let origin = { face : "FRONT", look : "RIGHT" };
 
     //TODO: This component will probably want to set all of its data in a store. 
     // Since multiple components are gonna modify the store data.

@@ -25,16 +25,6 @@ const statechart = machine({
             on : {
                 SELECTION : "selection",
             },
-
-            entry : [
-                assign({
-                    pool : ({ pool }) => {
-                        pool.clear();
-
-                        return pool;
-                    },
-                }),
-            ],
            
             meta : {
                 component : Overview,
@@ -47,8 +37,20 @@ const statechart = machine({
             },
 
             entry : [
+                // Populate the pool in the context object when we enter.
                 assign({
                     pool : (context, { pool }) => pool,
+                }),
+            ],
+
+            exit : [
+                // Empty the pool in context when we leave, because nothing will be using it.
+                assign({
+                    pool : ({ pool }) => {
+                        pool.clear();
+
+                        return pool;
+                    },
                 }),
             ],
 
