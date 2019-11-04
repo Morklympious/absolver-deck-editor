@@ -9,8 +9,6 @@
     {/each}
 </div>
 
-
-
 <script>
     import { createEventDispatcher } from "svelte";
 

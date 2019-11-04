@@ -1,13 +1,12 @@
 
-{#each $primaries as { stance, attacks }, row (stance)}
+{#each $primaries as { stance : origin, attacks }, row (origin)}
     <String 
-        origin={stance}
+        {origin}
         {attacks}
         on:selection={({ detail }) => update({ 
-            attack : detail.attack, 
-            column : detail.column, 
+            origin,
             row,
-            origin : stance
+            column : detail.column, 
         })}
     />
 {/each}
@@ -22,9 +21,18 @@ import { primaries } from "stores/deck.js";
 import { service } from "state/state.js";
 
 const update = ({ row, column, origin }) => {
+    /**
+     * We're now selecting a move, the pool of moves that will take us
+     * to other stances is determined by the origin stance, and the 
+     * slot we're targeting is a matrix coordinate.
+     * 
+     * If we click on a slot, it'll bubble up an event that tells us
+     * which order it is, and then the string bubbles up with which row 
+     * it is. B)
+     */
     service.send("SELECTING", { 
-        pool   : followups(origin),
-        target : { row, column }
+        pool : followups(origin),
+        slot : { row, column }
     })
 }
 </script>

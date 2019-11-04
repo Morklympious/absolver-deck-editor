@@ -15,8 +15,8 @@ const statechart = machine({
     initial : "overview",
 
     context : {
-        pool   : [],
-        target : {
+        pool : [],
+        slot : {
             row    : 0,
             column : 0,
         },
@@ -44,7 +44,7 @@ const statechart = machine({
                     target : "overview",
 
                     actions : [
-                        ({ target }, { attack, ending }) => set({ attack, ending }, target),
+                        ({ slot }, { attack, ending }) => set({ attack, ending }, slot),
                     ],
                 },
 
@@ -54,8 +54,8 @@ const statechart = machine({
             entry : [
                 // Populate the pool + target in the context object when we enter.
                 assign({
-                    pool   : (context, { pool }) => pool,
-                    target : (context, { target }) => target,
+                    pool : (context, { pool }) => pool,
+                    slot : (context, { slot }) => slot,
                 }),
             ],
 
