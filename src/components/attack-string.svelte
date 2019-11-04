@@ -1,11 +1,4 @@
 <div class="string">
-    <!-- 
-        <Stance /> here is outside the each loop because it's inherent to the 
-        String and not necessarily the attack that gets slotted. 
-
-        Meanwhile, we're assuming after that that every attack will be followed by
-        a "where do I end up" (Stance) indicator
-    -->
     <Stance {origin} />
     {#each attacks as attack, column (attack.name)}
         <Attack 
@@ -27,14 +20,9 @@
     const bubble = createEventDispatcher();
 
     export let attacks = [];
-    export let origin = { face : "FRONT", look : "RIGHT" };
+    export let origin = "FRONT_RIGHT";
 
-    //TODO: This component will probably want to set all of its data in a store. 
-    // Since multiple components are gonna modify the store data.
-
-    // NOTE: This should probably be a linked list?
-    // { ...attack, next : { ...attack }}
-    // We will have to massage the data for something like this.
+    // TODO: Linked list with probably reduceRight
 </script>
             
 <style>

@@ -27,9 +27,5 @@ const update = ({ row, column, origin }) => {
         target : { row, column }
     })
 }
-
-// NOTE: if we click an attack and it's empty, we have to look at the "last known stance"
-// Which will be the string's stance if there's no previous attack, and the previous attacks
-// stance if there is.
 </script>
 

@@ -9,8 +9,6 @@ import followups from "utilities/followups.js";
 // Dispatch events that parents will do things with.
 const bubble = createEventDispatcher();
 
-// The move really only cares where it originates (for followups), not where it goes.
-
 export let attack = false;
 
 $: ({
