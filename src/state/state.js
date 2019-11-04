@@ -1,8 +1,10 @@
 import { Machine, interpret, actions } from "xstate";
 import xct from "xstate-component-tree";
 
+import { set } from "stores/deck.js";
+
 import Overview from "components/deck-overview.svelte";
-import Selection from "components/selection.svelte";
+import Selection from "components/attack-selection.svelte";
 
 const { assign } = actions;
 
@@ -13,7 +15,11 @@ const statechart = machine({
     initial : "overview",
 
     context : {
-        pool : new Map(),
+        pool   : [],
+        target : {
+            row    : 0,
+            column : 0,
+        },
     },
 
     on : {
@@ -23,7 +29,7 @@ const statechart = machine({
     states : {
         overview : {
             on : {
-                SELECTION : "selection",
+                SELECTING : "selecting",
             },
            
             meta : {
@@ -31,26 +37,32 @@ const statechart = machine({
             },
         },
 
-        selection : {
+        selecting : {
             on : {
                 OVERVIEW : "overview",
+                SELECTED : {
+                    target : "overview",
+
+                    actions : [
+                        ({ target }, { attack, ending }) => set({ attack, ending }, target),
+                    ],
+                },
+
+                BACK : "overview",
             },
 
             entry : [
-                // Populate the pool in the context object when we enter.
+                // Populate the pool + target in the context object when we enter.
                 assign({
-                    pool : (context, { pool }) => pool,
+                    pool   : (context, { pool }) => pool,
+                    target : (context, { target }) => target,
                 }),
             ],
 
             exit : [
                 // Empty the pool in context when we leave, because nothing will be using it.
                 assign({
-                    pool : ({ pool }) => {
-                        pool.clear();
-
-                        return pool;
-                    },
+                    pool : [],
                 }),
             ],
 

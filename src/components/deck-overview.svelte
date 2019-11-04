@@ -1,13 +1,13 @@
 
-{#each [...$primaries.entries() ] as [ stance, attacks ], row (stance)}
+{#each $primaries as { stance, attacks }, row (stance)}
     <String 
-        origin={qmap.get(stance)}
+        origin={stance}
         {attacks}
         on:selection={({ detail }) => update({ 
             attack : detail.attack, 
             column : detail.column, 
             row,
-            origin : qmap.get(stance) 
+            origin : stance
         })}
     />
 {/each}
@@ -16,18 +16,16 @@
 import { qmap, quadrants } from "utilities/quadrants.js";
 import followups from "utilities/followups.js";
 
-import String from "components/string.svelte";
+import String from "components/attack-string.svelte";
 
 import { primaries } from "stores/deck.js";
-import { service } from "state/editor.js";
+import { service } from "state/state.js";
 
-export let children;
-export let props;
-export let component;
-
-const update = ({ attack, row, column, origin }) => {
-
-    service.send("SELECTION", { pool : followups(origin)})
+const update = ({ row, column, origin }) => {
+    service.send("SELECTING", { 
+        pool   : followups(origin),
+        target : { row, column }
+    })
 }
 
 // NOTE: if we click an attack and it's empty, we have to look at the "last known stance"

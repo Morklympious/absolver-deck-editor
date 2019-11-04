@@ -6,7 +6,7 @@
 </svg>
 
 <script>
-    export let stance = { face: "FRONT", look: "RIGHT" };
+    export let origin = "FRONT_RIGHT";
     
     const stances = {
         FRONT_LEFT : "10 10",
@@ -15,8 +15,7 @@
         BACK_RIGHT : "90 90",
     };
 
-    $: position = `${stance.face}_${stance.look}`;
-    $: path = `M 50 50 L ${stances[position]}`;
+    $: path = `M 50 50 L ${stances[origin]}`;
 </script>
 
 <style>

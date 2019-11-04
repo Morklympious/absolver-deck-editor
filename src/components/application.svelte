@@ -7,7 +7,7 @@
 {/each}
 
 <script>
-import { tree } from "state/editor.js";
+import { tree } from "state/state.js";
 
 let components = [];
 

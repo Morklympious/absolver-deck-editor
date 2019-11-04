@@ -12,7 +12,7 @@
             {attack} 
             on:selection={({ detail : attack }) => bubble("selection", { attack, column })}
         />
-        <Stance />
+        <Stance origin={attack.ending}/>
     {/each}
 </div>
 
@@ -20,6 +20,7 @@
 
 <script>
     import { createEventDispatcher } from "svelte";
+
     import Attack from "components/attack.svelte";
     import Stance from "components/stance.svelte";
 
