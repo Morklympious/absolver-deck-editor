@@ -18,10 +18,6 @@ $: ({
     stance,
     modifiers
 } = attack);
-
-// Determine whether or not this attack has any data in it.
-$: empty = !Boolean(attack);
-
 </script>
 
 <style>
@@ -40,6 +36,7 @@ $: empty = !Boolean(attack);
         /* TODO: Border when highlighted */
         border: 0.2rem solid #444;
         background-color: #333;
+        color: #FFF;
     }
 
     .attack {

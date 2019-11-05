@@ -8,6 +8,8 @@ import Selection from "components/attack-selection.svelte";
 
 const { assign } = actions;
 
+const flow = { set : () => {} };
+
 // Lol fuck you eslint
 const machine = Machine;
 
@@ -44,7 +46,13 @@ const statechart = machine({
                     target : "overview",
 
                     actions : [
-                        ({ slot }, { attack, ending }) => set({ attack, ending }, slot),
+                        (context, { attack, ends }) => console.log("[State]: setting", attack, ends),
+                        // Set the attack
+                        ({ slot }, { attack, ends }) =>
+                            set(slot, {
+                                attack,
+                                meta : { ends },
+                            }),
                     ],
                 },
 

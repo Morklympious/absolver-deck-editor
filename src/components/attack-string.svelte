@@ -1,16 +1,24 @@
 <div class="string">
-    <Stance {origin} />
-    {#each attacks as attack, column (attack.name)}
+    <Stance {stance} />
+    {#each attacks as { meta, attack }, index }
         <Attack 
             {attack} 
-            on:selection={({ detail : attack }) => bubble("selection", { attack, column })}
+            on:selection={({ detail : attack }) => 
+                update({
+                    row,
+                    column : index,
+                    from   : meta.begins
+                })
+            }
         />
-        <Stance origin={attack.ending}/>
+        <Stance stance={meta.ends} />
     {/each}
 </div>
 
 <script>
+
     import { createEventDispatcher } from "svelte";
+    import { service } from "state/state.js";
 
     import Attack from "components/attack.svelte";
     import Stance from "components/stance.svelte";
@@ -18,9 +26,21 @@
     const bubble = createEventDispatcher();
 
     export let attacks = [];
-    export let origin = "FRONT_RIGHT";
+    export let stance = "FRONT_RIGHT";
+    export let row;
 
-    // TODO: Linked list with probably reduceRight
+
+    const update = ({ row, column, from }) => {
+    /**
+     * We're now selecting a move, the pool of moves that will take us
+     * to other stances is determined by the origin stance, and the 
+     * slot we're targeting is a matrix coordinate.
+     */
+    service.send("SELECTING", { 
+        pool : followups(from),
+        slot : { row, column },
+    })
+}
 </script>
             
 <style>

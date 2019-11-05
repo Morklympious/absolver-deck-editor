@@ -6,7 +6,7 @@
 </svg>
 
 <script>
-    export let origin = "FRONT_RIGHT";
+    export let stance = "FRONT_RIGHT";
     
     const stances = {
         FRONT_LEFT : "10 10",
@@ -15,7 +15,7 @@
         BACK_RIGHT : "90 90",
     };
 
-    $: path = `M 50 50 L ${stances[origin]}`;
+    $: path = `M 50 50 L ${stances[stance]}`;
 </script>
 
 <style>

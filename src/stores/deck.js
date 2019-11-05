@@ -3,8 +3,19 @@ import quadrants from "utilities/quadrants.js";
 
 const combo = (length) => quadrants.map((stance) => ({
     stance,
-    attacks : Array(length).fill(false),
+    attacks : Array(length)
+        .fill(true)
+        .map(() => ({
+                meta : {
+                    begins : stance,
+                    ends   : "BACK_RIGHT",
+                },
+                attack : {},
+            })),
 }));
+
+console.log(combo(4));
+
 
 // Straightup barehands data for (soon-to-be) every barehands attack in the game
 const barehands = readable(false, (set) => set(baremoves));
@@ -32,11 +43,23 @@ const equipped = derived([ primaries, alternates ], ([ _primaries, _alternates ]
     set(names);
 });
 
-const set = ({ attack }, { row, column }) => {
+const set = ({ row, column }, { attack, meta }) => {
     primaries.update((data) => {
         const { attacks } = data[row];
 
-        attacks[column] = attack;
+        let cell = attacks[column];
+        let next = attacks[column + 1];
+
+        attacks[column] = {
+            attack : Object.assign(cell.attack, attack),
+            meta   : Object.assign(cell.meta, meta),
+        };
+
+        if(next) {
+            console.log("current move ends", meta.ends);
+            next.meta = Object.assign(next.meta, { begins : meta.ends });
+            console.log("changing neighbor ahead", next);
+        }
 
         return data;
     });
@@ -44,6 +67,7 @@ const set = ({ attack }, { row, column }) => {
 
 
 window.equipped = equipped;
+window.primaries = primaries;
 
 export {
     barehands,

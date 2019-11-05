@@ -4,7 +4,9 @@
     {#each pool as { stance, attacks } (stance)}
         <h2>Destination: {stance}</h2>
         {#each attacks as attack (attack.name)}
-            <p on:click={() => service.send("SELECTED", { attack, ending : stance })}>{attack.name}</p>
+            <p on:click={() => service.send("SELECTED", { attack, ends : stance })}>
+                {attack.name}
+            </p>
         {/each} 
     {/each}
 </div>
