@@ -1,5 +1,5 @@
 <div class="flex container" on:click="{() => bubble("selection", attack)}">
-    {name}
+    {empty ? "empty" : name}
 </div>
 
 <script>
@@ -18,6 +18,9 @@ $: ({
     stance,
     modifiers
 } = attack);
+
+$: empty = !Boolean(name);
+
 </script>
 
 <style>

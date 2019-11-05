@@ -39,41 +39,48 @@ const equipped = derived([ primaries, alternates ], ([ _primaries, _alternates ]
     .filter(({ attack }) => attack.name)
     .map(({ attack }) => attack.name);
     
-    console.log(names);
     set(names);
 });
 
-const set = ({ row, column }, { attack, meta }) => {
-    primaries.update((data) => {
-        const { attacks } = data[row];
+const update = (data, slot, { attack, meta }) => {
+    console.log("updating", data);
 
-        let cell = attacks[column];
-        let next = attacks[column + 1];
+    const { attacks } = data[slot.row];
 
-        // Place the attack and associated meta in the slot.
-        // Using assign here because the first attack is pre-seeded with
-        // a meta.begins value.
-        attacks[column] = {
-            attack : Object.assign(cell.attack, attack),
-            meta   : Object.assign(cell.meta, meta),
-        };
+    let cell = attacks[slot.column];
+    let next = attacks[slot.column + 1];
 
-        // If there's a next attack tile in the sequence (empty or not)
-        // We're going to seed its starting stance so when it gets clicked it knows from
-        // which stance it can generate followups
-        if(next) {
-            next.meta = Object.assign(next.meta, { begins : meta.ends });
-        }
+    // Place the attack and associated meta in the slot.
+    // Using assign here because the first attack is pre-seeded with
+    // a meta.begins value.
+    attacks[slot.column] = {
+        attack : Object.assign(cell.attack, attack),
+        meta   : Object.assign(cell.meta, meta),
+    };
 
-        return data;
-    });
+    // If there's a next attack tile in the sequence (empty or not)
+    // We're going to seed its starting stance so when it gets clicked it knows from
+    // which stance it can generate followups
+    if(next) {
+        next.meta = Object.assign(next.meta, { begins : meta.ends });
+    }
+
+    console.log("updated", data);
+    
+    return data;
 };
 
+// This is a bit heavy, but this sets an attack at a location,
+// and then updates the next tile in sequence to have proper meta data.
+const set = (slot, { attack, meta }) => {
+    if(slot.alternate) {
+        alternates.update((data) => update(data, slot, { attack, meta }));
+        
+        return;
+    }
 
-window.equipped = equipped;
-window.primaries = primaries;
-
-equipped.subscribe((data) => console.log("[Equipped]", data));
+    primaries.update((data) => update(data, slot, { attack, meta }));
+};
 
 export {
     barehands,

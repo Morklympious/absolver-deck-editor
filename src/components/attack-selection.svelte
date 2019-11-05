@@ -4,11 +4,12 @@
     {#each pool as { stance, attacks } (stance)}
         <h2>Destination: {stance}</h2>
         {#each attacks as attack (attack.name)}
-            {#if !$equipped.includes(attack.name)}
-            <p on:click={() => service.send("SELECTED", { attack, ends : stance })}>
-                {attack.name}
+            <p on:click={() => service.send("SELECTED", { 
+                attack, 
+                ends : stance 
+            })}>
+                {attack.name} {$equipped.includes(attack.name) ? "(Equipped)" : ""}
             </p>
-            {/if}
         {/each} 
     {/each}
 </div>

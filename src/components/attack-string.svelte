@@ -4,10 +4,9 @@
         <Attack 
             {attack} 
             on:selection={({ detail : attack }) => 
-                update({
-                    row,
-                    column : index,
-                    from   : meta.begins
+                bubble("selection", { 
+                    column : index, 
+                    from   : meta.begins,
                 })
             }
         />
@@ -16,7 +15,6 @@
 </div>
 
 <script>
-
     import { createEventDispatcher } from "svelte";
     import { service } from "state/state.js";
 
@@ -29,18 +27,6 @@
     export let stance = "FRONT_RIGHT";
     export let row;
 
-
-    const update = ({ row, column, from }) => {
-    /**
-     * We're now selecting a move, the pool of moves that will take us
-     * to other stances is determined by the origin stance, and the 
-     * slot we're targeting is a matrix coordinate.
-     */
-    service.send("SELECTING", { 
-        pool : followups(from),
-        slot : { row, column },
-    })
-}
 </script>
             
 <style>
