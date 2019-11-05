@@ -9,7 +9,6 @@
 {/each}
 
 <script>
-import { qmap, quadrants } from "utilities/quadrants.js";
 import followups from "utilities/followups.js";
 
 import String from "components/attack-string.svelte";

@@ -4,15 +4,18 @@
     {#each pool as { stance, attacks } (stance)}
         <h2>Destination: {stance}</h2>
         {#each attacks as attack (attack.name)}
+            {#if !$equipped.includes(attack.name)}
             <p on:click={() => service.send("SELECTED", { attack, ends : stance })}>
                 {attack.name}
             </p>
+            {/if}
         {/each} 
     {/each}
 </div>
 
 <script>
 import { service } from "state/state.js";
+import { equipped } from "stores/deck.js";
 
 // pool comes from the context in the statechart.
 export let pool;

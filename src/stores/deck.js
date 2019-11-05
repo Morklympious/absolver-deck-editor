@@ -14,9 +14,6 @@ const combo = (length) => quadrants.map((stance) => ({
             })),
 }));
 
-console.log(combo(4));
-
-
 // Straightup barehands data for (soon-to-be) every barehands attack in the game
 const barehands = readable(false, (set) => set(baremoves));
 
@@ -38,8 +35,11 @@ const equipped = derived([ primaries, alternates ], ([ _primaries, _alternates ]
         return collector;
     }, []);
 
-    const names = flat.map((attack) => attack.name).filter(Boolean);
-
+    const names = flat
+    .filter(({ attack }) => attack.name)
+    .map(({ attack }) => attack.name);
+    
+    console.log(names);
     set(names);
 });
 
@@ -50,15 +50,19 @@ const set = ({ row, column }, { attack, meta }) => {
         let cell = attacks[column];
         let next = attacks[column + 1];
 
+        // Place the attack and associated meta in the slot.
+        // Using assign here because the first attack is pre-seeded with
+        // a meta.begins value.
         attacks[column] = {
             attack : Object.assign(cell.attack, attack),
             meta   : Object.assign(cell.meta, meta),
         };
 
+        // If there's a next attack tile in the sequence (empty or not)
+        // We're going to seed its starting stance so when it gets clicked it knows from
+        // which stance it can generate followups
         if(next) {
-            console.log("current move ends", meta.ends);
             next.meta = Object.assign(next.meta, { begins : meta.ends });
-            console.log("changing neighbor ahead", next);
         }
 
         return data;
@@ -68,6 +72,8 @@ const set = ({ row, column }, { attack, meta }) => {
 
 window.equipped = equipped;
 window.primaries = primaries;
+
+equipped.subscribe((data) => console.log("[Equipped]", data));
 
 export {
     barehands,
