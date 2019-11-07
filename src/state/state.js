@@ -2,6 +2,7 @@ import { Machine, interpret, actions } from "xstate";
 import xct from "xstate-component-tree";
 
 import { set } from "stores/deck.js";
+import followups from "utilities/followups.js";
 
 import Overview from "components/deck-overview.svelte";
 import Selection from "components/attack-selection.svelte";
@@ -45,15 +46,12 @@ const statechart = machine({
 
                     actions : [
                         // Set the attack
-                        ({ slot }, { attack, ends }) => {
-                            console.log("State setting attack action: alternate", slot.alternate);
-
+                        ({ slot }, { attack, ends }) =>
                             set(slot, {
                                 attack,
                                 meta      : { ends },
                                 alternate : slot.alternate,
-                            });
-                        },
+                            }),
                     ],
                 },
 
@@ -63,7 +61,9 @@ const statechart = machine({
             entry : [
                 // Populate the pool + target in the context object when we enter.
                 assign({
-                    pool      : (context, { pool }) => pool,
+                    pool : (context, { origin, alternate }) =>
+                        followups(origin, alternate ? { exclude : origin } : {}),
+
                     slot      : (context, { slot }) => slot,
                     alternate : (context, { alternate }) => alternate,
                 }),

@@ -40,14 +40,16 @@ import String from "components/attack-string.svelte";
 import { primaries, alternates } from "stores/deck.js";
 
 const update = ({ row, column, from, alternate = false }) => {
-    const options = alternate ? { exclude : from } : {} ;
     /**
      * We're now selecting a move, the pool of moves that will take us
      * to other stances is determined by the origin stance, and the 
      * slot we're targeting is a matrix coordinate.
      */
     service.send("SELECTING", { 
-        pool : followups(from, options),
+        // Where the stance originates + if it's an alternate cell (meaning no step cancels)
+        origin : from,
+        alternate,
+
         slot : { row, column, alternate },
     })
 }
