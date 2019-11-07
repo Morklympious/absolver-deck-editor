@@ -31,6 +31,7 @@
         {/each}
     </div>
 </div>
+
 <script>
 import followups from "utilities/followups.js";
 
@@ -39,15 +40,26 @@ import String from "components/attack-string.svelte";
 import { primaries, alternates } from "stores/deck.js";
 
 const update = ({ row, column, from, alternate = false }) => {
+    const options = alternate ? { exclude : from } : {} ;
     /**
      * We're now selecting a move, the pool of moves that will take us
      * to other stances is determined by the origin stance, and the 
      * slot we're targeting is a matrix coordinate.
      */
     service.send("SELECTING", { 
-        pool : followups(from),
+        pool : followups(from, options),
         slot : { row, column, alternate },
     })
 }
 </script>
+
+<style>
+    .overview {
+        display: grid;
+
+        grid-template: 
+            "primaries . alternates" 100%
+            / 1fr 1fr 1fr;
+    }
+</style>
 

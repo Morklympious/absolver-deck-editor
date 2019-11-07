@@ -62,10 +62,11 @@ const update = (data, slot, { attack, meta }) => {
     // We're going to seed its starting stance so when it gets clicked it knows from
     // which stance it can generate followups
     if(next) {
+        // FIX: If you reassign a compatible attack in the middle of two attacks,
+        // E.g. ends in back left -> ends in back right
+        // the ending of the last attack doesn't change.
         next.meta = Object.assign(next.meta, { begins : meta.ends });
     }
-
-    console.log("updated", data);
     
     return data;
 };

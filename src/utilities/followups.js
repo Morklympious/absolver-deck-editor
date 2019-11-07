@@ -21,15 +21,18 @@ const split = (stance) => {
  *
  * @returns {Object} A Map of move options that can originate from the source
  */
-const followups = (stance) => {
+const followups = (stance, options = false) => {
     if(!stance) {
         return false;
     }
 
     const source = split(stance);
-    
     const key = stance;
 
+    // Should we exclude any quadrants?
+    const { exclude = [] } = options;
+
+    // Return an existing pool if we've already done this work
     if(cache.has(key)) {
         return cache.get(key);
     }
@@ -40,9 +43,14 @@ const followups = (stance) => {
     // That will take you from the source quadrant to
     // the target quadrant (e.g. FRONT_RIGHT to BACK_LEFT)
     quadrants.forEach((quadrant) => {
+        // If the current quadrant is blacklisted, don't bother.
+        if(exclude.includes(quadrant)) {
+            return;
+        }
+
         const destination = split(quadrant);
 
-        const data = barehands.filter(({ stance }) =>
+        let data = barehands.filter(({ stance }) =>
             stance.begins === source.face &&
             stance.ends === destination.face &&
             stance.pivot === !(destination.look === source.look));

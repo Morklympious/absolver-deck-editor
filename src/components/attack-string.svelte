@@ -10,7 +10,7 @@
                 })
             }
         />
-        <Stance stance={meta.ends} />
+        <Stance stance={ending(attack, meta.begins)} />
     {/each}
 </div>
 
@@ -21,12 +21,38 @@
     import Attack from "components/attack.svelte";
     import Stance from "components/stance.svelte";
 
+    const EMPTY = {
+        meta   : {},
+        attack : {},
+    };
     const bubble = createEventDispatcher();
 
     export let attacks = [];
     export let stance = "FRONT_RIGHT";
-    export let row;
 
+    $: [ 
+        first  = EMPTY, 
+        second = EMPTY, 
+        third  = EMPTY 
+    ] = attacks;
+
+    $: ending = (attack = false, begins = "") => {
+        const { stance = false } = attack;
+        
+        if(!stance) {
+            return "FRONT_RIGHT";
+        }
+
+        const m = {
+            LEFT : "RIGHT",
+            RIGHT : "LEFT",
+        };
+
+        const [ face, look ] = begins.split("_");
+        const to = `${stance.ends}_${stance.pivot ? m[look] : look}`
+
+        return to;
+    }
 </script>
             
 <style>
