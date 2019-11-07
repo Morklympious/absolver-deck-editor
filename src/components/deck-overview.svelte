@@ -38,6 +38,7 @@ import followups from "utilities/followups.js";
 import String from "components/attack-string.svelte";
 
 import { primaries, alternates } from "stores/deck.js";
+import { service } from "state/state.js";
 
 const update = ({ row, column, from, alternate = false }) => {
     /**
@@ -61,7 +62,19 @@ const update = ({ row, column, from, alternate = false }) => {
 
         grid-template: 
             "primaries . alternates" 100%
-            / 1fr 1fr 1fr;
+            / 1fr 1fr 2fr;
+
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .primaries {
+        grid-area: primaries;
+    }
+
+    .alternates {
+        grid-area: alternates;
     }
 </style>
 

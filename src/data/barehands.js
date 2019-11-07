@@ -358,7 +358,7 @@ module.exports = [
     ],
   },
   {
-    name   : "Double Fist Stretch",
+    name   : "Drunk Crane",
     style  : "stagger",
     stance : {
       begins : "FRONT",
@@ -386,7 +386,7 @@ module.exports = [
     ],
   },
   {
-    name   : "Double Fist Stretch",
+    name   : "Drunken Paw",
     style  : "stagger",
     stance : {
       begins : "FRONT",

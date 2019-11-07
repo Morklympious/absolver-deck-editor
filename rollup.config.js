@@ -74,6 +74,7 @@ export default {
                 "**/*.svg",
                 "**/*.png",
                 "**/index.html",
+                "**/base.css",
             ],
             dest : "./dist",
 

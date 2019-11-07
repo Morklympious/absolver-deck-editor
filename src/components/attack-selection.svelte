@@ -1,30 +1,46 @@
-<svelte:window on:keydown={(args) => process(args)} />
+<svelte:window on:keydown={({ key }) => key === "Escape" ? service.send("BACK") : false } />
+
+<!-- TODO: Pass in the stance we're messing with from the statechart? -->
+{#each [ $primaries[0] ] as { stance, attacks, flow }, row (stance)}
+    <String 
+        {stance}
+        {attacks}
+    />
+{/each}
 
 <div class="selection">
     {#each pool as { stance, attacks } (stance)}
-        <h2>Destination: {stance}</h2>
-        {#each attacks as attack (attack.name)}
-            <p on:click={() => service.send("SELECTED", { 
-                attack, 
-                ends : stance 
-            })}>
-                {attack.name} {$equipped.includes(attack.name) ? "(Equipped)" : ""}
-            </p>
-        {/each} 
+        <h1>Destination: {stance}</h1>
+        <div class="attacks">
+            {#each attacks as attack (attack.name)}
+                <Attack 
+                    {attack}
+                    on:selection={() => service.send("SELECTED", {
+                        attack,
+                        ends : stance
+                    })}
+                />
+            {/each} 
+        </div>
     {/each}
 </div>
 
 <script>
 import { service } from "state/state.js";
-import { equipped } from "stores/deck.js";
+import { primaries } from "stores/deck.js";
+
+import String from "components/attack-string.svelte";
+import Attack from "components/attack.svelte";
 
 // pool comes from the context in the statechart.
 export let pool;
-
-const process = ({ key }) => key === "Escape" ? service.send("BACK") : false ;
 </script>
 
 <style>
+    .attacks {
+        display: flex;
+        flex-flow: row wrap;
+    }
     .selection {
         background: rgba(0,0,0, 0.3);
     }
