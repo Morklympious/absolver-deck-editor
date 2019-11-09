@@ -1,17 +1,9 @@
-import barehands from "../data/barehands.js";
+import barehands from "data/barehands.js";
 import quadrants from "utilities/quadrants.js";
 
 // Cache for memoizing input to followups
 const cache = new Map();
 
-/**
- * Split stance strings into a nice object.
- */
-const split = (stance) => {
-    const [ face, look ] = stance.split("_");
-
-    return { face, look };
-};
 /**
  * Given some arbitrary quadrant data, runs through the move pool
  * and determines which moves will take you from your passed in position
@@ -21,13 +13,14 @@ const split = (stance) => {
  *
  * @returns {Object} A Map of move options that can originate from the source
  */
-const followups = (stance, options = false) => {
-    if(!stance) {
+const followups = (source, options = false) => {
+    const attacks = barehands;
+
+    if(!source) {
         return false;
     }
 
-    const source = split(stance);
-    const key = stance;
+    const key = source;
 
     // Should we exclude any quadrants?
     const { exclude = [] } = options;
@@ -48,13 +41,19 @@ const followups = (stance, options = false) => {
             return;
         }
 
-        const destination = split(quadrant);
+        let data = attacks.filter((attack) => {
+            const { stance } = attack;
+            const keys = Object.keys(attack.stance);
 
-        let data = barehands.filter(({ stance }) =>
-            stance.begins === source.face &&
-            stance.ends === destination.face &&
-            stance.pivot === !(destination.look === source.look));
+           /**
+            * The stance object has to have a key that matches our `source`.
+            * Additionally, the VALUE of that key (attack.stance[key] e.g. FRONT_RIGHT) needs
+            * to match the quadrant we're currently iterating over.
+           */
+            return keys.includes(source) && stance[source] === quadrant;
+        });
 
+        // Giveth me an object with metadata and attacks, brethren
         pool.push({
             stance  : quadrant,
             attacks : data,

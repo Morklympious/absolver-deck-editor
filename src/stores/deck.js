@@ -1,72 +1,119 @@
-import { writable, readable, derived } from "svelte/store";
+import { writable, derived } from "svelte/store";
+
+import baremoves from "data/barehands.js";
 import quadrants from "utilities/quadrants.js";
 
-const combo = (length) => quadrants.map((stance) => ({
-    stance,
-    attacks : Array(length)
-        .fill(true)
-        .map(() => ({
-                meta : {
-                    begins : stance,
-                    ends   : "BACK_RIGHT",
-                },
-                attack : {},
-            })),
-}));
+const empty = () => Object.assign(Object.create(null), {
+    _empty : true,
+});
 
+/**
+ * A factory function to generate a combo of length `length`
+ * that comes complete with a default structure.
+ *
+ * @param {Number} length
+ */
+const combo = (length) => {
+    const results = [];
+
+    quadrants.forEach((quadrant) => {
+        let attacks = Array(length).fill(0);
+
+        attacks = attacks.map(empty);
+
+        for(let i = 0; i < attacks.length; i++) {
+            const attack = attacks[i];
+
+            const next = attacks[i + 1];
+            const previous = attacks[i - 1];
+
+            attack._begins = quadrant;
+            attack._ends = quadrant;
+
+            attack._next = next;
+            attack._previous = previous;
+
+            attacks[i] = attack;
+        }
+
+        results.push({
+            quadrant,
+            attacks,
+        });
+    });
+
+    return results;
+};
+
+window.combo = combo;
 // Straightup barehands data for (soon-to-be) every barehands attack in the game
-const barehands = readable(false, (set) => set(baremoves));
+const barehands = baremoves.map((attack) => {
+    const begin = (look) => `${attack.stance.begins}_${look}`;
+    const end = (look) => `${attack.stance.ends}_${look}`;
+
+    attack.stance = {
+        [begin("LEFT")]  : end(attack.stance.pivot ? "RIGHT" : "LEFT"),
+        [begin("RIGHT")] : end(attack.stance.pivot ? "LEFT" : "RIGHT"),
+    };
+
+    return attack;
+});
+
+window.bare = barehands;
 
 // Data structures representing the entire state of primary
 // strings and alternates in our deck.
 const primaries = writable(combo(3));
 const alternates = writable(combo(1));
 
-// A derived that will tell us which moves are already equipped,
-// allowing us to filter out moves during move selection.
-const equipped = derived([ primaries, alternates ], ([ _primaries, _alternates ], set) => {
-    const p = _primaries.map(({ attacks }) => attacks);
-    const a = _alternates.map(({ attacks }) => attacks);
 
-    const pool = p.concat(a);
-    const flat = pool.reduce((collector, string) => {
-        collector = collector.concat(string);
+const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
+    _p.forEach(({ quadrant, attacks }) => {
+        attacks.forEach((attack) => {
+            if(attack.name) {
+                attack._empty = false;
+            }
 
-        return collector;
-    }, []);
+            const { _previous : prev } = attack;
+            
+            if(!prev) {
+                attack._begins = quadrant;
+                attack._ends = (attack._empty ? quadrant : attack.stance[attack._begins]);
 
-    const names = flat
-    .filter(({ attack }) => attack.name)
-    .map(({ attack }) => attack.name);
-    
-    set(names);
+                return;
+            }
+
+            const _begins =  prev._empty ? quadrant : prev._ends;
+            const _ends = attack._empty ? quadrant : attack.stance[_begins];
+            
+            console.log({ _begins, _ends });
+
+            /**
+             *  If this is the first attack, it's constrained by being
+             *  a specific starting quadrant. Otherwise? we're using the
+             *  ending location of the last move we slotted.
+             * */
+             attack._begins = _begins;
+             attack._ends = _ends;
+
+            return;
+        });
+    });
+
+    set({
+        primaries  : _p,
+        alternates : _a,
+    });
 });
 
-const update = (data, slot, { attack, meta }) => {
-    console.log("updating", data);
+window.deck = deck;
 
+deck.subscribe((a) => console.log(a));
+
+const update = (data, slot, { attack }) => {
     const { attacks } = data[slot.row];
 
-    let cell = attacks[slot.column];
-    let next = attacks[slot.column + 1];
-
-    // Place the attack and associated meta in the slot.
-    // Using assign here because the first attack is pre-seeded with
-    // a meta.begins value.
-    attacks[slot.column] = {
-        attack : Object.assign(cell.attack, attack),
-        meta   : Object.assign(cell.meta, meta),
-    };
-
-    // If there's a next attack tile in the sequence (empty or not)
-    // We're going to seed its starting stance so when it gets clicked it knows from
-    // which stance it can generate followups
-    if(next) {
-        // FIX: If you reassign a compatible attack in the middle of two attacks,
-        // E.g. ends in back left -> ends in back right
-        // the ending of the last attack doesn't change.
-        next.meta = Object.assign(next.meta, { begins : meta.ends });
-    }
+    Object.assign(attacks[slot.column], attack);
     
     return data;
 };
@@ -88,7 +135,6 @@ export {
 
     primaries,
     alternates,
-    equipped,
 
     set,
 };

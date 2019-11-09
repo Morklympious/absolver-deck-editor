@@ -1,13 +1,5 @@
 <svelte:window on:keydown={({ key }) => key === "Escape" ? service.send("BACK") : false } />
 
-<!-- TODO: Pass in the stance we're messing with from the statechart? -->
-{#each [ $primaries[0] ] as { stance, attacks, flow }, row (stance)}
-    <String 
-        {stance}
-        {attacks}
-    />
-{/each}
-
 <div class="selection">
     {#each pool as { stance, attacks } (stance)}
         <h1>Destination: {stance}</h1>
@@ -34,6 +26,8 @@ import Attack from "components/attack.svelte";
 
 // pool comes from the context in the statechart.
 export let pool;
+
+$: console.log({ pool })
 </script>
 
 <style>

@@ -61,10 +61,10 @@ const statechart = machine({
             entry : [
                 // Populate the pool + target in the context object when we enter.
                 assign({
-                    pool : (context, { origin, alternate }) =>
-                        followups(origin, alternate ? { exclude : origin } : {}),
+                    pool : (context, { quadrant, alternate }) =>
+                        followups(quadrant, alternate ? { exclude : quadrant } : {}),
 
-                    slot      : (context, { slot }) => slot,
+                    slot      : (context, { row, column }) => ({ row, column }),
                     alternate : (context, { alternate }) => alternate,
                 }),
             ],

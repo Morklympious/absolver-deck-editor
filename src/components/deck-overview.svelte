@@ -1,32 +1,36 @@
 <div class="overview">
     <div class="primaries">
-        {#each $primaries as { stance, attacks, flow }, row (stance)}
+        {#each primary as { attacks, quadrant }, row}
             <String 
-                {stance}
+                {quadrant}
                 {attacks}
-                 on:selection={({ detail }) => update({
-                    row, 
-                    column : detail.column,
-                    from   : detail.from,
+                on:selection={({ detail }) =>    
+                    service.send("SELECTING", { 
+                        quadrant : detail.quadrant,
 
-                    alternate : false,
-                })}
+                        row,
+                        column : detail.column,
+                        alternate : false,
+                    }
+                )}
             />
         {/each}
     </div>
 
     <div class="alternates">
-        {#each $alternates as { stance, attacks, flow }, row (stance)}
+        {#each $alternates as { attacks, quadrant }, row}
             <String 
-                {stance}
+                {quadrant}
                 {attacks}
-                on:selection={({ detail }) => update({
-                    row, 
-                    column : detail.column,
-                    from   : detail.from,
+                on:selection={({ detail }) =>    
+                    service.send("SELECTING", { 
+                        quadrant,
 
-                    alternate : true,
-                })}
+                        row,
+                        column : detail.column,
+                        alternate : true,
+                    }
+                )}
             />
         {/each}
     </div>
@@ -40,13 +44,20 @@ import String from "components/attack-string.svelte";
 import { primaries, alternates } from "stores/deck.js";
 import { service } from "state/state.js";
 
-const update = ({ row, column, from, alternate = false }) => {
+$: primary = $deck.primaries;
+$: alternate = $deck.alternates;
+
+const update = ({ row, column, stance, from, alternate = false }) => {
     /**
      * We're now selecting a move, the pool of moves that will take us
      * to other stances is determined by the origin stance, and the 
      * slot we're targeting is a matrix coordinate.
      */
     service.send("SELECTING", { 
+        
+        // Passing in stance might allow an attack to know how to end itself. 
+        stance,
+
         // Where the stance originates + if it's an alternate cell (meaning no step cancels)
         origin : from,
         alternate,

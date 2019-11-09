@@ -6,4 +6,5 @@ export default {
     stores     : path.resolve(__dirname, "./src/stores/"),
     images     : path.resolve(__dirname, "./src/img/"),
     utilities  : path.resolve(__dirname, "./src/utilities/"),
+    data       : path.resolve(__dirname, "./src/data/"),
 };

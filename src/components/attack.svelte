@@ -1,5 +1,4 @@
 <div class="flex container" on:click="{() => bubble("selection", attack)}">
-    {#if used} [E] {/if}
     {empty ? "empty" : name} 
 </div>
 
@@ -7,7 +6,7 @@
 import { createEventDispatcher } from "svelte";
 import followups from "utilities/followups.js";
 
-import { equipped } from "stores/deck.js";
+// import { equipped } from "stores/deck.js";
 
 // Dispatch events that parents will do things with.
 const bubble = createEventDispatcher();
@@ -23,7 +22,7 @@ $: ({
 } = attack);
 
 $: empty = !Boolean(name);
-$: used = $equipped.includes(name);
+// $: used = $equipped.includes(name);
 </script>
 
 <style>

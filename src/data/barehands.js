@@ -262,7 +262,7 @@ module.exports = [
     stance : {
       begins : "FRONT",
       ends   : "BACK",
-      pivot  : false,
+      pivot  : true,
     },
     hits       : "diff",
     height     : "mid",

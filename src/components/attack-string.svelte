@@ -1,16 +1,16 @@
 <div class="string">
-    <Stance {stance} />
-    {#each attacks as { meta, attack }, index }
+    <Stance {quadrant} />
+    {#each attacks as attack, index}
         <Attack 
             {attack} 
-            on:selection={({ detail : attack }) => 
+            on:selection={({ detail : attack }) => {
                 bubble("selection", { 
-                    column : index, 
-                    from   : meta.begins,
+                    column : index,
+                    quadrant : generate(attack, index),
                 })
-            }
+            }}
         />
-        <Stance stance={ending(attack, meta.begins)} />
+        <Stance quadrant={attack._empty ? "FRONT_RIGHT" : attack.stance[attack._begins]} />
     {/each}
 </div>
 
@@ -21,37 +21,23 @@
     import Attack from "components/attack.svelte";
     import Stance from "components/stance.svelte";
 
-    const EMPTY = {
-        meta   : {},
-        attack : {},
-    };
     const bubble = createEventDispatcher();
 
     export let attacks = [];
-    export let stance = "FRONT_RIGHT";
+    export let quadrant = "FRONT_RIGHT";
 
-    $: [ 
-        first  = EMPTY, 
-        second = EMPTY, 
-        third  = EMPTY 
-    ] = attacks;
+    const generate = (attack, index) => {
+        // Is it empty? is anything before it?
+        const { _previous } = attack;
 
-    $: ending = (attack = false, begins = "") => {
-        const { stance = false } = attack;
-        
-        if(!stance) {
-            return "FRONT_RIGHT";
+        // If there's nothing before the slot we chose, we take the quadrant we were passed
+        if(!_previous) {
+            return quadrant;
         }
 
-        const m = {
-            LEFT : "RIGHT",
-            RIGHT : "LEFT",
-        };
-
-        const [ face, look ] = begins.split("_");
-        const to = `${stance.ends}_${stance.pivot ? m[look] : look}`
-
-        return to;
+        // If there is a previous, we care about generating followups from that 
+        // previous attack's ending stance.
+        return _previous._ends;
     }
 </script>
             

@@ -6,7 +6,7 @@
 </svg>
 
 <script>
-    export let stance = "FRONT_RIGHT";
+    export let quadrant = "FRONT_RIGHT";
     
     const stances = {
         FRONT_LEFT : "10 10",
@@ -15,7 +15,7 @@
         BACK_RIGHT : "90 90",
     };
 
-    $: path = `M 50 50 L ${stances[stance]}`;
+    $: path = `M 50 50 L ${stances[quadrant]}`;
 </script>
 
 <style>
