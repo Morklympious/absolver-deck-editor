@@ -46,12 +46,7 @@ const statechart = machine({
 
                     actions : [
                         // Set the attack
-                        ({ slot }, { attack, ends }) =>
-                            set(slot, {
-                                attack,
-                                meta      : { ends },
-                                alternate : slot.alternate,
-                            }),
+                        ({ slot }, { attack }) => set(slot, attack),
                     ],
                 },
 
@@ -61,11 +56,10 @@ const statechart = machine({
             entry : [
                 // Populate the pool + target in the context object when we enter.
                 assign({
-                    pool : (context, { quadrant, alternate }) =>
-                        followups(quadrant, alternate ? { exclude : quadrant } : {}),
+                    pool : (context, { quadrant, slot }) =>
+                        followups(quadrant, slot.alternate ? { exclude : [ quadrant ] } : {}),
 
-                    slot      : (context, { row, column }) => ({ row, column }),
-                    alternate : (context, { alternate }) => alternate,
+                    slot : (context, { slot }) => (slot),
                 }),
             ],
 

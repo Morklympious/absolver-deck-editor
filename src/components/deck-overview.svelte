@@ -8,9 +8,11 @@
                     service.send("SELECTING", { 
                         quadrant : detail.quadrant,
 
-                        row,
-                        column : detail.column,
-                        alternate : false,
+                        slot : {
+                            row,
+                            column    : detail.column,
+                            alternate : false,
+                        }
                     }
                 )}
             />
@@ -18,17 +20,18 @@
     </div>
 
     <div class="alternates">
-        {#each $alternates as { attacks, quadrant }, row}
+        {#each alternate as { attacks, quadrant }, row}
             <String 
                 {quadrant}
                 {attacks}
                 on:selection={({ detail }) =>    
                     service.send("SELECTING", { 
                         quadrant,
-
-                        row,
-                        column : detail.column,
-                        alternate : true,
+                        slot : {
+                            row,
+                            column    : detail.column,
+                            alternate : true,
+                        }
                     }
                 )}
             />
@@ -41,7 +44,7 @@ import followups from "utilities/followups.js";
 
 import String from "components/attack-string.svelte";
 
-import { primaries, alternates } from "stores/deck.js";
+import { deck } from "stores/deck.js";
 import { service } from "state/state.js";
 
 $: primary = $deck.primaries;

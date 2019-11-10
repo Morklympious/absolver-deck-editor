@@ -20,7 +20,7 @@ const combo = (length) => {
         let attacks = Array(length).fill(0);
 
         attacks = attacks.map(empty);
-
+        
         for(let i = 0; i < attacks.length; i++) {
             const attack = attacks[i];
 
@@ -45,7 +45,6 @@ const combo = (length) => {
     return results;
 };
 
-window.combo = combo;
 // Straightup barehands data for (soon-to-be) every barehands attack in the game
 const barehands = baremoves.map((attack) => {
     const begin = (look) => `${attack.stance.begins}_${look}`;
@@ -59,20 +58,16 @@ const barehands = baremoves.map((attack) => {
     return attack;
 });
 
-window.bare = barehands;
-
 // Data structures representing the entire state of primary
 // strings and alternates in our deck.
 const primaries = writable(combo(3));
 const alternates = writable(combo(1));
 
-
 const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
     _p.forEach(({ quadrant, attacks }) => {
         attacks.forEach((attack) => {
-            if(attack.name) {
-                attack._empty = false;
-            }
+            // This attack isn't empty if it has a name.
+            attack._empty = !attack.name;
 
             const { _previous : prev } = attack;
             
@@ -83,18 +78,16 @@ const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
                 return;
             }
 
+            /**
+             * This attack begins where the previous one left off. But if there
+             * is no previous attack, it's defaulted to the quadrant in the string
+             * this attack belongs to.
+             */
             const _begins =  prev._empty ? quadrant : prev._ends;
             const _ends = attack._empty ? quadrant : attack.stance[_begins];
-            
-            console.log({ _begins, _ends });
 
-            /**
-             *  If this is the first attack, it's constrained by being
-             *  a specific starting quadrant. Otherwise? we're using the
-             *  ending location of the last move we slotted.
-             * */
-             attack._begins = _begins;
-             attack._ends = _ends;
+            attack._begins = _begins;
+            attack._ends = _ends;
 
             return;
         });
@@ -106,28 +99,28 @@ const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
     });
 });
 
-window.deck = deck;
-
-deck.subscribe((a) => console.log(a));
-
-const update = (data, slot, { attack }) => {
-    const { attacks } = data[slot.row];
-
-    Object.assign(attacks[slot.column], attack);
-    
-    return data;
-};
-
 // This is a bit heavy, but this sets an attack at a location,
 // and then updates the next tile in sequence to have proper meta data.
-const set = (slot, { attack, meta }) => {
+const set = (slot, attack) => {
     if(slot.alternate) {
-        alternates.update((data) => update(data, slot, { attack, meta }));
+        alternates.update((data) => {
+            const { attacks } = data[slot.row];
+
+            Object.assign(attacks[slot.column], attack);
+            
+            return data;
+        });
         
         return;
     }
 
-    primaries.update((data) => update(data, slot, { attack, meta }));
+    primaries.update((data) => {
+        const { attacks } = data[slot.row];
+
+        Object.assign(attacks[slot.column], attack);
+        
+        return data;
+    });
 };
 
 export {
@@ -135,6 +128,7 @@ export {
 
     primaries,
     alternates,
+    deck,
 
     set,
 };
