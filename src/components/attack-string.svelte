@@ -6,11 +6,13 @@
             on:selection={({ detail : attack }) => {
                 bubble("selection", { 
                     column : index,
+
+                    attack,
                     quadrant : generate(attack, index),
                 })
             }}
         />
-        <Stance quadrant={attack._empty ? "FRONT_RIGHT" : attack.stance[attack._begins]} />
+        <Stance quadrant={attack._empty ? "UNKNOWN" : attack.stance[attack._begins]} />
     {/each}
 </div>
 

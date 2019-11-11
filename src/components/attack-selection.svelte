@@ -7,10 +7,7 @@
             {#each attacks as attack (attack.name)}
                 <Attack 
                     {attack}
-                    on:selection={() => service.send("SELECTED", {
-                        attack,
-                        ends : stance
-                    })}
+                    on:selection={() => service.send("SELECTED", { attack })}
                 />
             {/each} 
         </div>

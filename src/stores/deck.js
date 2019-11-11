@@ -3,6 +3,8 @@ import { writable, derived } from "svelte/store";
 import baremoves from "data/barehands.js";
 import quadrants from "utilities/quadrants.js";
 
+const endings = new WeakMap();
+
 const empty = () => Object.assign(Object.create(null), {
     _empty : true,
 });
@@ -24,16 +26,11 @@ const combo = (length) => {
         for(let i = 0; i < attacks.length; i++) {
             const attack = attacks[i];
 
-            const next = attacks[i + 1];
-            const previous = attacks[i - 1];
-
-            attack._begins = quadrant;
-            attack._ends = quadrant;
+            const next = attacks[i + 1] || false;
+            const previous = attacks[i - 1] || false;
 
             attack._next = next;
             attack._previous = previous;
-
-            attacks[i] = attack;
         }
 
         results.push({
@@ -64,6 +61,8 @@ const primaries = writable(combo(3));
 const alternates = writable(combo(1));
 
 const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
+    const m = new Map();
+
     _p.forEach(({ quadrant, attacks }) => {
         attacks.forEach((attack) => {
             // This attack isn't empty if it has a name.
@@ -71,10 +70,14 @@ const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
 
             const { _previous : prev } = attack;
             
+            // If there's no previous move
             if(!prev) {
+                // The current cell's beginning is defaulted to the quadrant it belongs to
                 attack._begins = quadrant;
-                attack._ends = (attack._empty ? quadrant : attack.stance[attack._begins]);
 
+                // The ending is either the quadrant, or if we have attack data, the ending for the attack.
+                attack._ends = (attack._empty ? quadrant : attack.stance[attack._begins]);
+                
                 return;
             }
 
@@ -83,11 +86,8 @@ const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
              * is no previous attack, it's defaulted to the quadrant in the string
              * this attack belongs to.
              */
-            const _begins =  prev._empty ? quadrant : prev._ends;
-            const _ends = attack._empty ? quadrant : attack.stance[_begins];
-
-            attack._begins = _begins;
-            attack._ends = _ends;
+            attack._begins = prev._empty ? quadrant : prev._ends;
+            attack._ends = attack._empty ? quadrant : attack.stance[attack._begins];
 
             return;
         });
@@ -117,11 +117,16 @@ const set = (slot, attack) => {
     primaries.update((data) => {
         const { attacks } = data[slot.row];
 
+        // TODO: MERGE _METADATA
+        // check what stats are currently here
+        // and then see if the attack fits.
         Object.assign(attacks[slot.column], attack);
         
         return data;
     });
 };
+
+window.endings = endings;
 
 export {
     barehands,

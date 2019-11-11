@@ -3,6 +3,7 @@ import xct from "xstate-component-tree";
 
 import { set } from "stores/deck.js";
 import followups from "utilities/followups.js";
+import flows from "utilities/flows.js";
 
 import Overview from "components/deck-overview.svelte";
 import Selection from "components/attack-selection.svelte";
@@ -16,8 +17,9 @@ const statechart = machine({
     initial : "overview",
 
     context : {
-        pool : [],
-        slot : {
+        combo : [],
+        pool  : [],
+        slot  : {
             row    : 0,
             column : 0,
         },
@@ -41,14 +43,52 @@ const statechart = machine({
         selecting : {
             on : {
                 OVERVIEW : "overview",
-                SELECTED : {
-                    target : "overview",
+                SELECTED : [
+                    // TODO : It's gonna be the wild west out here for a while,
+                    // but basically I need to validate the setting of an attack.
+                    // When placing a move in a slot I need to know:
+                    /**
+                     * 1) What comes before it? does the ending of that match any stance in the move I"m slotting
+                     * 2) What comes after it? do the endings of the move I'm slotting match the beginnings of the next cell?
+                     */
+                    {
+                        target : "overview",
+                        cond   : ({ slot, cell }, { attack }) => {
+                            // cell is the TARGET.
+                            const next = cell._next;
+                            const previous = cell._previous;
+                            
+                            const predicates = [
+                                // VALID: the move you're trying to slot already has stance endings where the next move begins
+                                // OR there's no move in the next slot.
+                                Object.values(attack.stance).includes(next._begins) || next._empty,
 
-                    actions : [
-                        // Set the attack
-                        ({ slot }, { attack }) => set(slot, attack),
-                    ],
-                },
+                                // VALID: THe move you're trying to slot already has stance beginnings where the previous move ends
+                                // OR there's no previous move.
+                                Object.keys(attack.stance).includes(previous._ends) || !previous,
+                            ];
+
+                            if(!predicates.every(Boolean)) {
+                                alert("holy fuck. don't.");
+                                
+                                return true;
+                            }
+                            
+                            return false;
+                        },
+                        actions : [
+
+                        ],
+                    },
+                    {
+                        target  : "overview",
+                        actions : [
+                            // Set the attack
+                            ({ slot }, { attack }) => set(slot, attack),
+                        ],
+                    },
+                ],
+
 
                 BACK : "overview",
             },
@@ -60,6 +100,7 @@ const statechart = machine({
                         followups(quadrant, slot.alternate ? { exclude : [ quadrant ] } : {}),
 
                     slot : (context, { slot }) => (slot),
+                    cell : (context, { attack }) => attack,
                 }),
             ],
 

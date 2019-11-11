@@ -7,8 +7,9 @@
                 on:selection={({ detail }) =>    
                     service.send("SELECTING", { 
                         quadrant : detail.quadrant,
+                        attack   : detail.attack,
 
-                        slot : {
+                        slot  : {
                             row,
                             column    : detail.column,
                             alternate : false,
@@ -27,7 +28,9 @@
                 on:selection={({ detail }) =>    
                     service.send("SELECTING", { 
                         quadrant,
-                        slot : {
+
+                        combo : attacks,
+                        slot  : {
                             row,
                             column    : detail.column,
                             alternate : true,
@@ -49,25 +52,6 @@ import { service } from "state/state.js";
 
 $: primary = $deck.primaries;
 $: alternate = $deck.alternates;
-
-const update = ({ row, column, stance, from, alternate = false }) => {
-    /**
-     * We're now selecting a move, the pool of moves that will take us
-     * to other stances is determined by the origin stance, and the 
-     * slot we're targeting is a matrix coordinate.
-     */
-    service.send("SELECTING", { 
-        
-        // Passing in stance might allow an attack to know how to end itself. 
-        stance,
-
-        // Where the stance originates + if it's an alternate cell (meaning no step cancels)
-        origin : from,
-        alternate,
-
-        slot : { row, column, alternate },
-    })
-}
 </script>
 
 <style>
