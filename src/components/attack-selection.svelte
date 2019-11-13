@@ -1,6 +1,10 @@
 <svelte:window on:keydown={({ key }) => key === "Escape" ? service.send("BACK") : false } />
 
-<div class="selection">
+<div class="variables">
+<String attacks={combo} {quadrant} />
+</div>
+
+<div class="variables selection">
     {#each pool as { stance, attacks } (stance)}
         <h1>Destination: {stance}</h1>
         <div class="attacks">
@@ -14,6 +18,10 @@
     {/each}
 </div>
 
+{#each children as { component, children, props } }
+    <svelte:component this={component} {children} {...props} />
+{/each}
+
 <script>
 import { service } from "state/state.js";
 import { primaries } from "stores/deck.js";
@@ -23,14 +31,25 @@ import Attack from "components/attack.svelte";
 
 // pool comes from the context in the statechart.
 export let pool;
+export let children;
 
-$: console.log({ pool })
+export let combo;
+export let quadrant;
 </script>
 
 <style>
+    .variables {
+        --attack-tile-height: 6rem;
+        --attack-tile-width: 6rem;
+    }
+
     .attacks {
+      
+
         display: flex;
         flex-flow: row wrap;
+
+        font-size: 0.8rem;
     }
     .selection {
         background: rgba(0,0,0, 0.3);

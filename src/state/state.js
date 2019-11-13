@@ -1,12 +1,14 @@
 import { Machine, interpret, actions } from "xstate";
 import xct from "xstate-component-tree";
 
-import { set } from "stores/deck.js";
+import { set, clear } from "stores/deck.js";
 import followups from "utilities/followups.js";
-import flows from "utilities/flows.js";
+import compatible from "utilities/compatible.js";
 
 import Overview from "components/deck-overview.svelte";
 import Selection from "components/attack-selection.svelte";
+import Override from "components/override.svelte";
+
 
 const { assign } = actions;
 
@@ -14,12 +16,13 @@ const { assign } = actions;
 const machine = Machine;
 
 const statechart = machine({
+    id      : "editor",
     initial : "overview",
 
     context : {
-        combo : [],
-        pool  : [],
-        slot  : {
+        string : [],
+        pool   : [],
+        slot   : {
             row    : 0,
             column : 0,
         },
@@ -44,51 +47,34 @@ const statechart = machine({
             on : {
                 OVERVIEW : "overview",
                 SELECTED : [
-                    // TODO : It's gonna be the wild west out here for a while,
-                    // but basically I need to validate the setting of an attack.
-                    // When placing a move in a slot I need to know:
-                    /**
-                     * 1) What comes before it? does the ending of that match any stance in the move I"m slotting
-                     * 2) What comes after it? do the endings of the move I'm slotting match the beginnings of the next cell?
-                     */
+                    // Error: Invalid move selected for slot
                     {
-                        target : "overview",
-                        cond   : ({ slot, cell }, { attack }) => {
-                            // cell is the TARGET.
-                            const next = cell._next;
-                            const previous = cell._previous;
-                            
-                            const predicates = [
-                                // VALID: the move you're trying to slot already has stance endings where the next move begins
-                                // OR there's no move in the next slot.
-                                Object.values(attack.stance).includes(next._begins) || next._empty,
+                        target : ".override",
 
-                                // VALID: THe move you're trying to slot already has stance beginnings where the previous move ends
-                                // OR there's no previous move.
-                                Object.keys(attack.stance).includes(previous._ends) || !previous,
-                            ];
+                        // If this attack isn't compatible in the place we're trying to slot it,
+                        // we're gonna prompt the user to override the string.
+                        cond : ({ cell }, { attack }) => !compatible(cell, attack),
 
-                            if(!predicates.every(Boolean)) {
-                                alert("holy fuck. don't.");
-                                
-                                return true;
-                            }
-                            
-                            return false;
-                        },
+                        // Assign the attack into context because if the user chooses
+                        // to overwrite the string we need to know what to put
+                        // there instead.
                         actions : [
-
+                            assign({
+                                attack : (context, { attack }) => attack,
+                            }),
                         ],
                     },
+                    
+                    // Success: valid move for selected slot
                     {
                         target  : "overview",
                         actions : [
-                            // Set the attack
+                            // We didn't trip any invalidators, so
+                            // set the attack
                             ({ slot }, { attack }) => set(slot, attack),
                         ],
                     },
                 ],
-
 
                 BACK : "overview",
             },
@@ -99,8 +85,10 @@ const statechart = machine({
                     pool : (context, { quadrant, slot }) =>
                         followups(quadrant, slot.alternate ? { exclude : [ quadrant ] } : {}),
 
-                    slot : (context, { slot }) => (slot),
-                    cell : (context, { attack }) => attack,
+                    slot     : (context, { slot }) => (slot),
+                    cell     : (context, { attack }) => attack,
+                    combo    : (context, { combo }) => combo,
+                    quadrant : (context, { quadrant }) => quadrant,
                 }),
             ],
 
@@ -115,6 +103,34 @@ const statechart = machine({
                 component : Selection,
                 props     : (context) => context,
             },
+
+            states : {
+                override : {
+                    on : {
+                        // Accept the override, wipe the parts of the deck
+                        // that are invalidated
+                        ACCEPT : {
+                            target  : "#editor.overview",
+                            actions : [
+                                ({ slot, attack }) => {
+                                    clear(slot);
+                                    set(slot, attack);
+                                },
+                            ],
+                        },
+
+                        // Reject the override, keep the string you were
+                        // previously working with.
+                        REJECT : {
+                            target : "#editor.overview",
+                        },
+                    },
+
+                    meta : {
+                       component : Override,
+                    },
+                },
+            },
         },
     },
 });
@@ -124,7 +140,6 @@ const service = interpret(statechart);
 service.start();
 
 window.service = service;
-
 
 const tree = (callback) => xct(service, callback);
 

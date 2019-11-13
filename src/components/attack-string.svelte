@@ -8,11 +8,11 @@
                     column : index,
 
                     attack,
-                    quadrant : generate(attack, index),
+                    quadrant : quadify(attack),
                 })
             }}
         />
-        <Stance quadrant={attack._empty ? "UNKNOWN" : attack.stance[attack._begins]} />
+        <Stance quadrant={attack._meta.empty ? quadrant : attack.stance[attack._meta.begins]} />
     {/each}
 </div>
 
@@ -28,23 +28,27 @@
     export let attacks = [];
     export let quadrant = "FRONT_RIGHT";
 
-    const generate = (attack, index) => {
+    // Given a cell (a tile that can hold an attack), 
+    // calculate what quadrant it belongs to.
+    const quadify = (attack) => {
         // Is it empty? is anything before it?
-        const { _previous } = attack;
+        const { _meta } = attack;
+        const { previous } = _meta;
 
         // If there's nothing before the slot we chose, we take the quadrant we were passed
-        if(!_previous) {
+        if(!previous) {
             return quadrant;
         }
 
         // If there is a previous, we care about generating followups from that 
         // previous attack's ending stance.
-        return _previous._ends;
+        return previous._meta.ends;
     }
 </script>
             
 <style>
     .string {
+        --attack-doot: 5rem;
         display: flex;
         justify-content: center;
         align-items: center;

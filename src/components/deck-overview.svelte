@@ -1,5 +1,5 @@
 <div class="overview">
-    <div class="primaries">
+    <div class="area primaries">
         {#each primary as { attacks, quadrant }, row}
             <String 
                 {quadrant}
@@ -9,6 +9,7 @@
                         quadrant : detail.quadrant,
                         attack   : detail.attack,
 
+                        combo : attacks,
                         slot  : {
                             row,
                             column    : detail.column,
@@ -20,7 +21,7 @@
         {/each}
     </div>
 
-    <div class="alternates">
+    <div class="area alternates">
         {#each alternate as { attacks, quadrant }, row}
             <String 
                 {quadrant}
@@ -28,7 +29,8 @@
                 on:selection={({ detail }) =>    
                     service.send("SELECTING", { 
                         quadrant,
-
+                        attack : detail.attack,
+                        
                         combo : attacks,
                         slot  : {
                             row,
@@ -52,19 +54,32 @@ import { service } from "state/state.js";
 
 $: primary = $deck.primaries;
 $: alternate = $deck.alternates;
+
 </script>
 
 <style>
     .overview {
+        --attack-tile-height: 6rem;
+        --attack-tile-width: 6rem;
+
         display: grid;
 
         grid-template: 
-            "primaries . alternates" 100%
-            / 1fr 1fr 2fr;
+            ".         . .         " 4rem
+            "primaries . alternates" 1fr
+            ".         . .         " 4rem
+            / 3fr 1fr 3fr;
 
         height: 100%;
         width: 100%;
         overflow: hidden;
+    }
+
+    .area {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
     }
 
     .primaries {

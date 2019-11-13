@@ -1,12 +1,18 @@
 import { writable, derived } from "svelte/store";
 
-import baremoves from "data/barehands.js";
+import barehands from "data/barehands.js";
 import quadrants from "utilities/quadrants.js";
 
 const endings = new WeakMap();
 
 const empty = () => Object.assign(Object.create(null), {
-    _empty : true,
+    // Metadata for each cell to tell if it's empty, as well as
+    // offer convenient pointers to its neighbors
+    _meta : {
+        empty  : true,
+        begins : false,
+        ends   : false,
+    },
 });
 
 /**
@@ -23,15 +29,15 @@ const combo = (length) => {
 
         attacks = attacks.map(empty);
         
-        for(let i = 0; i < attacks.length; i++) {
-            const attack = attacks[i];
-
+        attacks.forEach((attack, i) => {
             const next = attacks[i + 1] || false;
             const previous = attacks[i - 1] || false;
 
-            attack._next = next;
-            attack._previous = previous;
-        }
+            const { _meta } = attack;
+
+            _meta.next = next;
+            _meta.previous = previous;
+        });
 
         results.push({
             quadrant,
@@ -42,41 +48,30 @@ const combo = (length) => {
     return results;
 };
 
-// Straightup barehands data for (soon-to-be) every barehands attack in the game
-const barehands = baremoves.map((attack) => {
-    const begin = (look) => `${attack.stance.begins}_${look}`;
-    const end = (look) => `${attack.stance.ends}_${look}`;
-
-    attack.stance = {
-        [begin("LEFT")]  : end(attack.stance.pivot ? "RIGHT" : "LEFT"),
-        [begin("RIGHT")] : end(attack.stance.pivot ? "LEFT" : "RIGHT"),
-    };
-
-    return attack;
-});
-
 // Data structures representing the entire state of primary
 // strings and alternates in our deck.
 const primaries = writable(combo(3));
 const alternates = writable(combo(1));
 
-const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
-    const m = new Map();
+window.primaries = primaries;
 
+const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
     _p.forEach(({ quadrant, attacks }) => {
         attacks.forEach((attack) => {
-            // This attack isn't empty if it has a name.
-            attack._empty = !attack.name;
+            const { _meta } = attack;
+            const { previous } = _meta;
 
-            const { _previous : prev } = attack;
             
+            // This attack isn't empty if it has a name.
+            _meta.empty = !attack.name;
+
             // If there's no previous move
-            if(!prev) {
+            if(!_meta.previous) {
                 // The current cell's beginning is defaulted to the quadrant it belongs to
-                attack._begins = quadrant;
+                _meta.begins = quadrant;
 
                 // The ending is either the quadrant, or if we have attack data, the ending for the attack.
-                attack._ends = (attack._empty ? quadrant : attack.stance[attack._begins]);
+                _meta.ends = (_meta.empty ? quadrant : attack.stance[_meta.begins]);
                 
                 return;
             }
@@ -86,8 +81,8 @@ const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
              * is no previous attack, it's defaulted to the quadrant in the string
              * this attack belongs to.
              */
-            attack._begins = prev._empty ? quadrant : prev._ends;
-            attack._ends = attack._empty ? quadrant : attack.stance[attack._begins];
+            _meta.begins = previous._meta.empty ? quadrant : previous._meta.ends;
+            _meta.ends = _meta.empty ? quadrant : attack.stance[_meta.begins];
 
             return;
         });
@@ -117,10 +112,27 @@ const set = (slot, attack) => {
     primaries.update((data) => {
         const { attacks } = data[slot.row];
 
-        // TODO: MERGE _METADATA
-        // check what stats are currently here
-        // and then see if the attack fits.
         Object.assign(attacks[slot.column], attack);
+        
+        return data;
+    });
+};
+
+const clear = (slot) => {
+    primaries.update((data) => {
+        const row = data[slot.row];
+
+        row.attacks = row.attacks.map((attack, index) => {
+            if(index < slot.column) {
+                return attack;
+            }
+            
+            // Overwrite the meta object EXCEPT for linked list references.
+            const _meta = Object.assign(attack._meta, empty()._meta);
+
+            // Create a new object that's empty but contains metadata
+            return Object.assign(Object.create(null), { _meta });
+        });
         
         return data;
     });
@@ -136,4 +148,5 @@ export {
     deck,
 
     set,
+    clear,
 };

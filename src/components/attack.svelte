@@ -32,11 +32,11 @@ $: empty = !Boolean(name);
     .container {
         position: relative;
 
-        height: 8rem;
-        width: 8rem;
+        height: var(--attack-tile-height, 8rem);
+        width: var(--attack-tile-height, 8rem);
 
         /* TODO: Border when highlighted */
-        border: 0.2rem solid #444;
+        margin: 0.1rem;
         background-color: #333;
         color: #FFF;
 
