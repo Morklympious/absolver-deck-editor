@@ -45,7 +45,14 @@ const statechart = machine({
 
         selecting : {
             on : {
-                OVERVIEW : "overview",
+                OVERVIEW   : "overview",
+                NEW_TARGET : {
+                    actions : [
+                        assign({
+                            slot : ({ slot }, { column }) => Object.assign(slot, { column }),
+                        }),
+                    ],
+                },
                 SELECTED : [
                     // Error: Invalid move selected for slot
                     {

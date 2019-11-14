@@ -12,7 +12,10 @@
                 })
             }}
         />
-        <Stance quadrant={attack._meta.empty ? quadrant : attack.stance[attack._meta.begins]} />
+        <Stance 
+            empty={attack._meta.empty}
+            quadrant={attack._meta.empty ? quadrant : attack.stance[attack._meta.begins]} 
+        />
     {/each}
 </div>
 

@@ -37,6 +37,7 @@ $: empty = !Boolean(name);
 
         /* TODO: Border when highlighted */
         margin: 0.1rem;
+        
         background-color: #333;
         color: #FFF;
 

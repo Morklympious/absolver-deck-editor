@@ -53,41 +53,49 @@ const combo = (length) => {
 const primaries = writable(combo(3));
 const alternates = writable(combo(1));
 
-window.primaries = primaries;
+const configure = (string) => {
+    const { quadrant = "FRONT_RIGHT", attacks = [] } = string;
 
-const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
-    _p.forEach(({ quadrant, attacks }) => {
-        attacks.forEach((attack) => {
-            const { _meta } = attack;
-            const { previous } = _meta;
+    attacks.forEach((attack) => {
+        const { _meta } = attack;
+        const { previous } = _meta;
 
+        
+        // This attack isn't empty if it has a name.
+        _meta.empty = !attack.name;
+
+        // If there's no previous move
+        if(!_meta.previous) {
+            // The current cell's beginning is defaulted to the quadrant it belongs to
+            _meta.begins = quadrant;
+
+            // The ending is either the quadrant, or if we have attack data, the ending for the attack.
+            _meta.ends = (_meta.empty ? quadrant : attack.stance[_meta.begins]);
             
-            // This attack isn't empty if it has a name.
-            _meta.empty = !attack.name;
-
-            // If there's no previous move
-            if(!_meta.previous) {
-                // The current cell's beginning is defaulted to the quadrant it belongs to
-                _meta.begins = quadrant;
-
-                // The ending is either the quadrant, or if we have attack data, the ending for the attack.
-                _meta.ends = (_meta.empty ? quadrant : attack.stance[_meta.begins]);
-                
-                return;
-            }
-
-            /**
-             * This attack begins where the previous one left off. But if there
-             * is no previous attack, it's defaulted to the quadrant in the string
-             * this attack belongs to.
-             */
-            _meta.begins = previous._meta.empty ? quadrant : previous._meta.ends;
-            _meta.ends = _meta.empty ? quadrant : attack.stance[_meta.begins];
-
             return;
-        });
-    });
+        }
 
+        /**
+         * This attack begins where the previous one left off. But if there
+         * is no previous attack, it's defaulted to the quadrant in the string
+         * this attack belongs to.
+         */
+        _meta.begins = previous._meta.empty ? quadrant : previous._meta.ends;
+        _meta.ends = _meta.empty ? quadrant : attack.stance[_meta.begins];
+
+        return;
+    });
+    
+    return;
+};
+
+// Derive a deck object that keeps the most up to date deck attack / stance flow information
+const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
+    // Use side effects to configure both the primary section attacks and the
+    // Alternate attacks. This is run every time primaries or alternates is updated.
+    _p.forEach(configure);
+    _a.forEach(configure);
+    
     set({
         primaries  : _p,
         alternates : _a,

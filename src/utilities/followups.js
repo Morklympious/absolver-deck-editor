@@ -20,10 +20,12 @@ const followups = (source, options = false) => {
         return false;
     }
 
-    const key = source;
-
     // Should we exclude any quadrants?
     const { exclude = [] } = options;
+
+    // Thus far, the only reason I have an options object is because
+    // I need to exclude stuff for alts, so this works.
+    const key = `${source}-${exclude.length ? "alternates" : "primaries"}`;
 
     // Return an existing pool if we've already done this work
     if(cache.has(key)) {

@@ -1,7 +1,7 @@
 <svelte:window on:keydown={({ key }) => key === "Escape" ? service.send("BACK") : false } />
 
 <div class="variables">
-<String attacks={combo} {quadrant} />
+    <String attacks={combo} {quadrant} on:selection={({ detail }) => service.send("NEW_TARGET", detail)} />
 </div>
 
 <div class="variables selection">
