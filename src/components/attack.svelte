@@ -1,5 +1,8 @@
-<div class="flex container" on:click="{() => bubble("selection", attack)}">
-    {empty ? "empty" : name} 
+<div 
+    class="flex container" 
+    on:click="{() => bubble("selection", attack)}" 
+>
+    {name || "Empty"}
 </div>
 
 <script>
@@ -12,7 +15,7 @@ const bubble = createEventDispatcher();
 export let attack = false;
 
 $: ({
-    name,
+    name = "",
     height,
     type,
     stance,
@@ -20,6 +23,11 @@ $: ({
 } = attack);
 
 $: empty = !Boolean(name);
+$: art = name.split(" ").join("-").toLowerCase();
+
+
+// $: style = `background-image: url("images/barehands/${art}.png")`;
+
 </script>
 
 <style>
@@ -40,6 +48,10 @@ $: empty = !Boolean(name);
         
         background-color: #333;
         color: #FFF;
+
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
 
         cursor : pointer;
     }
