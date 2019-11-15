@@ -20,9 +20,10 @@ const statechart = machine({
     initial : "overview",
 
     context : {
-        string : [],
-        pool   : [],
-        slot   : {
+        string   : [],
+        quadrant : "",
+        pool     : [],
+        slot     : {
             row    : 0,
             column : 0,
         },
@@ -96,6 +97,7 @@ const statechart = machine({
                     cell     : (context, { attack }) => attack,
                     combo    : (context, { combo }) => combo,
                     quadrant : (context, { quadrant }) => quadrant,
+                    string   : (context, { string }) => string,
                 }),
             ],
 

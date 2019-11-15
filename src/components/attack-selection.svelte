@@ -1,7 +1,11 @@
 <svelte:window on:keydown={({ key }) => key === "Escape" ? service.send("BACK") : false } />
 
 <div class="container">
-    <String attacks={combo} {quadrant} on:selection={({ detail }) => service.send("NEW_TARGET", detail)} />
+    <String 
+        attacks={combo} 
+        quadrant={string} 
+        on:selection={({ detail }) => service.send("NEW_TARGET", detail)} 
+    />
 
     <div class="selection">
         {#each pool as { stance : quadrant, attacks } (quadrant)}
@@ -30,12 +34,13 @@ import String from "components/attack-string.svelte";
 import Attack from "components/attack.svelte";
 import Stance from "components/stance.svelte";
 
-// pool comes from the context in the statechart.
+// This all comes from the state chart.
 export let pool;
 export let children;
-
 export let combo;
 export let quadrant;
+export let string;
+
 </script>
 
 <style>
@@ -65,7 +70,12 @@ export let quadrant;
     }
 
     .attacks {
-        display: flex;
+        display: grid;
+        grid-gap: 0.2rem;
+
+        padding: 0 0.2rem;
+
+        grid-template-columns: repeat(5, var(--attack-tile-width));
         flex-flow: row wrap;
 
         font-size: 0.8rem;
@@ -75,7 +85,6 @@ export let quadrant;
         background: rgba(0,0,0, 0.3);
 
         /* TODO: Probably repeating grid instead of hardcoding this? lmao. */
-        width: 37.2rem;
         height: 30rem;
         flex: 1;
 

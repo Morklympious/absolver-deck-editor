@@ -6,6 +6,7 @@
                 {attacks}
                 on:selection={({ detail }) =>    
                     service.send("SELECTING", { 
+                        string   : quadrant,
                         quadrant : detail.quadrant,
                         attack   : detail.attack,
 

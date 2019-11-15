@@ -1,8 +1,15 @@
 <div 
     class="flex container" 
+    {style}
     on:click="{() => bubble("selection", attack)}" 
 >
-    {name || "Empty"}
+    <!-- {name || "Empty"} -->
+
+    <div class="meta">
+        {#if modifiers.includes("double")}
+        <div class="double">2x</div>
+        {/if}
+    </div>
 </div>
 
 <script>
@@ -19,15 +26,13 @@ $: ({
     height,
     type,
     stance,
-    modifiers
+    modifiers = []
 } = attack);
 
 $: empty = !Boolean(name);
 $: art = name.split(" ").join("-").toLowerCase();
 
-
-// $: style = `background-image: url("images/barehands/${art}.png")`;
-
+$: style = art ? `background-image: url("images/barehands/${art}.png")` : ``;
 </script>
 
 <style>
@@ -42,9 +47,6 @@ $: art = name.split(" ").join("-").toLowerCase();
 
         height: var(--attack-tile-height, 8rem);
         width: var(--attack-tile-height, 8rem);
-
-        /* TODO: Border when highlighted */
-        margin: 0.1rem;
         
         background-color: #333;
         color: #FFF;
@@ -56,38 +58,19 @@ $: art = name.split(" ").join("-").toLowerCase();
         cursor : pointer;
     }
 
-    .attack {
-        height: 100%;
-        width: 100%;
-
-        background-color: #333;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
+    .container:hover {
+        outline: 0.15rem solid;
     }
 
-    .empty {
-        background-color: gold;
-    }
+    .meta {
+        width: 100%; 
+        height: 1rem;
+        padding: 0.2rem;
 
-    .data {
         position: absolute;
-        top: 0.2rem;
-        left: 0.2rem;
+        bottom: 0;
 
-        width: 100%;
-    }
-
-    .name {
-        padding: 0.1rem;
         font-size: 0.6rem;
-        font-weight: bold;
-        
-        color: white;
-    }
 
-    .modifiers {
-        top: 0.2rem;
-        left: 0.2rem;
     }
 </style>
