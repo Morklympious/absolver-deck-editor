@@ -1,12 +1,24 @@
+import { Howl } from "howler";
+
 const AUDIO = {
-    hover : "",
-    click : "",
-}
+    HOVER : false, // Waiting for a real source "",
+    CLICK : false, // Real source, not horse. "https://www.w3schools.com/html/horse.mp3",
+};
 
-const audio = (node) {
+const audio = (source) => new Howl({ src : [ source ] });
 
-    const enter = (e) => {
+const action = (event, sound) => (node) => {
+    const handler = () => sound.play();
 
-    }
-    // TODO: hover, click, delete sound fx
-}
+    node.addEventListener(event, handler);
+    
+    return () => node.removeEventListener(event, handler);
+};
+
+const click = action("click", audio(AUDIO.CLICK));
+const hover = action("mouseenter", audio(AUDIO.HOVER));
+
+export {
+    click,
+    hover,
+};

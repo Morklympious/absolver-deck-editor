@@ -3,8 +3,8 @@ module.exports = [
       name   : "360 Tornado Kick",
       style  : "forsaken",
       stance : {
-          FRONT_RIGHT : "BACK_LEFT",
-          FRONT_LEFT  : "BACK_RIGHT",
+          FRONT_RIGHT : "BACK_ RIGHT",
+          FRONT_LEFT  : "BACK_LEFT",
       },
       hits      : "same",
       height    : "high",

@@ -4,6 +4,8 @@
     {style}
     on:click={() => bubble("selection", attack)}
     on:mouseenter={() => bubble("hover", attack)}
+    use:click
+    use:hover
 >
     <!-- {name || "Empty"} -->
 
@@ -33,6 +35,7 @@
 <script>
 import { createEventDispatcher } from "svelte";
 import followups from "utilities/followups.js";
+import { click, hover } from "actions/audio.js";
 
 // Dispatch events that parents will do things with.
 const bubble = createEventDispatcher();
@@ -49,7 +52,7 @@ $: ({
 } = attack);
 
 $: art = name.split(" ").join("-").toLowerCase();
-$: style = art ? `background-image: url("images/barehands/${art}.png")` : ``;
+$: style = art ? `background-image: url("assets/images/barehands/${art}.png")` : ``;
 </script>
 
 <style>

@@ -14,6 +14,7 @@
     "eslint": "^6.4.0",
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-svelte3": "^2.7.3",
+    "howler": "^2.1.2",
     "postcss": "^7.0.18",
     "rollup": "^1.21.4",
     "rollup-plugin-alias": "^1.5.2",
