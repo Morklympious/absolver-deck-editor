@@ -1,13 +1,31 @@
 <div 
     class="flex container" 
+    data-current-target={target}
     {style}
-    on:click="{() => bubble("selection", attack)}" 
+    on:click={() => bubble("selection", attack)}
+    on:mouseenter={() => bubble("hover", attack)}
 >
     <!-- {name || "Empty"} -->
 
     <div class="meta">
         {#if modifiers.includes("double")}
-        <div class="double">2x</div>
+        <div class="meta-trait">DBL</div>
+        {/if}
+
+        {#if modifiers.includes("break")}
+        <div class="meta-trait">GRB</div>
+        {/if}
+
+        {#if modifiers.includes("stop")}
+        <div class="meta-trait">STP</div>
+        {/if}
+
+        {#if modifiers.includes("jump")}
+        <div class="meta-trait">JMP</div>
+        {/if}
+
+        {#if modifiers.includes("duck")}
+        <div class="meta-trait">DUC</div>
         {/if}
     </div>
 </div>
@@ -20,6 +38,7 @@ import followups from "utilities/followups.js";
 const bubble = createEventDispatcher();
 
 export let attack = false;
+export let target;
 
 $: ({
     name = "",
@@ -29,9 +48,7 @@ $: ({
     modifiers = []
 } = attack);
 
-$: empty = !Boolean(name);
 $: art = name.split(" ").join("-").toLowerCase();
-
 $: style = art ? `background-image: url("images/barehands/${art}.png")` : ``;
 </script>
 
@@ -58,11 +75,17 @@ $: style = art ? `background-image: url("images/barehands/${art}.png")` : ``;
         cursor : pointer;
     }
 
+    .container[data-current-target="true"] {
+        box-shadow: 0 0 0.5rem 0.2rem inset rgb(255, 234, 116);
+    }
+
     .container:hover {
         outline: 0.15rem solid;
     }
 
     .meta {
+        display: flex;
+        flex-flow: row nowrap;
         width: 100%; 
         height: 1rem;
         padding: 0.2rem;
@@ -72,5 +95,9 @@ $: style = art ? `background-image: url("images/barehands/${art}.png")` : ``;
 
         font-size: 0.6rem;
 
+    }
+
+    .meta-trait + .meta-trait {
+        padding: 0 0.2rem;
     }
 </style>

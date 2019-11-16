@@ -1,24 +1,42 @@
 <svelte:window on:keydown={({ key }) => key === "Escape" ? service.send("BACK") : false } />
 
 <div class="container">
-    <String 
-        attacks={combo} 
-        quadrant={string} 
-        on:selection={({ detail }) => service.send("NEW_TARGET", detail)} 
-    />
+    <div class="structure">
+        <String 
+            attacks={combo} 
+            quadrant={string} 
+            target={slot.column}
+            on:selection={({ detail }) => service.send("NEW_TARGET", detail)} 
+        />
 
-    <div class="selection">
-        {#each pool as { stance : quadrant, attacks } (quadrant)}
-            <div class="heading"> Ends in <Stance {quadrant} /> </div>
-            <div class="attacks">
-                {#each attacks as attack (attack.name)}
-                    <Attack 
-                        {attack}
-                        on:selection={() => service.send("SELECTED", { attack })}
-                    />
-                {/each} 
+        <div class="selection">
+            {#each pool as { stance : quadrant, attacks } (quadrant)}
+                <div class="heading"> Ends in <Stance {quadrant} /> </div>
+                <div class="attacks">
+                    {#each attacks as attack (attack.name)}
+                        <Attack 
+                            {attack}
+                            on:selection={() => service.send("ATTACK_SELECTED", { attack })}
+                            on:hover={({ detail : attack }) => (selected = attack)}
+                        />
+                    {/each} 
+                </div>
+            {/each}
+        </div>
+    </div>
+
+    <div class="metadata">
+        <div class="metadata-card">
+            {#if selected}
+            <h1>{selected.name}</h1>
+            <div class="attack">
+            
             </div>
-        {/each}
+            <div class="stats">
+                Coming Soon!
+            </div>
+            {/if}
+        </div>
     </div>
 </div>
 
@@ -40,7 +58,10 @@ export let children;
 export let combo;
 export let quadrant;
 export let string;
+export let target;
+export let slot;
 
+let selected = false;
 </script>
 
 <style>
@@ -48,10 +69,11 @@ export let string;
         --attack-tile-height: 6.5rem;
         --attack-tile-width: 6.5rem;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-flow: column nowrap;
+        display: grid;
+        grid-template:
+            ". structure metadata" 1fr 
+            / 1fr 1fr 1fr;
+
         overflow: hidden;
         height: 100%;
         width: 100%;
@@ -86,8 +108,41 @@ export let string;
 
         /* TODO: Probably repeating grid instead of hardcoding this? lmao. */
         height: 30rem;
-        flex: 1;
 
         overflow-y: scroll;
+    }
+
+    .structure {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+
+        grid-area: structure;
+    }
+    
+    .metadata {
+        grid-area: metadata;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: #CCC;
+    }
+
+    .metadata-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+    }
+
+    .stats {
+        padding: 1rem;
+        background: #444;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>

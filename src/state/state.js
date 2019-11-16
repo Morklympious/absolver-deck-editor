@@ -50,11 +50,12 @@ const statechart = machine({
                 NEW_TARGET : {
                     actions : [
                         assign({
-                            slot : ({ slot }, { column }) => Object.assign(slot, { column }),
+                            target : (context, { attack }) => attack,
+                            slot   : ({ slot }, { column }) => Object.assign(slot, { column }),
                         }),
                     ],
                 },
-                SELECTED : [
+                ATTACK_SELECTED : [
                     // Error: Invalid move selected for slot
                     {
                         target : ".override",

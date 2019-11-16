@@ -75,7 +75,7 @@ $: alternate = $deck.alternates;
         width: 100%;
         overflow: hidden;
     }
-
+    
     .area {
         display: flex;
         flex-flow: column nowrap;

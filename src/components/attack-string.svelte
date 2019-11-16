@@ -2,7 +2,8 @@
     <Stance {quadrant} />
     {#each attacks as attack, index}
         <Attack 
-            {attack} 
+            {attack}
+            target="{target === index}"
             on:selection={({ detail : attack }) => {
                 bubble("selection", { 
                     column : index,
@@ -30,6 +31,7 @@
 
     export let attacks = [];
     export let quadrant = "FRONT_RIGHT";
+    export let target;
 
     // Given a cell (a tile that can hold an attack), 
     // calculate what quadrant it belongs to.
