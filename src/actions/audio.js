@@ -1,8 +1,8 @@
 import { Howl } from "howler";
 
 const AUDIO = {
-    HOVER : false, // Waiting for a real source "",
-    CLICK : false, // Real source, not horse. "https://www.w3schools.com/html/horse.mp3",
+    HOVER : "assets/audio/hover.mp3",
+    CLICK : "assets/audio/selection.mp3",
 };
 
 const audio = (source) => new Howl({ src : [ source ] });
