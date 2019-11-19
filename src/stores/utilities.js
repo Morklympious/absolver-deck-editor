@@ -37,11 +37,10 @@ const combo = (length) => {
             _meta.previous = previous;
         });
 
-        results.push({
-            quadrant,
-            attacks,
-        });
+        results.push(attacks);
     });
+
+    console.log({ results });
 
     return results;
 };
@@ -52,9 +51,8 @@ const combo = (length) => {
  *
  * @param {Array} chain - An array of attacks to be walked and modified in-place
  */
-const configure = (chain) => {
-    const { quadrant = "FRONT_RIGHT", attacks = [] } = chain;
-
+const configure = (quadrant, attacks) => {
+    console.log("configure", { quadrant, attacks });
     attacks.forEach((attack) => {
         const { _meta } = attack;
         const { previous } = _meta;
@@ -90,7 +88,7 @@ const configure = (chain) => {
 // Sets an attack at a location
 const insert = (section, slot, attack) => {
     section.update((data) => {
-        const { attacks } = data[slot.row];
+        const attacks = data[slot.row];
 
         Object.assign(attacks[slot.column], attack);
         
@@ -103,19 +101,21 @@ const insert = (section, slot, attack) => {
 // TODO: Clear a single cell, clear multiple extends that behavior
 const remove = (section, slot, subsequent = false) => {
     section.update((data) => {
-        const row = data[slot.row];
+        let attacks = data[slot.row];
 
         // !subsequent means we're not deleting all the stuff that comes after the target,
         if(!subsequent) {
-            const attack = row.attacks[slot.column];
+            const attack = row[slot.column];
+            // Overwrite the meta object EXCEPT for linked list references.
             const _meta = Object.assign(attack._meta, empty()._meta);
 
+            // Create a new object that's empty but contains metadata
             Object.assign(Object.create(null), { _meta });
 
             return data;
         }
 
-        row.attacks = row.attacks.map((attack, index) => {
+        data[slot.row] = attacks.map((attack, index) => {
             if(index < slot.column) {
                 return attack;
             }

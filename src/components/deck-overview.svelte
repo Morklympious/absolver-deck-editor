@@ -5,14 +5,14 @@
             <div class="combo" data-primary>
                 <String 
                     {quadrant}
-                    attacks={primary.attacks}
+                    attacks={primary}
                     on:selection={({ detail }) =>    
                         service.send("SELECTING", { 
                             string   : quadrant,
                             quadrant : detail.quadrant,
                             attack   : detail.attack,
 
-                            combo : primary.attacks,
+                            combo : primary,
                             slot  : {
                                 row,
                                 column    : detail.column,
@@ -26,14 +26,14 @@
             <div class="combo" data-alternate>
                 <String 
                     {quadrant}
-                    attacks={alternate.attacks}
+                    attacks={alternate}
                     on:selection={({ detail }) =>    
                         service.send("SELECTING", { 
                             string   : quadrant,
                             quadrant : detail.quadrant,
                             attack   : detail.attack,
 
-                            combo : alternate.attacks,
+                            combo : alternate,
                             slot  : {
                                 row,
                                 column    : detail.column,
@@ -57,7 +57,7 @@ import { deck } from "stores/deck.js";
 import { service } from "state/state.js";
 
 $: rows = $deck;
-$: console.log(rows);
+$: console.log({ rows });
 </script>
 
 <style>
