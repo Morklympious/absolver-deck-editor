@@ -1,7 +1,9 @@
 import { Machine, interpret, actions } from "xstate";
 import xct from "xstate-component-tree";
 
-import { set, clear } from "stores/deck.js";
+import { alternates, primaries } from "stores/deck.js";
+import { insert, remove } from "stores/utilities.js";
+
 import followups from "utilities/followups.js";
 import compatible from "utilities/compatible.js";
 
@@ -80,7 +82,11 @@ const statechart = machine({
                         actions : [
                             // We didn't trip any invalidators, so
                             // set the attack
-                            ({ slot }, { attack }) => set(slot, attack),
+                            ({ slot }, { attack }) => insert(
+                                slot.alternate ? alternates : primaries,
+                                slot,
+                                attack
+                            ),
                         ],
                     },
                 ],
@@ -123,8 +129,20 @@ const statechart = machine({
                             target  : "#editor.overview",
                             actions : [
                                 ({ slot, attack }) => {
-                                    clear(slot);
-                                    set(slot, attack);
+                                    // Remove everything at slot and forward.
+                                    remove(
+                                        slot.alternate ? alternates : primaries,
+                                        slot,
+                                        // Nuke everything after the target move, too
+                                        true
+                                    );
+                                    
+                                    // Insert the new move at slot.
+                                    insert(
+                                        slot.alternate ? alternates : primaries,
+                                        slot,
+                                        attack
+                                    );
                                 },
                             ],
                         },

@@ -69,6 +69,4 @@ const followups = (source, options = false) => {
     return pool;
 };
 
-window.followups = followups;
-
 export default followups;
