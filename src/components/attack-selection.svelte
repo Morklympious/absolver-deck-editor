@@ -66,8 +66,8 @@ let selected = false;
 
 <style>
     .container {
-        --attack-tile-height: 8rem;
-        --attack-tile-width: 8rem;
+        --attack-tile-height: 6.5rem;
+        --attack-tile-width: 6.5rem;
 
         display: grid;
         grid-template:

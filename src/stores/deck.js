@@ -34,25 +34,11 @@ const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
         };
     });
 
-    console.log({ map });
-
     set(map);
 });
 
 deck.subscribe((data) => {
-    /**
-     * A flattened representation of every attack in the deck.
-     */
-    // const flattened = data.reduce((collector, { primary, alternate }) => {
-    //     const { attacks: _p } = primary;
-    //     const { attacks: _a } = alternate;
-
-    //     collector = collector.concat([ ..._p, ..._a ]);
-
-    //     return collector;
-    // }, []);
-
-    // window.toencode = flattened;
+    window.toencode = data;
 });
 
 export {

@@ -21,8 +21,33 @@ const encoder = new Hash(
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 );
 
-const deconstruct = () => {};
-const reconstruct = () => {};
+/**
+ *
+ * @param {Array} deck - An Array of objects, each containing `quadrant`, `primary`, and `alternate`
+ */
+const deconstruct = (deck) => {
+    /**
+     * A flattened representation of every attack in the deck.
+     */
+    const flattened = deck.reduce((collector, { primary, alternate }) => {
+        collector = collector.concat([ ...primary, ...alternate ]);
+
+        return collector;
+    }, []);
+
+    const primitives = flattened.map((attack) =>
+        (attack._meta.empty ? obfuscator.get(false) : obfuscator.get(attack.name)));
+
+    return primitives;
+};
+
+const reconstruct = (flattened) => flattened.map((code) => {
+    if(!clarifier.has(code)) {
+        return {};
+    }
+
+    return clarifier.get(code);
+});
 
 /**
  *
@@ -31,19 +56,23 @@ const reconstruct = () => {};
  *
  * @returns An encoded Hex-esque string that can be later decoded.
  */
-const encode = (attacks) => {
-    const numerics = attacks.map(({ name, _meta }) => (_meta.empty ? obfuscator.get(false) : obfuscator.get(name)));
+const encode = (deck) => {
+    const encodable = deconstruct(deck);
 
-    return encoder.encode(numerics);
+    return encoder.encode(encodable);
 };
 
 /**
  *
- * @param {Array} numbers - An array of numbers that will be converted back into attack data objects.
+ * @param {String} Hash - A Hash to convert to an array
  *
  * @return {Array} - An array of attack objects ready to hydrate the deck
  */
-const decode = (numbers) => encoder.decode(numbers);
+const decode = (hash) => {
+    const constructable = encoder.decode(hash);
+
+    return reconstruct(constructable);
+};
 
 export {
     encode,

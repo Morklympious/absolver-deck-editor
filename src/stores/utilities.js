@@ -22,7 +22,7 @@ const empty = () => Object.assign(Object.create(null), {
 const combo = (length) => {
     const results = [];
 
-    quadrants.forEach((quadrant) => {
+    quadrants.forEach(() => {
         let attacks = Array.from(Array(length), empty);
 
         attacks = attacks.map(empty);
@@ -40,8 +40,6 @@ const combo = (length) => {
         results.push(attacks);
     });
 
-    console.log({ results });
-
     return results;
 };
 
@@ -52,7 +50,6 @@ const combo = (length) => {
  * @param {Array} chain - An array of attacks to be walked and modified in-place
  */
 const configure = (quadrant, attacks) => {
-    console.log("configure", { quadrant, attacks });
     attacks.forEach((attack) => {
         const { _meta } = attack;
         const { previous } = _meta;
