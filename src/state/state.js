@@ -48,15 +48,20 @@ const statechart = machine({
 
         selecting : {
             on : {
-                OVERVIEW   : "overview",
+                OVERVIEW : "overview",
+
                 NEW_TARGET : {
                     actions : [
                         assign({
-                            target : (context, { attack }) => attack,
                             slot   : ({ slot }, { column }) => Object.assign(slot, { column }),
+                            cell   : (context, { attack }) => attack,
+                            target : (context, { attack }) => attack,
+                            pool   : ({ slot }, { quadrant }) =>
+                                followups(quadrant, slot.alternate ? { exclude : [ quadrant ] } : {}),
                         }),
                     ],
                 },
+                
                 ATTACK_SELECTED : [
                     // Error: Invalid move selected for slot
                     {
@@ -64,7 +69,7 @@ const statechart = machine({
 
                         // If this attack isn't compatible in the place we're trying to slot it,
                         // we're gonna prompt the user to override the string.
-                        cond : ({ cell }, { attack }) => !compatible(cell, attack),
+                        cond : ({ target }, { attack }) => !compatible(target, attack),
 
                         // Assign the attack into context because if the user chooses
                         // to overwrite the string we need to know what to put
@@ -78,7 +83,6 @@ const statechart = machine({
                     
                     // Success: valid move for selected slot
                     {
-                        target  : "overview",
                         actions : [
                             // We didn't trip any invalidators, so
                             // set the attack
@@ -101,7 +105,7 @@ const statechart = machine({
                         followups(quadrant, slot.alternate ? { exclude : [ quadrant ] } : {}),
 
                     slot     : (context, { slot }) => (slot),
-                    cell     : (context, { attack }) => attack,
+                    target   : (context, { attack }) => attack,
                     combo    : (context, { combo }) => combo,
                     quadrant : (context, { quadrant }) => quadrant,
                     string   : (context, { string }) => string,

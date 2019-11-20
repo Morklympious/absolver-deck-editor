@@ -8,6 +8,7 @@ const compatible = (target, attack) => {
     const { _meta : after } = next;
     const { _meta : before } = previous;
     
+    console.log({ target, attack, next, previous });
     const predicates = [
         // VALID: the move you're trying to slot ends where the next move begins
         // OR there's no move in the next slot.

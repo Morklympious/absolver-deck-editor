@@ -1,4 +1,5 @@
 import Hash from "hashids";
+import { primaries, alternates } from "stores/deck.js";
 
 // Every attack.
 import attacks from "data/all.js";
@@ -30,6 +31,7 @@ const deconstruct = (deck) => {
      * A flattened representation of every attack in the deck.
      */
     const flattened = deck.reduce((collector, { primary, alternate }) => {
+        // Grab every row and concatenate it together
         collector = collector.concat([ ...primary, ...alternate ]);
 
         return collector;
@@ -41,13 +43,54 @@ const deconstruct = (deck) => {
     return primitives;
 };
 
-const reconstruct = (flattened) => flattened.map((code) => {
-    if(!clarifier.has(code)) {
-        return {};
-    }
+const reconstruct = (flattened) => {
+    const [
+        FR1, FR2, FR3, FRA,
+        FL1, FL2, FL3, FLA,
+        BL1, BL2, BL3, BLA,
+        BR1, BR2, BR3, BRA,
+    ] = flattened.map((code, index) => {
+        if(!clarifier.has(code)) {
+            return {};
+        }
 
-    return clarifier.get(code);
-});
+        return clarifier.get(code);
+    });
+
+    const p = [
+        [ FR1, FR2, FR3 ],
+        [ FL1, FL2, FL3 ],
+        [ BL1, BL2, BL3 ],
+        [ BR1, BR2, BR3 ],
+    ];
+
+    const a = [
+        [ FRA ],
+        [ FLA ],
+        [ BLA ],
+        [ BRA ],
+    ];
+
+    const ip = p.map((atks, row) => atks.map((attack, column) => ({
+        attack,
+        slot : {
+            row,
+            column,
+        },
+        target : primaries,
+    })));
+
+    const ia = a.map((atks, row) => atks.map((attack, column) => ({
+        attack,
+        slot : {
+            row,
+            column,
+        },
+        target : alternates,
+    })));
+
+    return { primaries : ip, alternates : ia };
+};
 
 /**
  *
@@ -70,9 +113,12 @@ const encode = (deck) => {
  */
 const decode = (hash) => {
     const constructable = encoder.decode(hash);
-
+    
     return reconstruct(constructable);
 };
+
+window._decode = decode;
+window._encode = encode;
 
 export {
     encode,

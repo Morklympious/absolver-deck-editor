@@ -57,7 +57,6 @@ import { deck } from "stores/deck.js";
 import { service } from "state/state.js";
 
 $: rows = $deck;
-$: console.log({ rows });
 </script>
 
 <style>
