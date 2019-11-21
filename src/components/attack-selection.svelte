@@ -3,15 +3,17 @@
 <div class="container">
     <div class="structure">
         <String 
-            attacks={combo} 
             quadrant={string} 
+            attacks={$primaries[slot.row]} 
             target={slot.column}
             on:selection={({ detail }) => service.send("NEW_TARGET", detail)} 
         />
 
         <div class="selection">
             {#each pool as { stance : quadrant, attacks } (quadrant)}
-                <div class="heading"> Ends in <Stance {quadrant} /> </div>
+                <div class="heading"> 
+                    Ends in <Stance {quadrant} /> 
+                </div>
                 <div class="attacks">
                     {#each attacks as attack (attack.name)}
                         <Attack 

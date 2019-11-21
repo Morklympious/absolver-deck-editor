@@ -1,9 +1,12 @@
 <div class="fullscreen">
-    <p> You've slotted a move that is incompatible with the moves that come after it.</p>
-    <p> Would you like to place this move anyway? </p>
+
     <div class="modal">
-        <button class="button" on:click={() => service.send("ACCEPT")}>Yes</button> 
-        <button class="button" on:click={() => service.send("REJECT")}>No</button>
+        <p> You've slotted a move that is incompatible with the moves that come after it.</p>
+        <p> Would you like to place this move anyway? </p>
+        <div class="actions">
+            <button class="button" on:click={() => service.send("ACCEPT")}>Yes</button> 
+            <button class="button" on:click={() => service.send("REJECT")}>No</button>
+        </div>
     </div>
 </div>
 
@@ -37,7 +40,6 @@ import { service } from "state/state.js";
     .button {
         padding: 1rem;
         border: 0.1rem solid black;
-
     }
 
     .button:hover {
@@ -51,9 +53,21 @@ import { service } from "state/state.js";
         justify-content: space-around;
         align-items: center;
 
+        flex-flow: column nowrap;
+
         width: 30rem;
         height: 10rem;
 
-        background-color: darkslategray;
+        background-color: black;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button {
+        width: 5rem;
     }
 </style>

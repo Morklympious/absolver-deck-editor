@@ -15,8 +15,7 @@ window._decode = decode;
 const primaries = writable(combo(3));
 const alternates = writable(combo(1));
 
-window._a = alternates;
-alternates.subscribe(console.log);
+primaries.subscribe((data) => console.log("[PRIMARIES]", data));
 // Derive a deck object that keeps the most up to date deck attack / stance flow information
 const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
     // Use side effects to configure both the primary section attacks and the

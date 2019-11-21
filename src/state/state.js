@@ -47,6 +47,8 @@ const statechart = machine({
         },
 
         selecting : {
+            initial : "idle",
+            
             on : {
                 OVERVIEW : "overview",
 
@@ -125,12 +127,14 @@ const statechart = machine({
             },
 
             states : {
+                idle : {},
+
                 override : {
                     on : {
                         // Accept the override, wipe the parts of the deck
                         // that are invalidated
                         ACCEPT : {
-                            target  : "#editor.overview",
+                            target  : "idle",
                             actions : [
                                 ({ slot, attack }) => {
                                     // Remove everything at slot and forward.
@@ -154,7 +158,7 @@ const statechart = machine({
                         // Reject the override, keep the string you were
                         // previously working with.
                         REJECT : {
-                            target : "#editor.overview",
+                            target : "idle",
                         },
                     },
 
