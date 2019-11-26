@@ -2,6 +2,7 @@ import { Machine, interpret, actions } from "xstate";
 import xct from "xstate-component-tree";
 
 import { alternates, primaries } from "stores/deck.js";
+import { equip } from "stores/weapon.js";
 import { insert, remove } from "stores/utilities.js";
 
 import followups from "utilities/followups.js";
@@ -33,6 +34,14 @@ const statechart = machine({
 
     on : {
         OVERVIEW : ".overview",
+        
+        EQUIP_SWORD : {
+            actions : () => equip("sword"),
+        },
+
+        EQUIP_BAREHANDS : {
+            actions : () => equip("barehands"),
+        },
     },
     
     states : {

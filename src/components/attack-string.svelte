@@ -15,7 +15,7 @@
         />
         <Stance 
             empty={attack._meta.empty}
-            quadrant={attack._meta.empty ? quadrant : attack.stance[attack._meta.begins]} 
+            quadrant={empty(attack) ? quadrant : attack.stance[$weapon][beginning(attack)]} 
         />
     {/each}
 </div>
@@ -23,6 +23,7 @@
 <script>
     import { createEventDispatcher } from "svelte";
     import { service } from "state/state.js";
+    import weapon from "stores/weapon.js";
 
     import Attack from "components/attack.svelte";
     import Stance from "components/stance.svelte";
@@ -49,11 +50,13 @@
         // previous attack's ending stance.
         return previous._meta.ends;
     }
+
+    const empty = (attack) => attack._meta.empty;
+    const beginning = (attack) => attack._meta.begins;
 </script>
             
 <style>
     .string {
-        --attack-doot: 5rem;
         display: flex;
         justify-content: center;
         align-items: center;

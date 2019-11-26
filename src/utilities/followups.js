@@ -1,5 +1,6 @@
-import barehands from "data/barehands.js";
+import { barehands, all } from "data/all.js";
 import quadrants from "utilities/quadrants.js";
+import { equipped } from "stores/weapon.js";
 
 // Cache for memoizing input to followups
 const cache = new Map();
@@ -14,7 +15,8 @@ const cache = new Map();
  * @returns {Object} A Map of move options that can originate from the source
  */
 const followups = (source, options = false) => {
-    const attacks = barehands;
+    const attacks = all;
+    const armament = equipped();
 
     if(!source) {
         return false;
@@ -22,10 +24,11 @@ const followups = (source, options = false) => {
 
     // Should we exclude any quadrants?
     const { exclude = [] } = options;
+    const alternate = exclude.length;
 
     // Thus far, the only reason I have an options object is because
     // I need to exclude stuff for alts, so this works.
-    const key = `${source}-${exclude.length ? "alternates" : "primaries"}`;
+    const key = `${armament}-${source}-${alternate ? "alt" : "pri"}`;
 
     // Return an existing pool if we've already done this work
     if(cache.has(key)) {
@@ -44,8 +47,8 @@ const followups = (source, options = false) => {
         }
 
         let data = attacks.filter((attack) => {
-            const { stance } = attack;
-            const keys = Object.keys(attack.stance);
+            const stance = attack.stance[armament];
+            const keys = Object.keys(stance);
 
            /**
             * The stance object has to have a key that matches our `source`.

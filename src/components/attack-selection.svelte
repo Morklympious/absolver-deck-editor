@@ -4,7 +4,7 @@
     <div class="structure">
         <String 
             quadrant={string} 
-            attacks={$primaries[slot.row]} 
+            attacks={active}
             target={slot.column}
             on:selection={({ detail }) => service.send("NEW_TARGET", detail)} 
         />
@@ -48,7 +48,7 @@
 
 <script>
 import { service } from "state/state.js";
-import { primaries } from "stores/deck.js";
+import { primaries, alternates } from "stores/deck.js";
 
 import String from "components/attack-string.svelte";
 import Attack from "components/attack.svelte";
@@ -64,6 +64,8 @@ export let target;
 export let slot;
 
 let selected = false;
+
+$: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
 </script>
 
 <style>

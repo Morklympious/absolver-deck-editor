@@ -79,7 +79,7 @@ $: style = art ? `background-image: url("assets/images/barehands/${art}.png")` :
     }
 
     .container[data-current-target="true"] {
-        box-shadow: 0 0 0.5rem 0.2rem inset rgb(255, 234, 116);
+        box-shadow: 0 0 0 0.1rem inset rgb(255, 234, 116);
     }
 
     .container:hover {

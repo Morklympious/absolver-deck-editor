@@ -2,7 +2,7 @@ import Hash from "hashids";
 import { primaries, alternates } from "stores/deck.js";
 
 // Every attack.
-import attacks from "data/all.js";
+import { all as attacks } from "data/all.js";
 
 // Obfuscator: For encoding attacks into indexes.
 // Clarifier: For decoding indexes back into attacks.
@@ -113,12 +113,9 @@ const encode = (deck) => {
  */
 const decode = (hash) => {
     const constructable = encoder.decode(hash);
-    
+
     return reconstruct(constructable);
 };
-
-window._decode = decode;
-window._encode = encode;
 
 export {
     encode,

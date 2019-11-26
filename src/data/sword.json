@@ -1,0 +1,1652 @@
+[
+    {
+        "name": "Arc Slash",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 9,
+                "guard": 5
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Body Slicing",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "BACK_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 23,
+            "advantage": {
+                "hit": 13,
+                "guard": 14
+            }
+        },
+        "modifiers": [
+            "break"
+        ]
+    },
+    {
+        "name": "Buchinmo",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 21,
+            "advantage": {
+                "hit": 10,
+                "guard": 4
+            }
+        },
+        "modifiers": [
+            "charge"
+        ]
+    },
+    {
+        "name": "Kitsueno Cut",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Shifting Thrust",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "BACK_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 7,
+                "guard": 2
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Corkscrew Thrust",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "BACK_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "thrust",
+        "frames": {
+            "startup": 11,
+            "advantage": {
+                "hit": 3,
+                "guard": 2
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Dash Slash",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 11,
+                "guard": 2
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Digging Parry Elbow",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "BACK_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "thrust",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 9,
+                "guard": 4
+            }
+        },
+        "modifiers": [
+            "parry"
+        ]
+    },
+    {
+        "name": "Double Thrust",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "BACK_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "thrust",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 6,
+                "guard": 3
+            }
+        },
+        "modifiers": [
+            "double"
+        ]
+    },
+    {
+        "name": "Drop Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "BACK_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 12,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Kitsueno Cut",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "BACK_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 4,
+                "guard": -1
+            }
+        },
+        "modifiers": [
+            "duck"
+        ]
+    },
+    {
+        "name": "Duster Blow",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "BACK_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 4
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Forward Lean Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 22,
+            "advantage": {
+                "hit": 14,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Front Stab",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "BACK_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "thrust",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 6,
+                "guard": 5
+            }
+        },
+        "modifiers": [
+            "double"
+        ]
+    },
+    {
+        "name": "Gatotsu",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "thrust",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 11,
+                "guard": 4
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Gokai Slash",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 8,
+                "guard": 4
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Ground Swell Slash",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "BACK_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "low",
+        "type": "horizontal",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 8,
+                "guard": 5
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Head Splitter",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 9,
+                "guard": 5
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Hook Slash",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Inward Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 11,
+                "guard": 2
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Keen Crouch",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 8,
+                "guard": 3
+            }
+        },
+        "modifiers": [
+            "duck"
+        ]
+    },
+    {
+        "name": "Kitsueno Cut",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 7,
+                "guard": 2
+            }
+        },
+        "modifiers": [
+            "double"
+        ]
+    },
+    {
+        "name": "Leg Stroke",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "low",
+        "type": "horizontal",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 1
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Light Swing Slash",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 11,
+            "advantage": {
+                "hit": 4,
+                "guard": 0
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Light Thrust",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 8,
+                "guard": 6
+            }
+        },
+        "modifiers": [
+            "stop"
+        ]
+    },
+    {
+        "name": "Limbo Thrust",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 6,
+                "guard": 2
+            }
+        },
+        "modifiers": [
+            "duck"
+        ]
+    },
+    {
+        "name": "Mill Slash",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 6,
+                "guard": 2
+            }
+        },
+        "modifiers": [
+            "duck"
+        ]
+    },
+    {
+        "name": "Neck Slash",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 6,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Needle Point",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "BACK_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Nose Stab",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "thrust",
+        "frames": {
+            "startup": 11,
+            "advantage": {
+                "hit": 4,
+                "guard": 1
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Obvious Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_LEFT"
+            }
+        },
+        "hits": "both",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 22,
+            "advantage": {
+                "hit": 14,
+                "guard": 5
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "One Handed Slash",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "BACK_LEFT"
+            }
+        },
+        "hits": "DIFF",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 6,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Overhead Slash",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 11,
+                "guard": 5
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Painstaking Slash",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 8,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Parry Pommel Bash",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "thrust",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 11,
+                "guard": 4
+            }
+        },
+        "modifiers": [
+            "parry"
+        ]
+    },
+    {
+        "name": "Parry Reverse Low Slash",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "BACK_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "low",
+        "type": "horizontal",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 10,
+                "guard": 3
+            }
+        },
+        "modifiers": [
+            "parry"
+        ]
+    },
+    {
+        "name": "Parry Shove",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "BACK_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "thrust",
+        "frames": {
+            "startup": 19,
+            "advantage": {
+                "hit": 10,
+                "guard": 4
+            }
+        },
+        "modifiers": [
+            "parry"
+        ]
+    },
+    {
+        "name": "Parry Slash",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "low",
+        "type": "horizontal",
+        "frames": {
+            "startup": 24,
+            "advantage": {
+                "hit": 13,
+                "guard": 6
+            }
+        },
+        "modifiers": [
+            "parry"
+        ]
+    },
+    {
+        "name": "Poke Thrust",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "BACK_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "thrust",
+        "frames": {
+            "startup": 11,
+            "advantage": {
+                "hit": 3,
+                "guard": 2
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Pommel Bash",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "BACK_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 10,
+                "guard": 10
+            }
+        },
+        "modifiers": [
+            "break"
+        ]
+    },
+    {
+        "name": "Puropera Cut",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "BACK_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 21,
+            "advantage": {
+                "hit": 13,
+                "guard": 4
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Ram Thrust",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "thrust",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 7,
+                "guard": 6
+            }
+        },
+        "modifiers": [
+            "stop"
+        ]
+    },
+    {
+        "name": "Reverse Feet Thrust",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "low",
+        "type": "thrust",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 12,
+                "guard": 4
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Reverse Hips Slash",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
+        "modifiers": [
+            "stop"
+        ]
+    },
+    {
+        "name": "Reverse One Handed Slash",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "BACK_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 7,
+                "guard": 4
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Reverse Rising Slash",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Reverse Rising Thrust",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "BACK_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 10,
+                "guard": 6
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Hook Slash",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "BACK_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 22,
+            "advantage": {
+                "hit": 13,
+                "guard": 5
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Reverse Twist Slash",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "BACK_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 8,
+                "guard": 6
+            }
+        },
+        "modifiers": [
+            "stop"
+        ]
+    },
+    {
+        "name": "Rising Double Hand",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "BACK_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 9,
+                "guard": 9
+            }
+        },
+        "modifiers": [
+            "break"
+        ]
+    },
+    {
+        "name": "Rising Slash",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Rising Spin Slash",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "BACK_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 12,
+                "guard": 4
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Seven Star Thrust",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "mid",
+        "type": "thrust",
+        "frames": {
+            "startup": 22,
+            "advantage": {
+                "hit": 14,
+                "guard": 5
+            }
+        },
+        "modifiers": [
+            "strafe"
+        ]
+    },
+    {
+        "name": "Shapu Furiko",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "BACK_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 9,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Shifting Thrust",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 5,
+                "guard": 4
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Sickle Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "BACK_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 9,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Side Thrust",
+        "style": "kahlt",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "different",
+        "height": "high",
+        "type": "thrust",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 8,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Side Wind Thrust",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "thrust",
+        "frames": {
+            "startup": 21,
+            "advantage": {
+                "hit": 13,
+                "guard": 5
+            }
+        },
+        "modifiers": [
+            "strafe"
+        ]
+    },
+    {
+        "name": "Hook Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "BACK_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "low",
+        "type": "horizontal",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 7,
+                "guard": 4
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Spiral Slash",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "BACK_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 11,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Spoon Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 9,
+                "guard": 5
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Stumble Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 21,
+            "advantage": {
+                "hit": 13,
+                "guard": 6
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Swirl Slash",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "BACK_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 21,
+            "advantage": {
+                "hit": 13,
+                "guard": 13
+            }
+        },
+        "modifiers": [
+            "break"
+        ]
+    },
+    {
+        "name": "Tei-nami",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "FRONT_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "low",
+        "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 4
+            }
+        },
+        "modifiers": [
+            "double"
+        ]
+    },
+    {
+        "name": "Tendon Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "BACK_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "low",
+        "type": "horizontal",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 8,
+                "guard": 4
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Thigh Slash",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "FRONT_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "low",
+        "type": "horizontal",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 6,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Thunder Slash",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "BACK_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 23,
+            "advantage": {
+                "hit": 14,
+                "guard": 5
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Toreador Slash",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "BACK_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
+        "modifiers": [
+            "strafe"
+        ]
+    },
+    {
+        "name": "Twist Hips Slash",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "FRONT_LEFT"
+            }
+        },
+        "hits": "diff",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 13,
+                "guard": 5
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Typhoon Slash",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "BACK_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 7,
+                "guard": -1
+            }
+        },
+        "modifiers": [
+            "double"
+        ]
+    },
+    {
+        "name": "Up Slash",
+        "style": "faejin",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_RIGHT": "BACK_LEFT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 9,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Vertical Slash",
+        "style": "forsaken",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 10,
+                "guard": 5
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Whirl Slash",
+        "style": "windfall",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "FRONT_LEFT": "BACK_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 10,
+                "guard": 3
+            }
+        },
+        "modifiers": [
+            "jump"
+        ]
+    },
+    {
+        "name": "Wide Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "BACK_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 8,
+                "guard": 3
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Woosh Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_LEFT": "BACK_RIGHT"
+            }
+        },
+        "hits": "diff",
+        "height": "high",
+        "type": "horizontal",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 7,
+                "guard": 1
+            }
+        },
+        "modifiers": []
+    },
+    {
+        "name": "Wrist Roll Slash",
+        "style": "stagger",
+        "stance": {
+            "barehands": false,
+            "sword": {
+                "BACK_RIGHT": "FRONT_RIGHT"
+            }
+        },
+        "hits": "same",
+        "height": "mid",
+        "type": "vertical",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 9,
+                "guard": 4
+            }
+        },
+        "modifiers": []
+    }
+]

@@ -1,4 +1,5 @@
 import quadrants from "utilities/quadrants.js";
+import { equipped } from "stores/weapon.js";
 
 /**
  * Generate an empty deck slot object
@@ -50,9 +51,13 @@ const combo = (length) => {
  * @param {Array} chain - An array of attacks to be walked and modified in-place
  */
 const configure = (quadrant, attacks) => {
+    const armament = equipped();
+
     attacks.forEach((attack) => {
         const { _meta } = attack;
         const { previous } = _meta;
+        const { stance = false } = attack;
+        const atkstance = stance[armament];
 
         // This attack isn't empty if it has a name.
         _meta.empty = !attack.name;
@@ -63,7 +68,7 @@ const configure = (quadrant, attacks) => {
             _meta.begins = quadrant;
 
             // The ending is either the quadrant, or if we have attack data, the ending for the attack.
-            _meta.ends = (_meta.empty ? quadrant : attack.stance[_meta.begins]);
+            _meta.ends = (_meta.empty ? quadrant : atkstance[_meta.begins]);
             
             return;
         }
@@ -74,7 +79,7 @@ const configure = (quadrant, attacks) => {
          * this attack belongs to.
          */
         _meta.begins = previous._meta.empty ? quadrant : previous._meta.ends;
-        _meta.ends = _meta.empty ? quadrant : attack.stance[_meta.begins];
+        _meta.ends = _meta.empty ? quadrant : atkstance[_meta.begins];
 
         return;
     });
@@ -95,7 +100,7 @@ const insert = (section, slot, attack) => {
     return;
 };
 
-// TODO: Clear a single cell, clear multiple extends that behavior
+// Remove an attack at a location
 const remove = (section, slot, subsequent = false) => {
     section.update((data) => {
         let attacks = data[slot.row];
