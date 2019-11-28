@@ -1,6 +1,4 @@
-<div class="style">
-    {STYLES[style]}
-</div>
+{STYLES[style]}
 
 <script>
     const STYLES = {

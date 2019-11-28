@@ -1,7 +1,7 @@
 import { Machine, interpret, actions } from "xstate";
 import xct from "xstate-component-tree";
 
-import { alternates, primaries } from "stores/deck.js";
+import { alternates, primaries, reset } from "stores/deck.js";
 import { equip } from "stores/weapon.js";
 import { insert, remove } from "stores/utilities.js";
 
@@ -11,7 +11,6 @@ import compatible from "utilities/compatible.js";
 import Overview from "components/deck-overview.svelte";
 import Selection from "components/attack-selection.svelte";
 import Override from "components/override.svelte";
-
 
 const { assign } = actions;
 
@@ -36,11 +35,17 @@ const statechart = machine({
         OVERVIEW : ".overview",
         
         EQUIP_SWORD : {
-            actions : () => equip("sword"),
+            actions : [
+                () => reset(),
+                () => equip("sword"),
+            ],
         },
 
         EQUIP_BAREHANDS : {
-            actions : () => equip("barehands"),
+            actions : [
+                () => reset(),
+                () => equip("barehands"),
+            ],
         },
     },
     

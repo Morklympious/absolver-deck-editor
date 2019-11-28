@@ -5,6 +5,7 @@ import cjs from "rollup-plugin-commonjs";
 import resolve from "rollup-plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
 import globsync from "rollup-plugin-globsync";
+import json from "@rollup/plugin-json";
 
 import alias from "./build/alias.js";
 import aliases from "./build/aliases.js";
@@ -48,6 +49,8 @@ export default {
         resolve({
             browser : true,
         }),
+
+        json(),
 
         cjs(),
 
