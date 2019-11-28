@@ -7,7 +7,10 @@
     use:click
     use:hover
 >
-    <!-- {name || "Empty"} -->
+    {#if !empty}
+    <div class="style">
+        <StyleIcon style={attack.style} />
+    </div>
 
     <div class="meta">
         {#if modifiers.includes("double")}
@@ -29,13 +32,26 @@
         {#if modifiers.includes("duck")}
         <div class="meta-trait">DUC</div>
         {/if}
+
+        {#if modifiers.includes("strafe")}
+        <div class="meta-trait">STF</div>
+        {/if}
     </div>
+    {/if}
+
+
+    {#if empty}
+    <EmptyIcon />
+    {/if}    
 </div>
 
 <script>
 import { createEventDispatcher } from "svelte";
 import followups from "utilities/followups.js";
 import { click, hover } from "actions/audio.js";
+
+import EmptyIcon from "components/icons/empty-icon.svelte";
+import StyleIcon from "components/icons/style-icon.svelte";
 
 // Dispatch events that parents will do things with.
 const bubble = createEventDispatcher();
@@ -48,9 +64,11 @@ $: ({
     height,
     type,
     stance,
-    modifiers = []
+    modifiers = [],
+    _meta = {}
 } = attack);
 
+$: empty = _meta.empty;
 $: art = name.split(" ").join("-").toLowerCase();
 $: style = art ? `background-image: url("assets/images/barehands/${art}.png")` : ``;
 </script>
@@ -84,6 +102,20 @@ $: style = art ? `background-image: url("assets/images/barehands/${art}.png")` :
 
     .container:hover {
         outline: 0.15rem solid;
+    }
+
+    .style {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%; 
+        height: 1rem;
+        padding: 0.2rem;
+
+        position: absolute;
+        top: 0;
+
+        font-size: 0.6rem;
+
     }
 
     .meta {

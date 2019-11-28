@@ -46,12 +46,15 @@
         </div>
     {/each}
     </div>
+
+    <WeaponToggle />
 </div>
 
 <script>
 import followups from "utilities/followups.js";
 
 import String from "components/attack-string.svelte";
+import WeaponToggle from "components/weapon-toggle.svelte";
 
 import { deck } from "stores/deck.js";
 import { service } from "state/state.js";

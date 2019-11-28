@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="metadata">
+    <!-- <div class="metadata">
         <div class="metadata-card">
             {#if selected}
             <h1>{selected.name}</h1>
@@ -39,7 +39,7 @@
             </div>
             {/if}
         </div>
-    </div>
+    </div> -->
 </div>
 
 {#each children as { component, children, props } }
@@ -52,7 +52,7 @@ import { primaries, alternates } from "stores/deck.js";
 
 import String from "components/attack-string.svelte";
 import Attack from "components/attack.svelte";
-import Stance from "components/stance.svelte";
+import Stance from "components/icons/stance-icon.svelte";
 
 // This all comes from the state chart.
 export let pool;

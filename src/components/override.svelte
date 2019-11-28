@@ -51,7 +51,7 @@ import { service } from "state/state.js";
     .modal {
         display: flex;
         justify-content: space-around;
-        align-items: center;
+        padding: 1rem;
 
         flex-flow: column nowrap;
 

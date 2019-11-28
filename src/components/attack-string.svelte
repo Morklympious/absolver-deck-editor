@@ -26,7 +26,7 @@
     import weapon from "stores/weapon.js";
 
     import Attack from "components/attack.svelte";
-    import Stance from "components/stance.svelte";
+    import Stance from "components/icons/stance-icon.svelte";
 
     const bubble = createEventDispatcher();
 

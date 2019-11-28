@@ -1,4 +1,4 @@
-import { barehands, all } from "data/all.js";
+import { all } from "data/all.js";
 import quadrants from "utilities/quadrants.js";
 import { equipped } from "stores/weapon.js";
 

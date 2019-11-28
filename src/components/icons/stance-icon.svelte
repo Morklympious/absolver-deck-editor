@@ -1,4 +1,4 @@
-<svg class="svg" viewBox="0 0 100 100">
+<svg class="svg" viewBox="0 0 100 100" data-empty={empty}>
     <g class="group" fill="gray">
         <polygon class="square" points="0 50, 50 0, 100 50, 50 100" />
         {#if !empty}
@@ -28,10 +28,15 @@
         margin: 0 1rem;
     }
 
+    .svg[data-empty="true"] {
+        opacity: 0.3;
+    }
+
     .square {
         stroke: black;
         stroke-width: 0.2rem;
     }
+
     .marker { 
         fill: black;
     }
