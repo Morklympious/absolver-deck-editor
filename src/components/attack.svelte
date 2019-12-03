@@ -70,7 +70,7 @@ $: ({
 
 $: empty = _meta.empty;
 $: art = name.split(" ").join("-").toLowerCase();
-$: style = art ? `background-image: url("assets/images/barehands/${art}.png")` : ``;
+$: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 </script>
 
 <style>

@@ -1,6 +1,7 @@
 <svelte:window on:keydown={({ key }) => key === "Escape" ? service.send("BACK") : false } />
 
 <div class="container">
+    <button class="back" on:click={() => service.send("BACK")}> BACK </button>
     <div class="structure">
         <String 
             quadrant={string} 
@@ -27,7 +28,7 @@
         </div>
     </div>
 
-    <!-- <div class="metadata">
+    <div class="metadata">
         <div class="metadata-card">
             {#if selected}
             <h1>{selected.name}</h1>
@@ -39,7 +40,7 @@
             </div>
             {/if}
         </div>
-    </div> -->
+    </div>
 </div>
 
 {#each children as { component, children, props } }
@@ -69,14 +70,25 @@ $: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
 </script>
 
 <style>
+    .back {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        margin: 2rem;
+
+        height: 2rem;
+        width: 4rem;
+    }
+
     .container {
         --attack-tile-height: 6.5rem;
         --attack-tile-width: 6.5rem;
 
         display: grid;
         grid-template:
-            ". structure metadata" 1fr 
-            / 1fr 1fr 1fr;
+            "structure metadata" 1fr 
+            / 2fr 1fr;
 
         overflow: hidden;
         height: 100%;

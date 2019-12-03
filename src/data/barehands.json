@@ -231,7 +231,7 @@
         "height": "high",
         "type": "thrust",
         "modifiers": [
-            "strafe"
+            "jump"
         ]
     },
     {
@@ -1032,7 +1032,7 @@
                 "FRONT_LEFT": "FRONT_LEFT"
             },
             "sword": {
-                "FRONT_LEFT": "FRONT_LEFT"
+                "FRONT_RIGHT": "FRONT_RIGHT"
             }
         },
         "hits": "diff",

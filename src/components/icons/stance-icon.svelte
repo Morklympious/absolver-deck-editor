@@ -23,8 +23,8 @@
 
 <style>
     .svg {
-        width: 2rem;
-        height: 2rem;
+        width: var(--stance-icon-dimension, 2rem);
+        height: var(--stance-icon-dimension, 2rem);
         margin: 0 1rem;
     }
 

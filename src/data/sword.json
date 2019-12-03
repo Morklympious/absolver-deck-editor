@@ -1023,7 +1023,7 @@
         "modifiers": []
     },
     {
-        "name": "Hook Slash",
+        "name": "Reverse Sharp Slash",
         "style": "kahlt",
         "stance": {
             "barehands": false,
@@ -1262,7 +1262,7 @@
         ]
     },
     {
-        "name": "Hook Slash",
+        "name": "Slip Slash",
         "style": "stagger",
         "stance": {
             "barehands": false,

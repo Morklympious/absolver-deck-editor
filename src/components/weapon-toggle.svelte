@@ -4,7 +4,7 @@
         data-active={barehands}
         on:click={() => service.send("EQUIP_BAREHANDS")}
     >
-        BH
+        Fist
     </button>
 
     <button 
@@ -12,7 +12,7 @@
         data-active={sword}
         on:click={() => service.send("EQUIP_SWORD")}
     >
-        SW
+        Sword
     </button>
 </div>
 
@@ -43,5 +43,9 @@ $:console.log($weapon);
 
     .weapon[data-active="true"] {
         outline: 1px solid gold;
+    }
+    
+    .weapon + .weapon {
+        margin-left: 0.5rem;
     }
 </style>

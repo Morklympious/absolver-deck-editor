@@ -70,19 +70,22 @@ $: rows = $deck;
         display: grid;
 
         grid-template: 
-            ".    .    .   " 4rem
-            "deck deck deck" 1fr
-            ".    .    .   " 4rem
-            / 3fr 1fr 3fr;
+            ". " 4rem
+            "deck" 1fr
+            "." 4rem
+            / 1fr;
 
         height: 100%;
         width: 100%;
-        overflow: hidden;
     }
 
-    /* This is an idea but maybe I'll just split the App based on mobile / desktop */
     /* @media (min-width: 700px) {
+
         .overview {
+            --attack-tile-height: 15rem;
+            --attack-tile-width: 15rem;
+            --stance-icon-dimension : 4rem;
+
             grid-template: 
                 "deck deck deck" 1fr
                 / 1fr 1fr 1fr;
@@ -98,7 +101,19 @@ $: rows = $deck;
 
     .group {
         display: flex;
-        justify-content: space-around;
+        flex-flow: row wrap;
+    }
+
+    .combo {
+        flex: 1
+    }
+
+    .combo[data-primary] {
+        flex: 2;
+    }
+
+    .combo[data-alternate] {
+        align-self: flex-end;
     }
 </style>
 
