@@ -35,10 +35,6 @@ const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
     set(map);
 });
 
-deck.subscribe((data) => {
-    window.toencode = data;
-});
-
 const reset = () => {
     primaries.set(combo(3));
     alternates.set(combo(1));

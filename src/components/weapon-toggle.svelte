@@ -1,28 +1,31 @@
 <div class="toggle">
     <button 
         class="weapon barehands" 
-        data-active={barehands}
-        on:click={() => service.send("EQUIP_BAREHANDS")}
+        data-active={hands}
+        use:barehands
     >
         Fist
     </button>
 
     <button 
         class="weapon sword" 
-        data-active={sword}
-        on:click={() => service.send("EQUIP_SWORD")}
+        data-active={blade}
+        use:sword
     >
         Sword
     </button>
 </div>
 
 <script>
-import { service } from "state/state.js"; 
+import { state } from "state/state.js"; 
+import transition from "actions/send-state.js";
 import weapon, { equip } from "stores/weapon.js";
 
-$: barehands = $weapon === "barehands";
-$: sword = $weapon === "sword";
-$:console.log($weapon);
+const sword = transition("EQUIP_SWORD");
+const barehands = transition("EQUIP_BAREHANDS");
+
+$: hands = $weapon === "barehands";
+$: blade = $weapon === "sword";
 </script>
 
 <style>
@@ -35,6 +38,9 @@ $:console.log($weapon);
     .weapon {
         border: none;
         outline: none;
+
+        width: 6rem;
+
         padding: 1rem;
         color: white;
         background: black;
@@ -42,7 +48,7 @@ $:console.log($weapon);
     }
 
     .weapon[data-active="true"] {
-        outline: 1px solid gold;
+        outline: 0.1rem solid gold;
     }
     
     .weapon + .weapon {

@@ -7,7 +7,7 @@
                     {quadrant}
                     attacks={primary}
                     on:selection={({ detail }) =>    
-                        service.send("SELECTING", { 
+                        state.send("SELECTING", { 
                             string   : quadrant,
                             quadrant : detail.quadrant,
                             attack   : detail.attack,
@@ -28,7 +28,7 @@
                     {quadrant}
                     attacks={alternate}
                     on:selection={({ detail }) =>    
-                        service.send("SELECTING", { 
+                        state.send("SELECTING", { 
                             string   : quadrant,
                             quadrant : detail.quadrant,
                             attack   : detail.attack,
@@ -46,18 +46,15 @@
         </div>
     {/each}
     </div>
-
-    <WeaponToggle />
 </div>
 
 <script>
 import followups from "utilities/followups.js";
 
 import String from "components/attack-string.svelte";
-import WeaponToggle from "components/weapon-toggle.svelte";
 
 import { deck } from "stores/deck.js";
-import { service } from "state/state.js";
+import { state } from "state/state.js";
 
 $: rows = $deck;
 </script>
@@ -66,14 +63,6 @@ $: rows = $deck;
     .overview {
         --attack-tile-height: 6.5rem;
         --attack-tile-width: 6.5rem;
-
-        display: grid;
-
-        grid-template: 
-            ". " 4rem
-            "deck" 1fr
-            "." 4rem
-            / 1fr;
 
         height: 100%;
         width: 100%;

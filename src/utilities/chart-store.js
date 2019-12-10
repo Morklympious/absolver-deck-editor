@@ -48,12 +48,15 @@ const statechart = (machine, options) => {
     };
 
     return {
+        service,
         subscribe : store.subscribe,
         matches   : matching,
         
         start() {
             service.onTransition(update);
             service.start();
+
+            return service;
         },
 
         stop() {

@@ -3,6 +3,7 @@ const path = require("path");
 export default {
     actions    : path.resolve(__dirname, "./src/actions"),
     state      : path.resolve(__dirname, "./src/state/"),
+    pages      : path.resolve(__dirname, "./src/pages"),
     components : path.resolve(__dirname, "./src/components/"),
     stores     : path.resolve(__dirname, "./src/stores/"),
     images     : path.resolve(__dirname, "./src/assets/images"),

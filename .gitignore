@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+src/assets/images/Absolver_attack_pictos/**/*
+dist/

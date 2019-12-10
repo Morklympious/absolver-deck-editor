@@ -15,6 +15,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 12,
+                "guard": -1
+            }
+        },
         "modifiers": [
             "jump"
         ]
@@ -35,6 +42,13 @@
         "hits": "same",
         "height": "low",
         "type": "thrust",
+        "frames": {
+            "startup": 11,
+            "advantage": {
+                "hit": 3,
+                "guard": 2
+            }
+        },
         "modifiers": []
     },
     {
@@ -53,6 +67,13 @@
         "hits": "same",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 11,
+                "guard": 7
+            }
+        },
         "modifiers": []
     },
     {
@@ -70,6 +91,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 11,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -87,6 +115,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 10,
+            "advantage": {
+                "hit": 4,
+                "guard": 0
+            }
+        },
         "modifiers": []
     },
     {
@@ -105,6 +140,13 @@
         "hits": "diff",
         "height": "low",
         "type": "horizontal",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 4,
+                "guard": -1
+            }
+        },
         "modifiers": [
             "duck"
         ]
@@ -124,6 +166,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 10,
+            "advantage": {
+                "hit": 3,
+                "guard": 1
+            }
+        },
         "modifiers": []
     },
     {
@@ -142,6 +191,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 7,
+                "guard": 1
+            }
+        },
         "modifiers": []
     },
     {
@@ -157,6 +213,13 @@
         "hits": "diff",
         "lands": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 7,
+                "guard": 2
+            }
+        },
         "modifiers": [
             "double"
         ]
@@ -174,6 +237,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 9,
+                "guard": 8
+            }
+        },
         "modifiers": [
             "stop"
         ]
@@ -193,6 +263,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 10,
+            "advantage": {
+                "hit": 4,
+                "guard": 0
+            }
+        },
         "modifiers": []
     },
     {
@@ -210,6 +287,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 8,
+                "guard": 4
+            }
+        },
         "modifiers": [
             "strafe"
         ]
@@ -230,6 +314,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 9,
+                "guard": 4
+            }
+        },
         "modifiers": [
             "jump"
         ]
@@ -249,6 +340,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 4,
+                "guard": 1
+            }
+        },
         "modifiers": [
             "strafe"
         ]
@@ -268,6 +366,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 22,
+            "advantage": {
+                "hit": 10,
+                "guard": 5
+            }
+        },
         "modifiers": [
             "charge"
         ]
@@ -287,6 +392,13 @@
         "hits": "same",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -304,6 +416,13 @@
         "hits": "same",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 10,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -321,6 +440,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 24,
+            "advantage": {
+                "hit": 15,
+                "guard": 15
+            }
+        },
         "modifiers": [
             "break"
         ]
@@ -340,6 +466,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 8,
+                "guard": 6
+            }
+        },
         "modifiers": [
             "stop"
         ]
@@ -359,6 +492,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -376,6 +516,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 9,
+                "guard": 7
+            }
+        },
         "modifiers": [
             "stop"
         ]
@@ -395,6 +542,13 @@
         "hits": "same",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 7,
+                "guard": 6
+            }
+        },
         "modifiers": []
     },
     {
@@ -412,6 +566,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 10,
+            "advantage": {
+                "hit": 3,
+                "guard": 1
+            }
+        },
         "modifiers": []
     },
     {
@@ -429,6 +590,13 @@
         "hits": "same",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 8,
+                "guard": 3
+            }
+        },
         "modifiers": [
             "double"
         ]
@@ -446,6 +614,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 7,
+                "guard": 1
+            }
+        },
         "modifiers": [
             "double"
         ]
@@ -463,6 +638,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 7,
+                "guard": 4
+            }
+        },
         "modifiers": [
             "double"
         ]
@@ -483,6 +665,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 7,
+                "guard": 4
+            }
+        },
         "modifiers": [
             "double"
         ]
@@ -500,6 +689,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 8,
+                "guard": 3
+            }
+        },
         "modifiers": [
             "double"
         ]
@@ -517,6 +713,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -535,6 +738,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 8,
+                "guard": 6
+            }
+        },
         "modifiers": [
             "stop"
         ]
@@ -552,6 +762,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 21,
+            "advantage": {
+                "hit": 13,
+                "guard": 5
+            }
+        },
         "modifiers": [
             "strafe"
         ]
@@ -569,6 +786,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 13,
+                "guard": 5
+            }
+        },
         "modifiers": []
     },
     {
@@ -587,6 +811,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 8,
+                "guard": 7
+            }
+        },
         "modifiers": [
             "stop"
         ]
@@ -604,6 +835,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 7,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -619,6 +857,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 8,
+                "guard": 7
+            }
+        },
         "modifiers": [
             "stop"
         ]
@@ -638,6 +883,13 @@
         "hits": "same",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 11,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -655,6 +907,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 22,
+            "advantage": {
+                "hit": 13,
+                "guard": 6
+            }
+        },
         "modifiers": [
             "jump"
         ]
@@ -674,6 +933,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 10,
+            "advantage": {
+                "hit": 4,
+                "guard": 0
+            }
+        },
         "modifiers": []
     },
     {
@@ -691,6 +957,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -708,6 +981,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 10,
+            "advantage": {
+                "hit": 3,
+                "guard": 1
+            }
+        },
         "modifiers": []
     },
     {
@@ -725,6 +1005,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 8,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -742,6 +1029,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 6,
+                "guard": 5
+            }
+        },
         "modifiers": []
     },
     {
@@ -760,6 +1054,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 5,
+                "guard": 0
+            }
+        },
         "modifiers": [
             "jump"
         ]
@@ -780,6 +1081,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 12,
+                "guard": 12
+            }
+        },
         "modifiers": [
             "break"
         ]
@@ -800,6 +1108,13 @@
         "hits": "same",
         "height": "low",
         "type": "horizontal",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 6,
+                "guard": 2
+            }
+        },
         "modifiers": [
             "duck"
         ]
@@ -819,6 +1134,13 @@
         "hits": "same",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 22,
+            "advantage": {
+                "hit": 12,
+                "guard": 3
+            }
+        },
         "modifiers": [
             "charge"
         ]
@@ -838,6 +1160,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 21,
+            "advantage": {
+                "hit": 11,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -855,6 +1184,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -872,6 +1208,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 12,
+                "guard": 6
+            }
+        },
         "modifiers": []
     },
     {
@@ -887,6 +1230,13 @@
         "hits": "both",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 21,
+            "advantage": {
+                "hit": 10,
+                "guard": 4
+            }
+        },
         "modifiers": [
             "charge"
         ]
@@ -907,6 +1257,13 @@
         "hits": "same",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 12,
+                "guard": 12
+            }
+        },
         "modifiers": [
             "break"
         ]
@@ -927,6 +1284,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 7,
+                "guard": -1
+            }
+        },
         "modifiers": [
             "double",
             "low"
@@ -948,6 +1312,13 @@
         "hits": "same",
         "height": "low",
         "type": "thrust",
+        "frames": {
+            "startup": 11,
+            "advantage": {
+                "hit": 4,
+                "guard": 2
+            }
+        },
         "modifiers": []
     },
     {
@@ -965,6 +1336,13 @@
         "side": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 2
+            }
+        },
         "modifiers": []
     },
     {
@@ -983,6 +1361,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 23,
+            "advantage": {
+                "hit": 13,
+                "guard": 8
+            }
+        },
         "modifiers": []
     },
     {
@@ -1001,6 +1386,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 12,
+                "guard": 3
+            }
+        },
         "modifiers": [
             "jump"
         ]
@@ -1021,6 +1413,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 2
+            }
+        },
         "modifiers": []
     },
     {
@@ -1038,6 +1437,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 10,
+            "advantage": {
+                "hit": 4,
+                "guard": 0
+            }
+        },
         "modifiers": []
     },
     {
@@ -1053,6 +1459,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 10,
+                "guard": 5
+            }
+        },
         "modifiers": [
             "double"
         ]
@@ -1070,6 +1483,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 6,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -1087,6 +1507,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 21,
+            "advantage": {
+                "hit": 13,
+                "guard": 13
+            }
+        },
         "modifiers": [
             "break",
             "jump"
@@ -1108,6 +1535,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 11,
+            "advantage": {
+                "hit": 3,
+                "guard": 0
+            }
+        },
         "modifiers": [
             "jump"
         ]
@@ -1128,6 +1562,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 23,
+            "advantage": {
+                "hit": 12,
+                "guard": 6
+            }
+        },
         "modifiers": [
             "jump"
         ]
@@ -1148,6 +1589,13 @@
         "hits": "same",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 10,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -1166,6 +1614,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 12,
+                "guard": 12
+            }
+        },
         "modifiers": [
             "break",
             "jump"
@@ -1186,6 +1641,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 10,
+            "advantage": {
+                "hit": 3,
+                "guard": 1
+            }
+        },
         "modifiers": []
     },
     {
@@ -1204,6 +1666,13 @@
         "hits": "same",
         "height": "low",
         "type": "horizontal",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 10,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -1222,6 +1691,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -1240,6 +1716,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 8,
+                "guard": 6
+            }
+        },
         "modifiers": []
     },
     {
@@ -1257,6 +1740,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -1275,6 +1765,13 @@
         "hits": "same",
         "height": "low",
         "type": "horizontal",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 6,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -1293,6 +1790,13 @@
         "hits": "diff",
         "height": "low",
         "type": "horizontal",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 9,
+                "guard": 3
+            }
+        },
         "modifiers": [
             "duck"
         ]
@@ -1313,6 +1817,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 10,
+            "advantage": {
+                "hit": 3,
+                "guard": 1
+            }
+        },
         "modifiers": []
     },
     {
@@ -1331,6 +1842,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 9,
+                "guard": 3
+            }
+        },
         "modifiers": [
             "duck"
         ]
@@ -1348,6 +1866,13 @@
         "side": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 8,
+                "guard": 3
+            }
+        },
         "modifiers": [
             "double"
         ]
@@ -1367,6 +1892,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 24,
+            "advantage": {
+                "hit": 15,
+                "guard": 15
+            }
+        },
         "modifiers": [
             "break"
         ]
@@ -1387,6 +1919,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 7,
+                "guard": 1
+            }
+        },
         "modifiers": []
     },
     {
@@ -1404,6 +1943,13 @@
         "side": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 7,
+                "guard": 2
+            }
+        },
         "modifiers": [
             "parry"
         ]
@@ -1423,6 +1969,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 12,
+                "guard": 12
+            }
+        },
         "modifiers": [
             "break"
         ]
@@ -1443,6 +1996,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 19,
+            "advantage": {
+                "hit": 11,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -1458,6 +2018,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 9,
+                "guard": 8
+            }
+        },
         "modifiers": [
             "stop"
         ]
@@ -1478,6 +2045,13 @@
         "hits": "same",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 19,
+            "advantage": {
+                "hit": 11,
+                "guard": 11
+            }
+        },
         "modifiers": [
             "break"
         ]
@@ -1497,6 +2071,13 @@
         "side": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 7,
+                "guard": 5
+            }
+        },
         "modifiers": []
     },
     {
@@ -1514,6 +2095,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -1532,6 +2120,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 7,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -1550,6 +2145,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 9,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -1568,6 +2170,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 7,
+                "guard": 6
+            }
+        },
         "modifiers": []
     },
     {
@@ -1585,6 +2194,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 8,
+                "guard": 2
+            }
+        },
         "modifiers": [
             "strafe"
         ]
@@ -1604,6 +2220,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 9,
+                "guard": 3
+            }
+        },
         "modifiers": [
             "duck"
         ]
@@ -1623,6 +2246,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 19,
+            "advantage": {
+                "hit": 11,
+                "guard": 4
+            }
+        },
         "modifiers": [
             "duck"
         ]
@@ -1642,6 +2272,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 21,
+            "advantage": {
+                "hit": 12,
+                "guard": 5
+            }
+        },
         "modifiers": []
     },
     {
@@ -1660,6 +2297,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 8,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -1678,6 +2322,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 17,
+            "advantage": {
+                "hit": 10,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -1696,6 +2347,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 9,
+                "guard": 4
+            }
+        },
         "modifiers": [
             "jump"
         ]
@@ -1715,6 +2373,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 7,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -1732,6 +2397,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 7,
+                "guard": 2
+            }
+        },
         "modifiers": []
     },
     {
@@ -1749,6 +2421,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 11,
+            "advantage": {
+                "hit": 5,
+                "guard": 1
+            }
+        },
         "modifiers": []
     },
     {
@@ -1764,6 +2443,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 12,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -1782,6 +2468,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 22,
+            "advantage": {
+                "hit": 14,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -1799,6 +2492,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 23,
+            "advantage": {
+                "hit": 14,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -1814,6 +2514,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 10,
+                "guard": 6
+            }
+        },
         "modifiers": []
     },
     {
@@ -1829,6 +2536,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 24,
+            "advantage": {
+                "hit": 15,
+                "guard": 15
+            }
+        },
         "modifiers": [
             "break"
         ]
@@ -1848,6 +2562,13 @@
         "hits": "same",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 8,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -1865,6 +2586,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 2
+            }
+        },
         "modifiers": []
     },
     {
@@ -1882,6 +2610,13 @@
         "hits": "diff",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 12,
+                "guard": 5
+            }
+        },
         "modifiers": [
             "strafe"
         ]
@@ -1902,6 +2637,13 @@
         "hits": "diff",
         "height": "low",
         "type": "thrust",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 7,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -1919,6 +2661,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 2
+            }
+        },
         "modifiers": []
     },
     {
@@ -1936,6 +2685,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 18,
+            "advantage": {
+                "hit": 10,
+                "guard": 4
+            }
+        },
         "modifiers": [
             "strafe"
         ]
@@ -1956,6 +2712,13 @@
         "hits": "diff",
         "height": "low",
         "type": "horizontal",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 5,
+                "guard": 2
+            }
+        },
         "modifiers": [
             "duck"
         ]
@@ -1976,6 +2739,13 @@
         "hits": "same",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 15,
+            "advantage": {
+                "hit": 8,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -1993,6 +2763,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 20,
+            "advantage": {
+                "hit": 9,
+                "guard": 4
+            }
+        },
         "modifiers": [
             "parry"
         ]
@@ -2013,6 +2790,13 @@
         "hits": "diff",
         "height": "low",
         "type": "horizontal",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 6,
+                "guard": 3
+            }
+        },
         "modifiers": []
     },
     {
@@ -2030,6 +2814,13 @@
         "hits": "same",
         "height": "mid",
         "type": "vertical",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 6,
+                "guard": 5
+            }
+        },
         "modifiers": []
     },
     {
@@ -2047,6 +2838,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 23,
+            "advantage": {
+                "hit": 14,
+                "guard": 5
+            }
+        },
         "modifiers": []
     },
     {
@@ -2064,6 +2862,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 6,
+                "guard": 4
+            }
+        },
         "modifiers": []
     },
     {
@@ -2082,6 +2887,13 @@
         "hits": "diff",
         "height": "high",
         "type": "horizontal",
+        "frames": {
+            "startup": 13,
+            "advantage": {
+                "hit": 7,
+                "guard": 2
+            }
+        },
         "modifiers": []
     },
     {
@@ -2099,6 +2911,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 7,
+                "guard": 5
+            }
+        },
         "modifiers": []
     },
     {
@@ -2114,6 +2933,13 @@
         "hits": "same",
         "height": "low",
         "type": "horizontal",
+        "frames": {
+            "startup": 16,
+            "advantage": {
+                "hit": 7,
+                "guard": 1
+            }
+        },
         "modifiers": [
             "duck",
             "double"
@@ -2135,6 +2961,13 @@
         "hits": "same",
         "height": "mid",
         "type": "thrust",
+        "frames": {
+            "startup": 14,
+            "advantage": {
+                "hit": 8,
+                "guard": 6
+            }
+        },
         "modifiers": [
             "stop"
         ]
@@ -2155,6 +2988,13 @@
         "hits": "same",
         "height": "low",
         "type": "horizontal",
+        "frames": {
+            "startup": 12,
+            "advantage": {
+                "hit": 5,
+                "guard": 2
+            }
+        },
         "modifiers": []
     },
     {
@@ -2170,6 +3010,13 @@
         "hits": "diff",
         "height": "high",
         "type": "thrust",
+        "frames": {
+            "startup": 11,
+            "advantage": {
+                "hit": 5,
+                "guard": 1
+            }
+        },
         "modifiers": []
     }
 ]

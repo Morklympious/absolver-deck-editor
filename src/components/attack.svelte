@@ -7,42 +7,39 @@
     use:click
     use:hover
 >
-    {#if !empty}
-    <div class="style">
-        <StyleIcon style={attack.style} />
-    </div>
-
-    <div class="meta">
-        {#if modifiers.includes("double")}
-        <div class="meta-trait">DBL</div>
-        {/if}
-
-        {#if modifiers.includes("break")}
-        <div class="meta-trait">GRB</div>
-        {/if}
-
-        {#if modifiers.includes("stop")}
-        <div class="meta-trait">STP</div>
-        {/if}
-
-        {#if modifiers.includes("jump")}
-        <div class="meta-trait">JMP</div>
-        {/if}
-
-        {#if modifiers.includes("duck")}
-        <div class="meta-trait">DUC</div>
-        {/if}
-
-        {#if modifiers.includes("strafe")}
-        <div class="meta-trait">STF</div>
-        {/if}
-    </div>
-    {/if}
-
-
     {#if empty}
-    <EmptyIcon />
-    {/if}    
+        <EmptyIcon />
+    {:else}    
+        <div class="style">
+            <StyleIcon style={attack.style} />
+        </div>
+
+        <div class="meta">
+            {#if modifiers.includes("double")}
+            <div class="meta-trait">DBL</div>
+            {/if}
+
+            {#if modifiers.includes("break")}
+            <div class="meta-trait">GRB</div>
+            {/if}
+
+            {#if modifiers.includes("stop")}
+            <div class="meta-trait">STP</div>
+            {/if}
+
+            {#if modifiers.includes("jump")}
+            <div class="meta-trait">JMP</div>
+            {/if}
+
+            {#if modifiers.includes("duck")}
+            <div class="meta-trait">DUC</div>
+            {/if}
+
+            {#if modifiers.includes("strafe")}
+            <div class="meta-trait">STF</div>
+            {/if}
+        </div>
+    {/if}
 </div>
 
 <script>
@@ -60,12 +57,13 @@ export let attack = false;
 export let target;
 
 $: ({
-    name = "",
-    height,
-    type,
-    stance,
+    name      = "",
+    height    = "mid",
+    type      = "thrust",
+    stance    = false,
+    frames    = false,
     modifiers = [],
-    _meta = {}
+    _meta     = {}
 } = attack);
 
 $: empty = _meta.empty;

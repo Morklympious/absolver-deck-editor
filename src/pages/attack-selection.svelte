@@ -1,13 +1,13 @@
-<svelte:window on:keydown={({ key }) => key === "Escape" ? service.send("BACK") : false } />
+<svelte:window on:keydown={({ key }) => key === "Escape" ? state.send("BACK") : false } />
 
 <div class="container">
-    <button class="back" on:click={() => service.send("BACK")}> BACK </button>
+    <button class="back" use:back > BACK </button>
     <div class="structure">
         <String 
             quadrant={string} 
             attacks={active}
             target={slot.column}
-            on:selection={({ detail }) => service.send("NEW_TARGET", detail)} 
+            on:selection={({ detail }) => state.send("NEW_TARGET", detail)} 
         />
 
         <div class="selection">
@@ -19,7 +19,7 @@
                     {#each attacks as attack (attack.name)}
                         <Attack 
                             {attack}
-                            on:selection={() => service.send("ATTACK_SELECTED", { attack })}
+                            on:selection={() => state.send("ATTACK_SELECTED", { attack })}
                             on:hover={({ detail : attack }) => (selected = attack)}
                         />
                     {/each} 
@@ -48,12 +48,15 @@
 {/each}
 
 <script>
-import { service } from "state/state.js";
+import { state } from "state/state.js";
+import transition from "actions/send-state.js";
 import { primaries, alternates } from "stores/deck.js";
 
 import String from "components/attack-string.svelte";
 import Attack from "components/attack.svelte";
 import Stance from "components/icons/stance-icon.svelte";
+
+const back = transition("BACK");
 
 // This all comes from the state chart.
 export let pool;
@@ -117,6 +120,8 @@ $: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
         flex-flow: row wrap;
 
         font-size: 0.8rem;
+
+        flex: 1;
     }
 
     .selection {
@@ -135,6 +140,8 @@ $: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
         flex-flow: column nowrap;
 
         grid-area: structure;
+
+        overflow: hidden;
     }
     
     .metadata {

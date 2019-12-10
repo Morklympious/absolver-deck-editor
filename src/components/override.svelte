@@ -1,17 +1,20 @@
 <div class="fullscreen">
-
     <div class="modal">
         <p> You've slotted a move that is incompatible with the moves that come after it.</p>
         <p> Would you like to place this move anyway? </p>
         <div class="actions">
-            <button class="button" on:click={() => service.send("ACCEPT")}>Yes</button> 
-            <button class="button" on:click={() => service.send("REJECT")}>No</button>
+            <button class="button" use:accept> Yes </button> 
+            <button class="button" use:reject> No </button>
         </div>
     </div>
 </div>
 
 <script>
-import { service } from "state/state.js";
+import { state } from "state/state.js";
+import transition from "actions/send-state.js";
+
+const accept = transition("ACCEPT");
+const reject = transition("REJECT");
 </script>
 
 <style>

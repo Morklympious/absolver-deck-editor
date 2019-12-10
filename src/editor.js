@@ -1,6 +1,7 @@
-import Editor from "components/application.svelte";
+import Application from "pages/application.svelte";
 
-import hydrate from "utilities/url-hydrate.js";
-new Editor({
+new Application({
     target : document.body,
 });
+
+

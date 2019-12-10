@@ -5,11 +5,12 @@ import { alternates, primaries, reset } from "stores/deck.js";
 import { equip } from "stores/weapon.js";
 import { insert, remove } from "stores/utilities.js";
 
+import storify from "utilities/chart-store.js";
 import followups from "utilities/followups.js";
 import compatible from "utilities/compatible.js";
 
-import Overview from "components/deck-overview.svelte";
-import Selection from "components/attack-selection.svelte";
+import Overview from "pages/deck-overview.svelte";
+import Selection from "pages/attack-selection.svelte";
 import Override from "components/override.svelte";
 
 const { assign } = actions;
@@ -34,6 +35,7 @@ const statechart = machine({
     on : {
         OVERVIEW : ".overview",
         
+        // TODO: Warn the user before resetting the deck, probably.
         EQUIP_SWORD : {
             actions : [
                 () => reset(),
@@ -70,7 +72,6 @@ const statechart = machine({
                     actions : [
                         assign({
                             slot   : ({ slot }, { column }) => Object.assign(slot, { column }),
-                            cell   : (context, { attack }) => attack,
                             target : (context, { attack }) => attack,
                             pool   : ({ slot }, { quadrant }) =>
                                 followups(quadrant, slot.alternate ? { exclude : [ quadrant ] } : {}),
@@ -185,15 +186,16 @@ const statechart = machine({
     },
 });
 
-const service = interpret(statechart);
+// This is a store that listens to transitions on the statechart,
+// it also exposes the service it creates so xstate-component-tree can work.
+const state = storify(statechart);
 
-service.start();
+state.start();
 
-window.service = service;
-
-const tree = (callback) => xct(service, callback);
+const tree = (callback) => xct(state.service, callback);
 
 export {
-    service,
     tree,
+
+    state,
 };

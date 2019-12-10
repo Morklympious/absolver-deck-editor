@@ -80,7 +80,7 @@ const configure = (quadrant, attacks) => {
          */
         _meta.begins = previous._meta.empty ? quadrant : previous._meta.ends;
         _meta.ends = _meta.empty ? quadrant : atkstance[_meta.begins];
-
+        
         return;
     });
     
