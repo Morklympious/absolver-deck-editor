@@ -3,10 +3,6 @@ import { writable, derived } from "svelte/store";
 import { combo, configure } from "stores/utilities.js";
 
 import quadrants from "utilities/quadrants.js";
-import { encode, decode } from "utilities/encoder.js";
-
-window._encode = encode;
-window._decode = decode;
 
 // Data structures representing the entire state of primary
 // strings and alternates in our deck.
@@ -35,6 +31,14 @@ const deck = derived([ primaries, alternates ], ([ _p, _a ], set) => {
     set(map);
 });
 
+const equipped = derived([ primaries, alternates ], ([ _p, _a ], set) => {
+    const attacks = [ ..._p, ..._a ];
+    const reduced = attacks.reduce((collector, current) => [ ...collector, ...current ], []);
+    const names = reduced.map(({ name = "" }) => name);
+
+    set(names);
+});
+
 const reset = () => {
     primaries.set(combo(3));
     alternates.set(combo(1));
@@ -43,6 +47,7 @@ const reset = () => {
 export {
     primaries,
     alternates,
+    equipped,
 
     deck,
     reset,

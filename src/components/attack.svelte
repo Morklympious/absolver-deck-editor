@@ -38,6 +38,10 @@
             {#if modifiers.includes("strafe")}
             <div class="meta-trait">STF</div>
             {/if}
+
+            {#if equipped}
+            <div class="meta-trait">EQPPED</div>
+            {/if}
         </div>
     {/if}
 </div>
@@ -54,7 +58,8 @@ import StyleIcon from "components/icons/style-icon.svelte";
 const bubble = createEventDispatcher();
 
 export let attack = false;
-export let target;
+export let target = false;
+export let equipped = false;
 
 $: ({
     name      = "",

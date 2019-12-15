@@ -1,31 +1,57 @@
+<svelte:window on:keydown={({ key }) => key === "Escape" ? state.send("BACK") : false } />
+
 <div class="menu">
     <div class="section title">
         Absolver.dev 
     </div>
 
-    {#if overview}
     <div class="section toggle">
-        <WeaponToggle />
+        <button 
+            class="weapon barehands" 
+            {disabled}
+            data-active={hands}
+            use:barehands
+        >
+            Fist
+        </button>
 
-        <div class="section share">
-            <button 
-                class="button"
-                on:click={() => console.log(encode($deck))}
-            > 
-                share 
-            </button>
-        </div>
+        <button 
+            class="weapon sword" 
+            {disabled}
+            data-active={blade}
+            use:sword
+        >
+            Sword
+        </button>
     </div>
-    {/if}    
+
+    <div class="section share">
+        <button 
+            class="button"
+            on:click={() => console.log(encode($deck))}
+        > 
+            share 
+        </button>
+    </div>
 </div>
 
 <script>
 import { state } from "state/state.js"
 import { deck } from "stores/deck.js";
-import { encode } from "utilities/encoder.js";
-import WeaponToggle from "components/weapon-toggle.svelte";
+import weapon, { equip } from "stores/weapon.js";
 
-$: overview = $state.value === "overview";
+import transition from "actions/send-state.js";
+
+import { encode } from "utilities/encoder.js";
+
+$: overview = $state.matches("overview");
+$: disabled = !overview;
+
+const sword = transition("EQUIP_SWORD");
+const barehands = transition("EQUIP_BAREHANDS");
+
+$: hands = $weapon === "barehands";
+$: blade = $weapon === "sword";
 </script>
 
 <style>

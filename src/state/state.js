@@ -81,6 +81,8 @@ const statechart = machine({
                 
                 ATTACK_SELECTED : [
                     // Error: Invalid move selected for slot
+                    // TODO: A state to handle slotting already equipped moves
+                    // that might be elsewhere in the deck. old move gotta go, new move gotta be slotted.
                     {
                         target : ".override",
 

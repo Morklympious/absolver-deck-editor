@@ -1,7 +1,4 @@
-<svelte:window on:keydown={({ key }) => key === "Escape" ? state.send("BACK") : false } />
-
 <div class="container">
-    <button class="back" use:back > BACK </button>
     <div class="structure">
         <String 
             quadrant={string} 
@@ -19,6 +16,7 @@
                     {#each attacks as attack (attack.name)}
                         <Attack 
                             {attack}
+                            equipped={$equipped.includes(attack.name)}
                             on:selection={() => state.send("ATTACK_SELECTED", { attack })}
                             on:hover={({ detail : attack }) => (selected = attack)}
                         />
@@ -50,7 +48,7 @@
 <script>
 import { state } from "state/state.js";
 import transition from "actions/send-state.js";
-import { primaries, alternates } from "stores/deck.js";
+import { primaries, alternates, equipped } from "stores/deck.js";
 
 import String from "components/attack-string.svelte";
 import Attack from "components/attack.svelte";
