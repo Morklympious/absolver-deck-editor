@@ -7,7 +7,7 @@
 
     <div class="section toggle">
         <button 
-            class="weapon barehands" 
+            class="button barehands" 
             {disabled}
             data-active={hands}
             use:barehands
@@ -16,7 +16,7 @@
         </button>
 
         <button 
-            class="weapon sword" 
+            class="button sword" 
             {disabled}
             data-active={blade}
             use:sword
@@ -28,10 +28,12 @@
     <div class="section share">
         <button 
             class="button"
-            on:click={() => console.log(encode($deck))}
+            on:click={() => (encoded = encode($deck))}
         > 
             share 
         </button>
+
+        <input class="input" type="text" bind:value={encoded} />
     </div>
 </div>
 
@@ -43,6 +45,8 @@ import weapon, { equip } from "stores/weapon.js";
 import transition from "actions/send-state.js";
 
 import { encode } from "utilities/encoder.js";
+
+let encoded = "";
 
 $: overview = $state.matches("overview");
 $: disabled = !overview;
@@ -73,7 +77,7 @@ $: blade = $weapon === "sword";
     border: 0;
     padding: 0 1rem;
     color: #DDD;
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .section {
@@ -83,19 +87,48 @@ $: blade = $weapon === "sword";
     justify-content: center;
     align-items: center;
 
-    padding-left: 1rem;
-    margin-left: 1rem;
+    padding: 1rem;
     border-left: 0.1rem solid black;
 }
 
 .share {
-    margin-left: 1rem;
     border-left: 0.1rem solid black;
+    width: 100%;
 }
 
 .button {
     outline: 0;
     width: 6rem;
-    height: 100%;
+    height: 3rem;
+
+    background: #222;
+    border: 0;
+
+    outline: 0.1rem solid transparent;
+    color: #eee;
+
+    transition: all 250ms linear;
+}
+
+.button:hover {
+    background: #666;
+}
+.button + .button {
+    margin-left: 0.5rem;
+}
+
+.button[data-active="true"] {
+    outline: 0.1rem solid #feec55;
+}
+
+.button[disabled] {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.input {
+    flex: 1;
+    height: 2.5rem;
+    margin: 0 1rem;
 }
 </style>
