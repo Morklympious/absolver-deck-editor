@@ -1,10 +1,16 @@
 <div class="container">
+    <button class="back" use:back> ⬅ </button>
     <div class="structure">
         <String 
             quadrant={string} 
             attacks={active}
             target={slot.column}
-            on:selection={({ detail }) => state.send("NEW_TARGET", detail)} 
+            on:selection={
+                ({ detail }) => {
+                    selected = detail.attack;
+                    state.send("NEW_TARGET", detail)
+                }
+            } 
         />
 
         <div class="selection">
@@ -29,13 +35,7 @@
     <div class="metadata">
         <div class="metadata-card">
             {#if selected}
-            <h1>{selected.name}</h1>
-            <div class="attack">
-            
-            </div>
-            <div class="stats">
-                Coming Soon!
-            </div>
+                <Info attack={selected} />
             {/if}
         </div>
     </div>
@@ -51,7 +51,8 @@ import transition from "actions/send-state.js";
 import { primaries, alternates, equipped } from "stores/deck.js";
 
 import String from "components/attack-string.svelte";
-import Attack from "components/attack.svelte";
+import Attack from "components/attack-tile.svelte";
+import Info from "components/attack-info.svelte";
 import Stance from "components/icons/stance-icon.svelte";
 
 const back = transition("BACK");
@@ -85,6 +86,8 @@ $: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
     .container {
         --attack-tile-height: 6.5rem;
         --attack-tile-width: 6.5rem;
+
+        position: relative;
 
         display: grid;
         grid-template:
@@ -140,30 +143,5 @@ $: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
         grid-area: structure;
 
         overflow: hidden;
-    }
-    
-    .metadata {
-        grid-area: metadata;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        color: #CCC;
-    }
-
-    .metadata-card {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-flow: column nowrap;
-    }
-
-    .stats {
-        padding: 1rem;
-        background: #444;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 </style>

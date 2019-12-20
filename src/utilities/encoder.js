@@ -1,5 +1,6 @@
 import Hash from "hashids";
 import { primaries, alternates } from "stores/deck.js";
+import { equip, equipped } from "stores/weapon.js";
 
 // Every attack.
 import { all as attacks } from "data/all.js";
@@ -8,6 +9,12 @@ import { all as attacks } from "data/all.js";
 // Clarifier: For decoding indexes back into attacks.
 const obfuscator = new Map(attacks.map((attack, index) => ([ attack.name, index ])));
 const clarifier  = new Map(attacks.map((attack, index) => ([ index, attack ])));
+
+obfuscator.set("barehands", 1000);
+clarifier.set(1000, "barehands");
+
+obfuscator.set("sword", 2000);
+clarifier.set(2000, "sword");
 
 // Return 404 for empty attacks (attacks without names);
 obfuscator.set(false, 404);
@@ -40,7 +47,7 @@ const deconstruct = (deck) => {
     const primitives = flattened.map((attack) =>
         (attack._meta.empty ? obfuscator.get(false) : obfuscator.get(attack.name)));
 
-    return primitives;
+    return [ ...primitives, obfuscator.get(equipped()) ];
 };
 
 const reconstruct = (flattened) => {
@@ -49,6 +56,7 @@ const reconstruct = (flattened) => {
         FL1, FL2, FL3, FLA,
         BL1, BL2, BL3, BLA,
         BR1, BR2, BR3, BRA,
+        WEAPON,
     ] = flattened.map((code, index) => {
         if(!clarifier.has(code)) {
             return {};
@@ -89,12 +97,14 @@ const reconstruct = (flattened) => {
         target : alternates,
     })));
 
+    equip(WEAPON);
+    
     return { primaries : ip, alternates : ia };
 };
 
 /**
  *
- * @param {Array} attacks - A flat array of all attacks in the deck.
+ * @param {Array} attacks - A flat array of all attacks in the deck, and the weapon for the deck
  *  [FR1, FR2, FR3, FRALT, FL1, FL2, FL3, FLALT, BL1, BL2, BL3, BLALT, BR1, BR2, BR3, BRALT]
  *
  * @returns An encoded Hex-esque string that can be later decoded.

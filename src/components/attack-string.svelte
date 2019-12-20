@@ -1,5 +1,5 @@
 <div class="string">
-    <Stance {quadrant} />
+    <Stance {quadrant} first />
     {#each attacks as attack, index}
         <Attack 
             {attack}
@@ -12,6 +12,7 @@
                     quadrant : quadify(attack),
                 })
             }}
+            on:hover={({ detail : attack }) => bubble("hover", attack)}
         />
         <Stance 
             empty={attack._meta.empty}
@@ -25,7 +26,7 @@
     import { service } from "state/state.js";
     import weapon from "stores/weapon.js";
 
-    import Attack from "components/attack.svelte";
+    import Attack from "components/attack-tile.svelte";
     import Stance from "components/icons/stance-icon.svelte";
 
     const bubble = createEventDispatcher();

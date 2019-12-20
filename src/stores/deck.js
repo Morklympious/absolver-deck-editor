@@ -4,6 +4,8 @@ import { combo, configure } from "stores/utilities.js";
 
 import quadrants from "utilities/quadrants.js";
 
+import weapon from "stores/weapon.js";
+
 // Data structures representing the entire state of primary
 // strings and alternates in our deck.
 const primaries = writable(combo(3));
@@ -39,6 +41,33 @@ const equipped = derived([ primaries, alternates ], ([ _p, _a ], set) => {
     set(names);
 });
 
+const selected = writable(false);
+
+// Glowing Stance icon
+const followup = derived([ selected, weapon ], ([ _selected, _weapon ], set) => {
+    const { _meta = false } = _selected;
+
+    if(!_selected || !_meta) {
+        return;
+    }
+
+    if(_meta.empty) {
+        set(false);
+
+        return;
+    }
+
+    const { stance } = _selected;
+    const { begins } = _meta;
+
+    set(stance[_weapon][begins]);
+}, false);
+
+followup.subscribe((data) => console.log("glow:", data));
+
+// TODO: Writable for the thing you're currently selecting
+// TODO: Derived from the above writable to highlight followup stance indicators.
+
 const reset = () => {
     primaries.set(combo(3));
     alternates.set(combo(1));
@@ -49,6 +78,9 @@ export {
     alternates,
     equipped,
 
+    selected,
+    followup,
+    
     deck,
     reset,
 };

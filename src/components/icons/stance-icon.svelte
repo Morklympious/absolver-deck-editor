@@ -1,5 +1,5 @@
 <svg class="svg" viewBox="0 0 100 100" data-empty={empty}>
-    <g class="group" fill="gray">
+    <g class="group" fill="{glow ? "#feec55" : "gray"}">
         <polygon class="square" points="0 50, 50 0, 100 50, 50 100" />
         {#if !empty}
         <path class="marker" d="{path}" stroke="black" stroke-width="4"/>
@@ -8,8 +8,16 @@
 </svg>
 
 <script>
-    export let quadrant = "FRONT_RIGHT";
+    import { followup } from "stores/deck.js";
+
+    export let quadrant = false;
     export let empty = false;
+    
+    // This is used to tell this component that it's 
+    // the stance indicator for the first second or third move, basically.
+    // It's used to make the icon glow on attack hover if a move ends there.
+    export let first = false;
+
     
     const stances = {
         FRONT_LEFT : "40 25 L 10 10 L 25 40 Z",
@@ -19,6 +27,7 @@
     };
 
     $: path = `M 50 50 L ${stances[quadrant]}`;
+    $: glow = first && ($followup === quadrant);
 </script>
 
 <style>
@@ -38,6 +47,6 @@
     }
 
     .marker { 
-        fill: black;
+        fill: #EEE;
     }
 </style>

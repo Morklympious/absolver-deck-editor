@@ -1,6 +1,7 @@
 <div 
     class="flex container" 
     data-current-target={target}
+    data-equipped={equipped}
     {style}
     on:click={() => bubble("selection", attack)}
     on:mouseenter={() => bubble("hover", attack)}
@@ -37,10 +38,6 @@
 
             {#if modifiers.includes("strafe")}
             <div class="meta-trait">STF</div>
-            {/if}
-
-            {#if equipped}
-            <div class="meta-trait">EQPPED</div>
             {/if}
         </div>
     {/if}

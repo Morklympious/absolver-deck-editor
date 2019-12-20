@@ -1,4 +1,4 @@
-import { Machine, interpret, actions } from "xstate";
+import { Machine, actions } from "xstate";
 import xct from "xstate-component-tree";
 
 import { alternates, primaries, reset } from "stores/deck.js";

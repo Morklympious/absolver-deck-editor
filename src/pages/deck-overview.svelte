@@ -20,6 +20,7 @@
                             }
                         }
                     )}
+                    on:hover={({ detail }) => set(detail)}
                 />
             </div>
 
@@ -41,6 +42,7 @@
                             }
                         }
                     )}
+                    on:hover={({ detail }) => set(detail)}
                 />
             </div>
         </div>
@@ -53,10 +55,13 @@ import followups from "utilities/followups.js";
 
 import String from "components/attack-string.svelte";
 
-import { deck } from "stores/deck.js";
+import { deck, selected } from "stores/deck.js";
 import { state } from "state/state.js";
 
 $: rows = $deck;
+$: console.log($selected);
+
+const set = (attack) => selected.set(attack)
 </script>
 
 <style>

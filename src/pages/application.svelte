@@ -1,4 +1,4 @@
-<div class="application">
+<div class="application variables">
     <div class="menu">
         <MenuBar />
     </div>
@@ -45,7 +45,14 @@ if(deck) {
 </script>
 
 <style>
+    .variables {
+        --color-gray: #444;
+        --color-gray-darker: #444;
+        --color-gray-lighter: #666;
+    }
+
     .application {
+
         display: grid;
 
         grid-template: 
