@@ -74,6 +74,21 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 </script>
 
 <style>
+
+    @keyframes oscillate {
+        0% {
+            outline: 0.15rem solid transparent;
+        }
+
+        50% {
+            outline : 0.15rem solid var(--color-gold);
+        }
+
+        100% {
+            outline: 0.15rem solid transparent;
+        }
+    }
+
     .flex {
         display: flex;
         justify-content: center;
@@ -96,12 +111,11 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
         cursor : pointer;
     }
 
+    .container:hover,
     .container[data-current-target="true"] {
-        box-shadow: 0 0 0 0.1rem inset rgb(255, 234, 116);
-    }
-
-    .container:hover {
-        outline: 0.15rem solid;
+        animation-name: oscillate;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
     }
 
     .style {

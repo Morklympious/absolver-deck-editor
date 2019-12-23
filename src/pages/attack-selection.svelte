@@ -1,5 +1,4 @@
 <div class="container">
-    <button class="back" use:back> ⬅ </button>
     <div class="structure">
         <String 
             quadrant={string} 
@@ -72,17 +71,6 @@ $: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
 </script>
 
 <style>
-    .back {
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        margin: 2rem;
-
-        height: 2rem;
-        width: 4rem;
-    }
-
     .container {
         --attack-tile-height: 6.5rem;
         --attack-tile-width: 6.5rem;

@@ -1,5 +1,5 @@
 <svg class="svg" viewBox="0 0 100 100" data-empty={empty}>
-    <g class="group" fill="{glow ? "#feec55" : "gray"}">
+    <g class="group" data-glow={glow}>
         <polygon class="square" points="0 50, 50 0, 100 50, 50 100" />
         {#if !empty}
         <path class="marker" d="{path}" stroke="black" stroke-width="4"/>
@@ -48,5 +48,13 @@
 
     .marker { 
         fill: #EEE;
+    }
+
+    .group {
+        fill: var(--color-gray);
+    }
+
+    .group[data-glow="true"] {
+        fill: var(--color-gold);
     }
 </style>

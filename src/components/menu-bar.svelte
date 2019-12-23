@@ -1,8 +1,15 @@
 <svelte:window on:keydown={({ key }) => key === "Escape" ? state.send("BACK") : false } />
 
 <div class="menu">
+
     <div class="section title">
-        Absolver.dev 
+        {#if overview} 
+            Absolver.dev 
+        {:else}
+            <span class="return" on:click={() => state.send("BACK")}>
+                {@html "&larr;"} Overview
+            </span>
+        {/if}
     </div>
 
     <div class="section toggle">
@@ -28,9 +35,9 @@
     <div class="section share">
         <button 
             class="button"
-            on:click={() => (encoded = encode($deck))}
+            on:click={() => (encoded = window.location.href + `?deck=${encode($deck)}`)}
         > 
-            share 
+            Share 
         </button>
 
         <input class="input" type="text" bind:value={encoded} />
@@ -77,15 +84,15 @@ $: blade = $weapon === "sword";
     border: 0;
     padding: 0 1rem;
     color: #DDD;
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 
 .section {
     height: 100%;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    width: 20%;
 
     padding: 1rem;
     border-left: 0.1rem solid black;
@@ -118,7 +125,7 @@ $: blade = $weapon === "sword";
 }
 
 .button[data-active="true"] {
-    outline: 0.1rem solid #feec55;
+    outline: 0.1rem solid var(--color-gold);
 }
 
 .button[disabled] {
@@ -130,5 +137,9 @@ $: blade = $weapon === "sword";
     flex: 1;
     height: 2.5rem;
     margin: 0 1rem;
+}
+
+.return {
+    cursor: pointer;
 }
 </style>

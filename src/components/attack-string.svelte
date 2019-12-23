@@ -57,6 +57,7 @@
 </script>
             
 <style>
+
     .string {
         display: flex;
         justify-content: center;

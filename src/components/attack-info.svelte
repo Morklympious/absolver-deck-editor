@@ -1,10 +1,15 @@
 <div class="metadata">
     <div class="metadata-card">
-        <h1>{attack.name}</h1>
+        <h1 class="name">{attack.name}</h1>
         <div class="attack" {style}></div>
         <div class="stats">
-            
-        
+
+        {#each stats as { stat, data }} 
+        <div class="stat">
+            <span>{stat}</span>
+            <span>{data}</span>
+        </div>    
+        {/each}
         </div>
     </div>
 </div>
@@ -13,10 +18,29 @@
 
 <script>
 import Attack from "components/attack-tile.svelte";
-export let attack;
+export let attack = false;
 
-$: art = attack.name.split(" ").join("-").toLowerCase();
+$: ({
+    name      = "",
+    height    = "mid",
+    type      = "thrust",
+    stance    = false,
+    style : fstyle = "forsaken",
+    frames    = { advantage : false },
+    modifiers = [],
+    _meta     = { empty : true }
+} = attack);
+
+$: art = name.split(" ").join("-").toLowerCase();
 $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
+$: stats = [
+    { stat : "Name", data : name  },
+    { stat : "Style", data : fstyle },
+    { stat : "Height", data : height },
+    { stat : "Type", data : type },
+    { stat : "Hit", data : frames.advantage.hit},
+    { stat : "Guard", data : frames.advantage.guard},
+];
 </script>
 
 <style>
@@ -28,6 +52,8 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
         align-items: center;
 
         color: #CCC;
+
+        width: var(--attack-info-container-width, 20rem);
     }
 
     .metadata-card {
@@ -35,15 +61,48 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
         justify-content: center;
         align-items: center;
         flex-flow: column nowrap;
+
+        width: 100%;
+    }
+
+    .name {
+        color: var(--color-gold);
+        width: 100%;
+
+        font-size: 1.2rem;
     }
 
     .attack {
-        width: 15rem;
+        width: 100%;
         height: 15rem;
 
         background-position: center;
         background-color: var(--color-gray);
         background-position: center;
         background-repeat: no-repeat;
+    }
+
+    .stats {
+        width: 100%;
+        font-weight: 800;
+    }
+
+    .stat {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 2rem;
+        width: 100%;
+
+        padding: 0.5rem;
+    }
+
+    .stat:nth-of-type(even) {
+        background: var(--color-gray);
+    }
+
+    .stat:nth-of-type(odd) {
+        background: var(--color-gray-dark);
     }
 </style>

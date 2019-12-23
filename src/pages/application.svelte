@@ -46,9 +46,12 @@ if(deck) {
 
 <style>
     .variables {
-        --color-gray: #444;
+        --color-gold: #FBF5DC;
+        --color-gray: #545255;
         --color-gray-darker: #444;
-        --color-gray-lighter: #666;
+        --color-gray-lighter: #677479;
+
+        --attack-info-container-width: 16rem;
     }
 
     .application {
