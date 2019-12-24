@@ -59,7 +59,6 @@ import { deck, selected } from "stores/deck.js";
 import { state } from "state/state.js";
 
 $: rows = $deck;
-$: console.log($selected);
 
 const set = (attack) => selected.set(attack)
 </script>
@@ -91,6 +90,7 @@ const set = (attack) => selected.set(attack)
         display: flex;
         flex-flow: column;
         justify-content: center;
+        height: 100%;
     }
 
     .group {

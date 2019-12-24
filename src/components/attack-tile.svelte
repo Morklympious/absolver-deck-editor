@@ -77,15 +77,15 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 
     @keyframes oscillate {
         0% {
-            outline: 0.15rem solid transparent;
+            outline: 0.15rem solid var(--color-gold);
         }
 
         50% {
-            outline : 0.15rem solid var(--color-gold);
+            outline : 0.15rem solid transparent;
         }
 
         100% {
-            outline: 0.15rem solid transparent;
+            outline: 0.15rem solid var(--color-gold);
         }
     }
 
@@ -101,7 +101,7 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
         height: var(--attack-tile-height, 8rem);
         width: var(--attack-tile-height, 8rem);
         
-        background-color: #333;
+        background-color: rgba(0, 0, 0, 0.55);
         color: #FFF;
 
         background-size: contain;
@@ -109,6 +109,9 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
         background-repeat: no-repeat;
 
         cursor : pointer;
+        user-select: none;
+
+        filter: drop-shadow(0px 0px 2px var(--color-gold))
     }
 
     .container:hover,
@@ -116,6 +119,24 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
         animation-name: oscillate;
         animation-duration: 1.5s;
         animation-iteration-count: infinite;
+    }
+    
+    .container[data-equipped="true"]::before {
+        position: absolute;
+        content: "";
+
+        right: 0;
+        top: 0;
+
+        height: 1rem;
+        width: 1rem;
+
+        margin: 0.15rem;
+        padding: 0.15rem;
+
+        background-image: url(components/icons/equipped-icon.svg);
+        background-color: var(--color-equipped-icon-background);
+        border-radius: 50%;
     }
 
     .style {

@@ -18,29 +18,37 @@
 
 <script>
 import Attack from "components/attack-tile.svelte";
+
 export let attack = false;
+export let quadrant = "FRONT_RIGHT";
+
+const opposite = (side) => side === "LEFT" ? "RIGHT" : "LEFT";
 
 $: ({
     name      = "",
     height    = "mid",
     type      = "thrust",
     stance    = false,
+    hits = "same",
     style : fstyle = "forsaken",
     frames    = { advantage : false },
     modifiers = [],
-    _meta     = { empty : true }
+    _meta     = { empty : true, begins: "" }
 } = attack);
 
+$: [look, face] = quadrant.split("_");
 $: art = name.split(" ").join("-").toLowerCase();
 $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 $: stats = [
     { stat : "Name", data : name  },
     { stat : "Style", data : fstyle },
     { stat : "Height", data : height },
+    { stat : "Side", data : hits === "same" ? face : opposite(face)},
     { stat : "Type", data : type },
     { stat : "Hit", data : frames.advantage.hit},
     { stat : "Guard", data : frames.advantage.guard},
 ];
+
 </script>
 
 <style>

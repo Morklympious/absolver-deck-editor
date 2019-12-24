@@ -34,17 +34,24 @@
 
     <div class="section share">
         <button 
+            data-clipboard-dependent 
+            data-clipboard-text="{`${window.location.host}?deck=${encode($deck)}`}"
             class="button"
-            on:click={() => (encoded = window.location.href + `?deck=${encode($deck)}`)}
         > 
             Share 
         </button>
 
-        <input class="input" type="text" bind:value={encoded} />
+        {#if copied}
+            <div 
+                class="copy-success"
+                transition:fade> Successfully copied deck URL to clipboard! </div>
+        {/if}
     </div>
 </div>
 
 <script>
+import clipboard from "clipboard";
+import { fade } from "svelte-transitions";
 import { state } from "state/state.js"
 import { deck } from "stores/deck.js";
 import weapon, { equip } from "stores/weapon.js";
@@ -53,16 +60,20 @@ import transition from "actions/send-state.js";
 
 import { encode } from "utilities/encoder.js";
 
-let encoded = "";
+const clippy = new clipboard("[data-clipboard-dependent]");
 
-$: overview = $state.matches("overview");
-$: disabled = !overview;
+let copied = false;
 
 const sword = transition("EQUIP_SWORD");
 const barehands = transition("EQUIP_BAREHANDS");
 
+$: overview = $state.matches("overview");
+$: disabled = !overview;
 $: hands = $weapon === "barehands";
 $: blade = $weapon === "sword";
+
+
+clippy.on("success", () => (copied = true))
 </script>
 
 <style>
@@ -73,7 +84,7 @@ $: blade = $weapon === "sword";
     justify-content: flex-start;
 
     background: #444;
-
+    color: #FFF;
     width: 100%;
     height: 100%;
     padding: 0.5rem 0;
@@ -83,8 +94,10 @@ $: blade = $weapon === "sword";
     margin: 0;
     border: 0;
     padding: 0 1rem;
-    color: #DDD;
-    font-size: 1.2rem;
+    
+    width: 15rem;
+
+    font-size: 2rem;
 }
 
 .section {
@@ -92,7 +105,6 @@ $: blade = $weapon === "sword";
 
     display: flex;
     align-items: center;
-    width: 20%;
 
     padding: 1rem;
     border-left: 0.1rem solid black;
@@ -101,6 +113,10 @@ $: blade = $weapon === "sword";
 .share {
     border-left: 0.1rem solid black;
     width: 100%;
+}
+
+.copy-success { 
+    padding: 0 0.5rem;
 }
 
 .button {

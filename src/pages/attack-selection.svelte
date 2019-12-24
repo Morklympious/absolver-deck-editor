@@ -6,7 +6,10 @@
             target={slot.column}
             on:selection={
                 ({ detail }) => {
-                    selected = detail.attack;
+                    (selected = { 
+                        attack : detail.attack, 
+                        quadrant : string
+                    });
                     state.send("NEW_TARGET", detail)
                 }
             } 
@@ -19,11 +22,14 @@
                 </div>
                 <div class="attacks">
                     {#each attacks as attack (attack.name)}
-                        <Attack 
+                        <Attack
                             {attack}
                             equipped={$equipped.includes(attack.name)}
+                            facing="{quadrant.split("_")[1]}"
                             on:selection={() => state.send("ATTACK_SELECTED", { attack })}
-                            on:hover={({ detail : attack }) => (selected = attack)}
+                            on:hover={({ detail : attack }) => {
+                                (selected = { attack, quadrant })
+                            }}
                         />
                     {/each} 
                 </div>
@@ -34,7 +40,7 @@
     <div class="metadata">
         <div class="metadata-card">
             {#if selected}
-                <Info attack={selected} />
+                <Info {...selected} />
             {/if}
         </div>
     </div>
@@ -59,10 +65,9 @@ const back = transition("BACK");
 // This all comes from the state chart.
 export let pool;
 export let children;
-export let combo;
-export let quadrant;
+
 export let string;
-export let target;
+
 export let slot;
 
 let selected = false;
@@ -87,16 +92,24 @@ $: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
         width: 100%;
     }
 
+    .metadata {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .heading {
         display: flex;
         justify-content: center;
         align-items: center;
         
-        padding: 1rem 0 0.5rem 0;
+        padding: 1rem 0;
+        margin-bottom: 0.25rem;
 
         font-size: 1.5rem;
         background: #222;
         color: white;
+        touch-action: none;
     }
 
     .attacks {
@@ -117,9 +130,10 @@ $: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
         background: rgba(0,0,0, 0.3);
 
         /* TODO: Probably repeating grid instead of hardcoding this? lmao. */
-        height: 30rem;
+        height: 70vh;
 
         overflow-y: scroll;
+        padding: 0 0 0.5rem 0;
     }
 
     .structure {

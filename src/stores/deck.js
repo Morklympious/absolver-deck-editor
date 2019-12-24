@@ -63,11 +63,6 @@ const followup = derived([ selected, weapon ], ([ _selected, _weapon ], set) => 
     set(stance[_weapon][begins]);
 }, false);
 
-followup.subscribe((data) => console.log("glow:", data));
-
-// TODO: Writable for the thing you're currently selecting
-// TODO: Derived from the above writable to highlight followup stance indicators.
-
 const reset = () => {
     primaries.set(combo(3));
     alternates.set(combo(1));

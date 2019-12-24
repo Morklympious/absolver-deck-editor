@@ -8,6 +8,7 @@ import { insert, remove } from "stores/utilities.js";
 import storify from "utilities/chart-store.js";
 import followups from "utilities/followups.js";
 import compatible from "utilities/compatible.js";
+import duplicate from "utilities/duplicate.js";
 
 import Overview from "pages/deck-overview.svelte";
 import Selection from "pages/attack-selection.svelte";
@@ -80,7 +81,7 @@ const statechart = machine({
                 },
                 
                 ATTACK_SELECTED : [
-                    // Error: Invalid move selected for slot
+                    // Error: Invalid move selected for slot (stance mismatch or duplicate)
                     // TODO: A state to handle slotting already equipped moves
                     // that might be elsewhere in the deck. old move gotta go, new move gotta be slotted.
                     {
@@ -88,7 +89,7 @@ const statechart = machine({
 
                         // If this attack isn't compatible in the place we're trying to slot it,
                         // we're gonna prompt the user to override the string.
-                        cond : ({ target }, { attack }) => !compatible(target, attack),
+                        cond : ({ target }, { attack }) => (!compatible(target, attack)),
 
                         // Assign the attack into context because if the user chooses
                         // to overwrite the string we need to know what to put
@@ -99,6 +100,11 @@ const statechart = machine({
                             }),
                         ],
                     },
+
+                    // TODO: Add logic to handle duplication
+                    // {
+                        // duplicate(target, attack)
+                    // }
                     
                     // Success: valid move for selected slot
                     {
