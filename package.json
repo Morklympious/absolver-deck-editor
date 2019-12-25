@@ -12,6 +12,7 @@
     "babel": "^6.23.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.7.0",
+    "clipboard": "^2.0.4",
     "eslint": "^6.4.0",
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-svelte3": "^2.7.3",
@@ -30,6 +31,7 @@
     "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-svelte": "^5.1.0",
     "svelte": "^3.12.1",
+    "svelte-transitions": "^1.2.0",
     "xstate": "^4.7.0-rc5",
     "xstate-component-tree": "^1.0.0"
   },

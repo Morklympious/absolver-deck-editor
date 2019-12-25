@@ -76,6 +76,7 @@ export default {
             patterns : [
                 "**/*.svg",
                 "**/*.png",
+                "**/*.jpg",
                 "**/*.mp3",
                 "**/index.html",
                 "**/base.css",
