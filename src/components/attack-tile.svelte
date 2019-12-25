@@ -110,8 +110,6 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 
         cursor : pointer;
         user-select: none;
-
-        filter: drop-shadow(0px 0px 2px var(--color-gold))
     }
 
     .container:hover,

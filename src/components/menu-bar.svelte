@@ -7,7 +7,7 @@
             Absolver.dev 
         {:else}
             <span class="return" on:click={() => state.send("BACK")}>
-                {@html "&larr;"} Overview
+                BACK
             </span>
         {/if}
     </div>
@@ -83,11 +83,13 @@ clippy.on("success", () => (copied = true))
     align-items: center;
     justify-content: flex-start;
 
-    background: #444;
+    background: rgba(255, 255, 255, 0.2);
     color: #FFF;
     width: 100%;
     height: 100%;
     padding: 0.5rem 0;
+
+    border-bottom: 0.1rem solid #000;
 }
 
 .section.title {
@@ -95,7 +97,7 @@ clippy.on("success", () => (copied = true))
     border: 0;
     padding: 0 1rem;
     
-    width: 15rem;
+    width: 18rem;
 
     font-size: 2rem;
 }
