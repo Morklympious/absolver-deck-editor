@@ -14,8 +14,7 @@
                 }
             } 
             on:deletion={
-                ({ detail }) => { 
-                    console.log("STRING SENT TO SELECTION", detail)
+                ({ detail }) => {
                     state.send("DELETING", {
                         slot : {
                             row : slot.row,
@@ -85,7 +84,6 @@ let selected = false;
 
 $: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
 $: alternate = slot.alternate;
-$: console.log($state);
 </script>
 
 <style>

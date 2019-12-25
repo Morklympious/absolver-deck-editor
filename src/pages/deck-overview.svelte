@@ -21,8 +21,7 @@
                         }
                     )}
                     on:deletion={
-                        ({ detail }) => { 
-                            console.log({ row, column : detail.column, alternate })
+                        ({ detail }) => {
                             state.send("DELETING", {
                                 slot  : {
                                     row,

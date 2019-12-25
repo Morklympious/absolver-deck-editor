@@ -13,10 +13,7 @@
                     quadrant : quadify(attack),
                 })
             }}
-            on:deletion={() => {
-                console.log("attack string bubbling deletion", { column : index })
-                bubble("deletion", { column : index });
-            }}
+            on:deletion={() => bubble("deletion", { column : index })}
             on:hover={({ detail : attack }) => bubble("hover", attack)}
         />
         <Stance 
