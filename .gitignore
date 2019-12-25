@@ -58,4 +58,3 @@ typings/
 .env
 
 src/assets/images/Absolver_attack_pictos/**/*
-dist/
