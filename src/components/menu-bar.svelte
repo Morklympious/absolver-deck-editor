@@ -35,7 +35,7 @@
     <div class="section share">
         <button 
             data-clipboard-dependent 
-            data-clipboard-text="{`${window.location.host}?deck=${encode($deck)}`}"
+            data-clipboard-text="{`https://absolver.dev/?deck=${encode($deck)}`}"
             class="button"
         > 
             Share 
