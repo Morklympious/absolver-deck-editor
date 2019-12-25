@@ -1,5 +1,7 @@
 import quadrants from "utilities/quadrants.js";
 import { equipped } from "stores/weapon.js";
+import { primaries, alternates } from "stores/deck.js";
+
 
 /**
  * Generate an empty deck slot object
@@ -107,12 +109,11 @@ const remove = (section, slot, subsequent = false) => {
 
         // !subsequent means we're not deleting all the stuff that comes after the target,
         if(!subsequent) {
-            const attack = row[slot.column];
             // Overwrite the meta object EXCEPT for linked list references.
-            const _meta = Object.assign(attack._meta, empty()._meta);
+            const _meta = Object.assign({}, empty()._meta);
 
             // Create a new object that's empty but contains metadata
-            Object.assign(Object.create(null), { _meta });
+            attacks[slot.column] = Object.assign(Object.create(null), { _meta });
 
             return data;
         }

@@ -8,13 +8,22 @@ import { insert, remove } from "stores/utilities.js";
 import storify from "utilities/chart-store.js";
 import followups from "utilities/followups.js";
 import compatible from "utilities/compatible.js";
-import duplicate from "utilities/duplicate.js";
 
 import Overview from "pages/deck-overview.svelte";
 import Selection from "pages/attack-selection.svelte";
 import Override from "components/override.svelte";
 
-const { assign } = actions;
+const { assign, raise } = actions;
+
+const yeet = (context, { slot }) => {
+    // Remove everything at slot and forward.
+    remove(
+        slot.alternate ? alternates : primaries,
+        slot,
+        // Nuke everything after the target move, too
+        false
+    );
+};
 
 // Lol fuck you eslint
 const machine = Machine;
@@ -56,6 +65,11 @@ const statechart = machine({
         overview : {
             on : {
                 SELECTING : "selecting",
+                DELETING  : {
+                    actions : [
+                        yeet,
+                    ],
+                },
             },
            
             meta : {
@@ -68,7 +82,11 @@ const statechart = machine({
             
             on : {
                 OVERVIEW : "overview",
-
+                DELETING : {
+                    actions : [
+                        yeet,
+                    ],
+                },
                 NEW_TARGET : {
                     actions : [
                         assign({

@@ -10,7 +10,10 @@
 >
     {#if empty}
         <EmptyIcon />
-    {:else}    
+    {:else}   
+        {#if deletable}
+        <div class="delete" on:click|stopPropagation={() => bubble("deletion")}> delete </div>
+        {/if}
         <div class="style">
             <StyleIcon style={attack.style} />
         </div>
@@ -57,6 +60,7 @@ const bubble = createEventDispatcher();
 export let attack = false;
 export let target = false;
 export let equipped = false;
+export let deletable = false;
 
 $: ({
     name      = "",
@@ -117,6 +121,20 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
         animation-name: oscillate;
         animation-duration: 1.5s;
         animation-iteration-count: infinite;
+    }
+
+    .container .delete {
+        display: none;
+    }
+
+    .container:hover .delete {
+        display: block;
+        color: #ff4d4d;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        font-size: 0.8rem;
     }
     
     .container[data-equipped="true"]::before {

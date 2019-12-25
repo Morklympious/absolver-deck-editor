@@ -3,6 +3,7 @@
     {#each attacks as attack, index}
         <Attack 
             {attack}
+            deletable={true}
             target="{target === index}"
             on:selection={({ detail : attack }) => {
                 bubble("selection", { 
@@ -11,6 +12,10 @@
                     attack,
                     quadrant : quadify(attack),
                 })
+            }}
+            on:deletion={() => {
+                console.log("attack string bubbling deletion", { column : index })
+                bubble("deletion", { column : index });
             }}
             on:hover={({ detail : attack }) => bubble("hover", attack)}
         />
@@ -34,6 +39,10 @@
     export let attacks = [];
     export let quadrant = "FRONT_RIGHT";
     export let target;
+
+    // Section is "primary" or "alternate" so we can know which section
+    // to remove moves from.
+    export let section = "";
 
     // Given a cell (a tile that can hold an attack), 
     // calculate what quadrant it belongs to.

@@ -58,6 +58,9 @@ const followups = (source, options = false) => {
             return keys.includes(source) && stance[source] === quadrant;
         });
 
+        // Sort by startup
+        data.sort((a, b) => a.frames.startup - b.frames.startup);
+
         // Giveth me an object with metadata and attacks, brethren
         pool.push({
             stance  : quadrant,

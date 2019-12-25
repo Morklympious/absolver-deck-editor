@@ -20,6 +20,18 @@
                             }
                         }
                     )}
+                    on:deletion={
+                        ({ detail }) => { 
+                            console.log({ row, column : detail.column, alternate })
+                            state.send("DELETING", {
+                                slot  : {
+                                    row,
+                                    column    : detail.column,
+                                    alternate : false,
+                                }
+                            }
+                        )}
+                    }
                     on:hover={({ detail }) => set(detail)}
                 />
             </div>
@@ -42,6 +54,16 @@
                             }
                         }
                     )}
+                    on:deletion={({ detail }) => {   
+                        state.send("DELETING", {
+                            slot  : {
+                                row,
+                                column    : detail.column,
+                                alternate : true,
+                            }
+                        }
+                    )}
+                    }
                     on:hover={({ detail }) => set(detail)}
                 />
             </div>
@@ -55,7 +77,7 @@ import followups from "utilities/followups.js";
 
 import String from "components/attack-string.svelte";
 
-import { deck, selected } from "stores/deck.js";
+import { deck, selected, primaries, alternates } from "stores/deck.js";
 import { state } from "state/state.js";
 
 $: rows = $deck;

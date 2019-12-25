@@ -92,7 +92,7 @@ $: stats = [
 
     .stats {
         width: 100%;
-        font-weight: 800;
+        color: #FFF;
     }
 
     .stat {

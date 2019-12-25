@@ -13,6 +13,19 @@
                     state.send("NEW_TARGET", detail)
                 }
             } 
+            on:deletion={
+                ({ detail }) => { 
+                    console.log("STRING SENT TO SELECTION", detail)
+                    state.send("DELETING", {
+                        slot : {
+                            row : slot.row,
+                            column : detail.column,
+                            alternate,
+                        }
+                    });
+                }
+                }
+            }
         />
 
         <div class="selection">
@@ -65,14 +78,14 @@ const back = transition("BACK");
 // This all comes from the state chart.
 export let pool;
 export let children;
-
 export let string;
-
 export let slot;
 
 let selected = false;
 
 $: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
+$: alternate = slot.alternate;
+$: console.log($state);
 </script>
 
 <style>
