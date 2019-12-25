@@ -1,0 +1,12 @@
+<svg class="svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <style>
+            .path {
+                stroke-width: 20;
+                stroke: white;
+                fill: none;
+            }
+        </style>
+    </defs>
+    <path class="path" d="M 10 50 L 50 80 L 90 10" />
+</svg>
