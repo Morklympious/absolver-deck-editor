@@ -1,11 +1,12 @@
-import { Howl } from "howler";
+// import { Howl } from "howler";
 
 const AUDIO = {
     HOVER : "assets/audio/hover.mp3",
     CLICK : "assets/audio/selection.mp3",
 };
 
-const audio = (source) => new Howl({ src : [ source ] });
+// const audio = (source) => new Howl({ src : [ source ] });
+const audio = () => {};
 
 const action = (event, sound) => (node) => {
     const handler = () => sound.play();
