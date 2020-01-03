@@ -88,12 +88,9 @@ $: alternate = slot.alternate;
 
 <style>
     .container {
-        --attack-tile-height: 6.5rem;
-        --attack-tile-width: 6.5rem;
-
         position: relative;
 
-        display: grid;
+        display: var(--attack-selection-container-display, grid);
         grid-template:
             "structure metadata" 1fr 
             / 2fr 1fr;
@@ -129,7 +126,7 @@ $: alternate = slot.alternate;
 
         padding: 0 0.2rem;
 
-        grid-template-columns: repeat(5, var(--attack-tile-width));
+        grid-template-columns: var(--attack-selection-grid-template-columns, repeat(5, var(--attack-selection-attack-tile-width)));
         flex-flow: row wrap;
 
         font-size: 0.8rem;
@@ -142,7 +139,7 @@ $: alternate = slot.alternate;
 
         /* TODO: Probably repeating grid instead of hardcoding this? lmao. */
         height: 70vh;
-
+        width: var(--attack-selection-attack-pool-width, initial);
         overflow-y: scroll;
         padding: 0 0 0.5rem 0;
     }

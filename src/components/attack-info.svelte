@@ -14,8 +14,6 @@
     </div>
 </div>
 
-
-
 <script>
 import Attack from "components/attack-tile.svelte";
 
@@ -36,7 +34,7 @@ $: ({
     _meta     = { empty : true, begins: "" }
 } = attack);
 
-const scream = (data) => data.toUpperCase()
+const scream = (data = false) => data.toUpperCase ? data.toUpperCase() : data;
 
 $: [look, face] = quadrant.split("_");
 $: art = name.split(" ").join("-").toLowerCase();
@@ -56,8 +54,7 @@ $: stats = [
 <style>
     .metadata {
         grid-area: metadata;
-
-        display: flex;
+        display: var(--attack-selection-attack-info-display, flex);
         justify-content: center;
         align-items: center;
 

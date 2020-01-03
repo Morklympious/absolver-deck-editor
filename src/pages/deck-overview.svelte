@@ -105,7 +105,7 @@ const set = (attack) => selected.set(attack)
     
     .deck {
         grid-area: deck;
-        display: flex;
+        display: var(--deck-overview-deck-display, flex);
         flex-flow: column;
         justify-content: center;
         height: 100%;

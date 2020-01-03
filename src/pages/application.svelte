@@ -56,19 +56,17 @@ if(deck) {
         --color-equipped-icon-background: #e0c220;
 
         --attack-info-container-width: 16rem;
-        
+
         --deck-overview-attack-tile-height: 6.5rem;
         --deck-overview-attack-tile-width: 6.5rem;
+
+        --attack-selection-attack-tile-width: 6.5rem;
+        --attack-selection-attack-tile-height: 6.5rem;
     }
 
     .application {
 
         display: grid;
-
-        grid-template: 
-            "menu" 4rem
-            "content" 1fr
-            / 1fr;
 
         height: 100%;
         font-family: FjallaOne, sans-serif;
@@ -88,13 +86,41 @@ if(deck) {
     }
 
     .menu {
-        grid-area: menu;
+        height: 4rem;
     }
 
     .content {
-        grid-area: content;
         padding: 1.5rem 0;
-
         overflow: hidden;
     }
+
+    @media only screen 
+    and (min-device-width: 320px) 
+    and (max-device-width: 568px)
+    and (-webkit-min-device-pixel-ratio: 2) {
+        .variables {
+            --deck-overview-attack-tile-height: 16rem;
+            --deck-overview-attack-tile-width: 16rem;
+            --deck-overview-deck-display: block;
+
+            /* attack-selection.svelte */
+            --attack-selection-attack-tile-height: 10rem;
+            --attack-selection-attack-tile-width: 10rem;
+            --attack-selection-container-display: block;
+            --attack-selection-attack-pool-width: 100%;
+            --attack-selection-grid-template-columns: repeat(3, 1fr);
+
+            /* attack-info.svelte */
+            --attack-selection-attack-info-display: none;
+        }
+
+        .application {
+            background: none;
+        }
+
+        .content {
+            overflow: auto;
+        }
+    }
+
 </style>
