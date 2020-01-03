@@ -13,7 +13,7 @@ import Overview from "pages/deck-overview.svelte";
 import Selection from "pages/attack-selection.svelte";
 import Override from "components/override.svelte";
 
-const { assign, raise } = actions;
+const { assign } = actions;
 
 const yeet = (context, { slot }) => {
     // Remove everything at slot and forward.

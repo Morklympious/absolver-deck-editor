@@ -19,29 +19,13 @@
         </div>
 
         <div class="meta">
-            {#if modifiers.includes("double")}
-            <div class="meta-trait">DBL</div>
-            {/if}
-
-            {#if modifiers.includes("break")}
-            <div class="meta-trait">GRB</div>
-            {/if}
-
-            {#if modifiers.includes("stop")}
-            <div class="meta-trait">STP</div>
-            {/if}
-
-            {#if modifiers.includes("jump")}
-            <div class="meta-trait">JMP</div>
-            {/if}
-
-            {#if modifiers.includes("duck")}
-            <div class="meta-trait">DUC</div>
-            {/if}
-
-            {#if modifiers.includes("strafe")}
-            <div class="meta-trait">STF</div>
-            {/if}
+            {#each modifiers as modifier}   
+                {#if modifier === "double"}
+                <div class="meta-trait">2X</div>
+                {:else}
+                <div class="meta-trait" style="{stylize(modifier)}"></div>
+                {/if}
+            {/each}
         </div>
     {/if}
 </div>
@@ -75,6 +59,8 @@ $: ({
 $: empty = _meta.empty;
 $: art = name.split(" ").join("-").toLowerCase();
 $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
+
+const stylize = (modifier) => `background-image: url("assets/modifiers/${modifier}.svg")`
 </script>
 
 <style>
@@ -102,13 +88,13 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
     .container {
         position: relative;
 
-        height: var(--attack-tile-height, 8rem);
-        width: var(--attack-tile-height, 8rem);
+        height: var(--deck-overview-attack-tile-height);
+        width: var(--deck-overview-attack-tile-width);
         
         background-color: rgba(0, 0, 0, 0.55);
         color: #FFF;
 
-        background-size: contain;
+        background-size: 90%;
         background-position: center;
         background-repeat: no-repeat;
 
@@ -152,6 +138,9 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 
         background-image: url(components/icons/equipped-icon.svg);
         background-color: var(--color-equipped-icon-background);
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
         border-radius: 50%;
     }
 
@@ -172,8 +161,7 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
     .meta {
         display: flex;
         flex-flow: row nowrap;
-        width: 100%; 
-        height: 1rem;
+        width: 100%;
         padding: 0.2rem;
 
         position: absolute;
@@ -181,9 +169,19 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 
         font-size: 0.6rem;
 
+        justify-content: flex-end;
     }
 
     .meta-trait + .meta-trait {
         padding: 0 0.2rem;
+    }
+
+    .meta-trait {
+        height: 1rem;
+        width: 1rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>

@@ -86,9 +86,6 @@ const set = (attack) => selected.set(attack)
 
 <style>
     .overview {
-        --attack-tile-height: 6.5rem;
-        --attack-tile-width: 6.5rem;
-
         height: 100%;
         width: 100%;
     }

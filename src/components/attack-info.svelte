@@ -1,6 +1,6 @@
 <div class="metadata">
     <div class="metadata-card">
-        <h1 class="name">{attack.name}</h1>
+        <h1 class="name">{scream(attack.name)}</h1>
         <div class="attack" {style}></div>
         <div class="stats">
 
@@ -36,15 +36,17 @@ $: ({
     _meta     = { empty : true, begins: "" }
 } = attack);
 
+const scream = (data) => data.toUpperCase()
+
 $: [look, face] = quadrant.split("_");
 $: art = name.split(" ").join("-").toLowerCase();
 $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 $: stats = [
-    { stat : "Name", data : name  },
-    { stat : "Style", data : fstyle },
-    { stat : "Height", data : height },
-    { stat : "Side", data : hits === "same" ? face : opposite(face)},
-    { stat : "Type", data : type },
+    { stat : "Name", data : scream(name)    },
+    { stat : "Style", data : scream(fstyle) },
+    { stat : "Height", data : scream(height) },
+    { stat : "Side", data : hits === "same" ? scream(face) : scream(opposite(face))},
+    { stat : "Type", data : scream(type) },
     { stat : "Hit", data : frames.advantage.hit},
     { stat : "Guard", data : frames.advantage.guard},
 ];

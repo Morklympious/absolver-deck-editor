@@ -56,6 +56,9 @@ if(deck) {
         --color-equipped-icon-background: #e0c220;
 
         --attack-info-container-width: 16rem;
+        
+        --deck-overview-attack-tile-height: 6.5rem;
+        --deck-overview-attack-tile-width: 6.5rem;
     }
 
     .application {
