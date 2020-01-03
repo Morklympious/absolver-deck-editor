@@ -12,6 +12,7 @@ import aliases from "./build/aliases.js";
 
 const watching = process.env.ROLLUP_WATCH;
 
+
 export default {
     input : "./src/editor.js",
 
@@ -91,6 +92,5 @@ export default {
 
         // Hot-reload blah blah idc.
         watching && serve("dist"),
-        watching && livereload({ watch : [ "./dist" ] }),
     ],
 };
