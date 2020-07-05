@@ -75,15 +75,15 @@ import Stance from "components/icons/stance-icon.svelte";
 const back = transition("BACK");
 
 // This all comes from the state chart.
-export let pool;
-export let children;
-export let string;
-export let slot;
+export let pool= false;
+export let children = false;
+export let string = false;
+export let slot = false;
 
 let selected = false;
 
-$: active = slot.alternate ? $alternates[slot.row] : $primaries[slot.row];
 $: alternate = slot.alternate;
+$: active = alternate ? $alternates[slot.row] : $primaries[slot.row];
 </script>
 
 <style>

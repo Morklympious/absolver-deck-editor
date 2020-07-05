@@ -39,7 +39,7 @@
 
     // Section is "primary" or "alternate" so we can know which section
     // to remove moves from.
-    export let section = "";
+    // export let section = "";
 
     // Given a cell (a tile that can hold an attack), 
     // calculate what quadrant it belongs to.

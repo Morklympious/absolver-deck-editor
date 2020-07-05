@@ -27,9 +27,6 @@ $: ({ component, children, props } = root);
 $: overview = $state.matches("overview");
 $: selecting = !overview
 
-// If you use the each, spread this in the svelte:component because otherwise child components don't... get there.
-// const workaround = {};
-
 // We only care about the first chart
 tree(([ structure ]) => {
     components = structure.children;

@@ -8,7 +8,7 @@
     use:click
     use:hover
 >
-    {#if empty}
+    {#if _meta.empty}
         <EmptyIcon />
     {:else}   
         {#if deletable}
@@ -38,7 +38,8 @@ import { click, hover } from "actions/audio.js";
 import EmptyIcon from "components/icons/empty-icon.svelte";
 import StyleIcon from "components/icons/style-icon.svelte";
 
-// Dispatch events that parents will do things with.
+const fallback = (value, fallback) => (value ? value : fallback);
+
 const bubble = createEventDispatcher();
 
 export let attack = false;
@@ -46,17 +47,14 @@ export let target = false;
 export let equipped = false;
 export let deletable = false;
 
-$: ({
-    name      = "",
-    height    = "mid",
-    type      = "thrust",
-    stance    = false,
-    frames    = false,
-    modifiers = [],
-    _meta     = {}
-} = attack);
+$: name      = fallback(attack.name, "");
+$: height    = fallback(attack.height, "");
+$: type      = fallback(attack.type, "");
+$: stance    = fallback(attack.stance, {});
+$: frames    = fallback(attack.frames, {});
+$: modifiers = fallback(attack.modifiers, []);
+$: _meta     = fallback(attack._meta, {});
 
-$: empty = _meta.empty;
 $: art = name.split(" ").join("-").toLowerCase();
 $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 
@@ -64,14 +62,13 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
 </script>
 
 <style>
-
     @keyframes oscillate {
         0% {
             outline: 0.15rem solid var(--color-gold);
         }
 
         50% {
-            outline : 0.15rem solid transparent;
+            outline: 0.15rem solid transparent;
         }
 
         100% {

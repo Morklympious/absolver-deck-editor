@@ -6,7 +6,10 @@
         {#if overview} 
             Absolver.dev 
         {:else}
-            <span class="return" on:click={() => state.send("BACK")}>
+            <span class="return" 
+                on:click={() => state.send("BACK")}
+                on:touchstart={() => state.send("BACK")}
+            >
                 BACK
             </span>
         {/if}
