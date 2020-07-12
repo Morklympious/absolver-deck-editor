@@ -63,6 +63,10 @@ const followups = (source, options = false) => {
 
         // Giveth me an object with metadata and attacks, brethren
         pool.push({
+            // It cometh from source -- Used to let attacks determine what side they hit
+            origin  : source,
+
+            // It endeth up, in quadrant
             stance  : quadrant,
             attacks : data,
         });

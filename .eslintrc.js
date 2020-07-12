@@ -17,7 +17,7 @@ module.exports = {
         },
     },
 
-    plugins: ["eslint-plugin-html", "svelte3"],
+    plugins: ["svelte3"],
 
     overrides: [
         {

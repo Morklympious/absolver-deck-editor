@@ -9,7 +9,7 @@ const AUDIO = {
 const audio = () => {};
 
 const action = (event, sound) => (node) => {
-    const handler = () => sound.play();
+    const handler = () => {}; // sound.play();
 
     node.addEventListener(event, handler);
     

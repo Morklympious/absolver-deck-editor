@@ -2,13 +2,14 @@
     class="flex container" 
     data-current-target={target}
     data-equipped={equipped}
+    data-hit={hit}
     {style}
     on:click={() => bubble("selection", attack)}
     on:mouseenter={() => bubble("hover", attack)}
     use:click
     use:hover
 >
-    {#if empty}
+    {#if _meta.empty}
         <EmptyIcon />
     {:else}   
         {#if deletable}
@@ -16,6 +17,7 @@
         {/if}
         <div class="style">
             <StyleIcon style={attack.style} />
+            {hit}
         </div>
 
         <div class="meta">
@@ -38,40 +40,45 @@ import { click, hover } from "actions/audio.js";
 import EmptyIcon from "components/icons/empty-icon.svelte";
 import StyleIcon from "components/icons/style-icon.svelte";
 
-// Dispatch events that parents will do things with.
+const fallback = (value, fallback) => (value ? value : fallback);
+
 const bubble = createEventDispatcher();
+
+const opposite = (side) => (side === "LEFT" ? "RIGHT" : "LEFT");
 
 export let attack = false;
 export let target = false;
 export let equipped = false;
 export let deletable = false;
+export let origin;
 
-$: ({
-    name      = "",
-    height    = "mid",
-    type      = "thrust",
-    stance    = false,
-    frames    = false,
-    modifiers = [],
-    _meta     = {}
-} = attack);
+$: name      = fallback(attack.name, "");
+$: height    = fallback(attack.height, "");
+$: type      = fallback(attack.type, "");
+$: stance    = fallback(attack.stance, {});
+$: frames    = fallback(attack.frames, {});
+$: modifiers = fallback(attack.modifiers, []);
+$: _meta     = fallback(attack._meta, {});
 
-$: empty = _meta.empty;
-$: art = name.split(" ").join("-").toLowerCase();
+$: art = name.split(" ")
+    .join("-")
+    .toLowerCase();
 $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 
-const stylize = (modifier) => `background-image: url("assets/modifiers/${modifier}.svg")`
+$: [ fb, lr ] = origin ? origin.split("_") : [ false, false ];
+$: hit = attack.hits === "same" ? lr : opposite(lr);
+
+const stylize = (modifier) => `background-image: url("assets/modifiers/${modifier}.svg");`;
 </script>
 
 <style>
-
     @keyframes oscillate {
         0% {
             outline: 0.15rem solid var(--color-gold);
         }
 
         50% {
-            outline : 0.15rem solid transparent;
+            outline: 0.15rem solid transparent;
         }
 
         100% {
@@ -149,13 +156,14 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
         flex-flow: row nowrap;
         width: 100%; 
         height: 1rem;
-        padding: 0.2rem;
+        padding: 0.4rem 0.2rem;
 
         position: absolute;
         top: 0;
 
         font-size: 0.6rem;
-
+        justify-content: flex-start;
+        align-items: center;
     }
 
     .meta {
