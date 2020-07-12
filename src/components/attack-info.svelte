@@ -15,38 +15,36 @@
 </div>
 
 <script>
-import Attack from "components/attack-tile.svelte";
-
 export let attack = false;
 export let quadrant = "FRONT_RIGHT";
 
-const opposite = (side) => side === "LEFT" ? "RIGHT" : "LEFT";
-
 $: ({
-    name      = "",
-    height    = "mid",
-    type      = "thrust",
-    stance    = false,
+    name = "",
+    height = "mid",
+    type = "thrust",
+    stance = false,
     hits = "same",
     style : fstyle = "forsaken",
-    frames    = { advantage : false },
+    frames = { advantage : false },
     modifiers = [],
-    _meta     = { empty : true, begins: "" }
+    _meta = { empty : true, begins : "" },
 } = attack);
 
-const scream = (data = false) => data.toUpperCase ? data.toUpperCase() : data;
+const scream = (data = false) => (data.toUpperCase ? data.toUpperCase() : data);
+const opposite = (side) => (side === "LEFT" ? "RIGHT" : "LEFT");
 
-$: [look, face] = quadrant.split("_");
-$: art = name.split(" ").join("-").toLowerCase();
+$: [ look, face ] = quadrant.split("_");
+$: art = name.split(" ").join("-")
+.toLowerCase();
 $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 $: stats = [
     { stat : "Name", data : scream(name)    },
     { stat : "Style", data : scream(fstyle) },
     { stat : "Height", data : scream(height) },
-    { stat : "Side", data : hits === "same" ? scream(face) : scream(opposite(face))},
+    { stat : "Side", data : hits === "same" ? scream(face) : scream(opposite(face)) },
     { stat : "Type", data : scream(type) },
-    { stat : "Hit", data : frames.advantage.hit},
-    { stat : "Guard", data : frames.advantage.guard},
+    { stat : "Hit", data : frames.advantage.hit },
+    { stat : "Guard", data : frames.advantage.guard },
 ];
 
 </script>

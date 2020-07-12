@@ -2,6 +2,7 @@
     class="flex container" 
     data-current-target={target}
     data-equipped={equipped}
+    data-hit={hit}
     {style}
     on:click={() => bubble("selection", attack)}
     on:mouseenter={() => bubble("hover", attack)}
@@ -16,6 +17,7 @@
         {/if}
         <div class="style">
             <StyleIcon style={attack.style} />
+            {hit}
         </div>
 
         <div class="meta">
@@ -42,10 +44,13 @@ const fallback = (value, fallback) => (value ? value : fallback);
 
 const bubble = createEventDispatcher();
 
+const opposite = (side) => (side === "LEFT" ? "RIGHT" : "LEFT");
+
 export let attack = false;
 export let target = false;
 export let equipped = false;
 export let deletable = false;
+export let origin;
 
 $: name      = fallback(attack.name, "");
 $: height    = fallback(attack.height, "");
@@ -55,10 +60,15 @@ $: frames    = fallback(attack.frames, {});
 $: modifiers = fallback(attack.modifiers, []);
 $: _meta     = fallback(attack._meta, {});
 
-$: art = name.split(" ").join("-").toLowerCase();
+$: art = name.split(" ")
+    .join("-")
+    .toLowerCase();
 $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 
-const stylize = (modifier) => `background-image: url("assets/modifiers/${modifier}.svg")`
+$: [ fb, lr ] = origin ? origin.split("_") : [ false, false ];
+$: hit = attack.hits === "same" ? lr : opposite(lr);
+
+const stylize = (modifier) => `background-image: url("assets/modifiers/${modifier}.svg");`;
 </script>
 
 <style>
@@ -146,13 +156,14 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
         flex-flow: row nowrap;
         width: 100%; 
         height: 1rem;
-        padding: 0.2rem;
+        padding: 0.4rem 0.2rem;
 
         position: absolute;
         top: 0;
 
         font-size: 0.6rem;
-
+        justify-content: flex-start;
+        align-items: center;
     }
 
     .meta {

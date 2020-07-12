@@ -1,6 +1,8 @@
 <div class="application variables" data-overview="{overview}">
     <div class="menu">
-        <MenuBar />
+        <!-- <MenuBar /> -->
+        <Hamburger />
+        <SideDrawer />
     </div>
 
     <div class="content">
@@ -17,15 +19,15 @@ import { tree, state } from "state/state.js";
 import { decode } from "utilities/encoder.js";
 import hydrate from "utilities/url-hydrate.js";
 
-
-import MenuBar from "components/menu-bar.svelte";
+import Hamburger from "components/menu/hamburger.svelte";
+import SideDrawer from "components/menu/side-drawer.svelte";
 
 let components = [];
 
 $: [ root = false ] = components;
 $: ({ component, children, props } = root);
 $: overview = $state.matches("overview");
-$: selecting = !overview
+$: selecting = !overview;
 
 // We only care about the first chart
 tree(([ structure ]) => {
@@ -45,6 +47,9 @@ if(deck) {
 
 <style>
     .variables {
+        --color-mork-cream: #f7f4ea;
+        --color-mork-dark-blue: #5F6A85;
+
         --color-gold: #FBF5DC;
         --color-gray: #545255;
         --color-gray-darker: #444;
@@ -63,14 +68,14 @@ if(deck) {
 
     .application {
 
-        display: grid;
+        display: flex;
+        flex-flow: column nowrap;
 
         height: 100%;
-        font-family: FjallaOne, sans-serif;
+        font-family: roboto, sans-serif;
 
         background: 
-            linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0, 0.5)),
-            url("assets/backgrounds/application-background.jpg");
+            linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0, 0.5));
 
         background-position: 0 0;
         background-repeat: no-repeat;
@@ -83,7 +88,7 @@ if(deck) {
     }
 
     .menu {
-        height: 4rem;
+        padding: 1rem;
     }
 
     .content {

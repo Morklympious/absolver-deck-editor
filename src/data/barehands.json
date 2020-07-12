@@ -1026,7 +1026,7 @@
                 "FRONT_RIGHT": "BACK_RIGHT"
             }
         },
-        "hits": "same",
+        "hits": "diff",
         "height": "mid",
         "type": "thrust",
         "frames": {
@@ -2344,7 +2344,7 @@
                 "BACK_LEFT": "BACK_LEFT"
             }
         },
-        "hits": "diff",
+        "hits": "same",
         "height": "high",
         "type": "horizontal",
         "frames": {

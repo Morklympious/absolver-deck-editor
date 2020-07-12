@@ -5,16 +5,17 @@
             {attack}
             deletable={true}
             target="{target === index}"
-            on:selection={({ detail : attack }) => {
-                bubble("selection", { 
+            origin="{originify(attack)}"
+            on:selection={({ detail : atk }) => {
+                bubble("selection", {
                     column : index,
 
                     attack,
-                    quadrant : quadify(attack),
-                })
+                    quadrant : originify(atk),
+                });
             }}
             on:deletion={() => bubble("deletion", { column : index })}
-            on:hover={({ detail : attack }) => bubble("hover", attack)}
+            on:hover={({ detail : atk }) => bubble("hover", atk)}
         />
         <Stance 
             empty={attack._meta.empty}
@@ -25,7 +26,6 @@
 
 <script>
     import { createEventDispatcher } from "svelte";
-    import { service } from "state/state.js";
     import weapon from "stores/weapon.js";
 
     import Attack from "components/attack-tile.svelte";
@@ -37,13 +37,9 @@
     export let quadrant = "FRONT_RIGHT";
     export let target;
 
-    // Section is "primary" or "alternate" so we can know which section
-    // to remove moves from.
-    // export let section = "";
-
-    // Given a cell (a tile that can hold an attack), 
-    // calculate what quadrant it belongs to.
-    const quadify = (attack) => {
+    // Given a cell (a tile that can hold an attack),
+   // calculate what quadrant it belongs to.
+    const originify = (attack) => {
         // Is it empty? is anything before it?
         const { _meta } = attack;
         const { previous } = _meta;
@@ -53,17 +49,16 @@
             return quadrant;
         }
 
-        // If there is a previous, we care about generating followups from that 
-        // previous attack's ending stance.
+        // If there is a previous, we care about generating followups from that
+       // previous attack's ending stance.
         return previous._meta.ends;
-    }
+    };
 
     const empty = (attack) => attack._meta.empty;
     const beginning = (attack) => attack._meta.begins;
 </script>
             
 <style>
-
     .string {
         display: flex;
         justify-content: center;

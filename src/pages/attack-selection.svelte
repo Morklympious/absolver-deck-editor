@@ -6,21 +6,22 @@
             target={slot.column}
             on:selection={
                 ({ detail }) => {
-                    (selected = { 
-                        attack : detail.attack, 
-                        quadrant : string
+                    (selected = {
+                        attack   : detail.attack,
+                        quadrant : string,
                     });
-                    state.send("NEW_TARGET", detail)
+                    
+                    state.send("NEW_TARGET", detail);
                 }
             } 
             on:deletion={
                 ({ detail }) => {
                     state.send("DELETING", {
                         slot : {
-                            row : slot.row,
+                            row    : slot.row,
                             column : detail.column,
                             alternate,
-                        }
+                        },
                     });
                 }
                 }
@@ -28,7 +29,7 @@
         />
 
         <div class="selection">
-            {#each pool as { stance : quadrant, attacks } (quadrant)}
+            {#each pool as { origin, stance : quadrant, attacks } (quadrant)}
                 <div class="heading"> 
                     Ends in <Stance {quadrant} /> 
                 </div>
@@ -36,11 +37,12 @@
                     {#each attacks as attack (attack.name)}
                         <Attack
                             {attack}
+                            {origin}
                             equipped={$equipped.includes(attack.name)}
                             facing="{quadrant.split("_")[1]}"
                             on:selection={() => state.send("ATTACK_SELECTED", { attack })}
                             on:hover={({ detail : attack }) => {
-                                (selected = { attack, quadrant })
+                                (selected = { attack, quadrant });
                             }}
                         />
                     {/each} 
@@ -75,7 +77,7 @@ import Stance from "components/icons/stance-icon.svelte";
 const back = transition("BACK");
 
 // This all comes from the state chart.
-export let pool= false;
+export let pool = false;
 export let children = false;
 export let string = false;
 export let slot = false;

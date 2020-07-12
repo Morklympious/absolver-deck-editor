@@ -44,49 +44,6 @@ const combo = (length) => {
     return results;
 };
 
-/**
- * A function that takes a combo and runs through its attacks and
- * sets its _meta properties based contextually on the attacks that come before/after it.
- *
- * @param {Array} chain - An array of attacks to be walked and modified in-place
- */
-const configure = (quadrant, attacks) => {
-    const armament = equipped();
-
-    attacks.forEach((attack) => {
-        const { _meta } = attack;
-        const { previous } = _meta;
-        const { stance = false } = attack;
-        const atkstance = stance[armament];
-
-        // This attack isn't empty if it has a name.
-        _meta.empty = !attack.name;
-
-        // If there's no previous move
-        if(!_meta.previous) {
-            // The current cell's beginning is defaulted to the quadrant it belongs to
-            _meta.begins = quadrant;
-
-            // The ending is either the quadrant, or if we have attack data, the ending for the attack.
-            _meta.ends = (_meta.empty ? quadrant : atkstance[_meta.begins]);
-            
-            return;
-        }
-
-        /**
-         * This attack begins where the previous one left off. But if there
-         * is no previous attack, it's defaulted to the quadrant in the combo
-         * this attack belongs to.
-         */
-        _meta.begins = previous._meta.empty ? quadrant : previous._meta.ends;
-        _meta.ends = _meta.empty ? quadrant : atkstance[_meta.begins];
-
-        return;
-    });
-    
-    return;
-};
-
 // Sets an attack at a location
 const insert = (section, slot, attack) => {
     section.update((data) => {
@@ -136,7 +93,6 @@ const remove = (section, slot, subsequent = false) => {
 export {
     combo,
     empty,
-    configure,
 
     insert,
     remove,
