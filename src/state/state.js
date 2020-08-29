@@ -29,8 +29,8 @@ const yeet = (context, { slot }) => {
 const machine = Machine;
 
 const statechart = machine({
-    id      : "editor",
-    type    : "parallel",
+    id   : "editor",
+    type : "parallel",
 
     context : {
         string   : [],
@@ -51,6 +51,7 @@ const statechart = machine({
                 
                 // TODO: Warn the user before resetting the deck, probably.
                 EQUIP_SWORD : {
+                    target  : "editor.overview",
                     actions : [
                         () => reset(),
                         () => equip("sword"),
@@ -58,6 +59,7 @@ const statechart = machine({
                 },
 
                 EQUIP_BAREHANDS : {
+                    target  : "editor.overview",
                     actions : [
                         () => reset(),
                         () => equip("barehands"),
@@ -233,7 +235,7 @@ const statechart = machine({
             },
 
 
-        }
+        },
         
     },
 });

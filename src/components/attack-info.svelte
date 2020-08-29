@@ -38,13 +38,13 @@ $: art = name.split(" ").join("-")
 .toLowerCase();
 $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 $: stats = [
-    { stat : "Name", data : scream(name)    },
-    { stat : "Style", data : scream(fstyle) },
-    { stat : "Height", data : scream(height) },
-    { stat : "Side", data : hits === "same" ? scream(face) : scream(opposite(face)) },
+    { stat : "NAME", data : scream(name)    },
+    { stat : "HITS", data : `${scream(height)} - ${scream(type)}` },
     { stat : "Type", data : scream(type) },
-    { stat : "Hit", data : frames.advantage.hit },
-    { stat : "Guard", data : frames.advantage.guard },
+    { stat : "SIDE", data : hits === "same" ? scream(face) : scream(opposite(face)) },
+    { stat : "STARTUP", data : frames.startup },
+    { stat : "HIT ADV", data : frames.advantage.hit },
+    { stat : "GUARD ADV", data : frames.advantage.guard },
 ];
 
 </script>
@@ -82,7 +82,6 @@ $: stats = [
         height: 15rem;
 
         background-position: center;
-        background-color: var(--color-gray);
         background-position: center;
         background-repeat: no-repeat;
     }
@@ -101,13 +100,5 @@ $: stats = [
         width: 100%;
 
         padding: 0.5rem;
-    }
-
-    .stat:nth-of-type(even) {
-        background: var(--color-gray);
-    }
-
-    .stat:nth-of-type(odd) {
-        background: var(--color-gray-dark);
     }
 </style>

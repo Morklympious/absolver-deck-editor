@@ -3,7 +3,7 @@
         <style>
             .path {
                 stroke-width: 20;
-                stroke: white;
+                stroke: var(--color-mork-dark-blue);
                 fill: none;
             }
         </style>

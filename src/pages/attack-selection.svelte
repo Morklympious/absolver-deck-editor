@@ -1,53 +1,57 @@
 <div class="container">
-    <div class="structure">
-        <String 
-            quadrant={string} 
-            attacks={active}
-            target={slot.column}
-            on:selection={
-                ({ detail }) => {
-                    (selected = {
-                        attack   : detail.attack,
-                        quadrant : string,
-                    });
-                    
-                    state.send("NEW_TARGET", detail);
-                }
-            } 
-            on:deletion={
-                ({ detail }) => {
-                    state.send("DELETING", {
-                        slot : {
-                            row    : slot.row,
-                            column : detail.column,
-                            alternate,
-                        },
-                    });
-                }
-                }
-            }
-        />
 
-        <div class="selection">
-            {#each pool as { origin, stance : quadrant, attacks } (quadrant)}
-                <div class="heading"> 
-                    Ends in <Stance {quadrant} /> 
-                </div>
-                <div class="attacks">
-                    {#each attacks as attack (attack.name)}
-                        <Attack
-                            {attack}
-                            {origin}
-                            equipped={$equipped.includes(attack.name)}
-                            facing="{quadrant.split("_")[1]}"
-                            on:selection={() => state.send("ATTACK_SELECTED", { attack })}
-                            on:hover={({ detail : attack }) => {
-                                (selected = { attack, quadrant });
-                            }}
-                        />
-                    {/each} 
-                </div>
-            {/each}
+    <div class="structure">
+        <button class="back" on:click={() => state.send("OVERVIEW")}>Back to Overview</button>
+        <div class="interactables">
+            <String 
+                quadrant={string}
+                attacks={active}
+                target={slot.column}
+                on:selection={
+                    ({ detail }) => {
+                        (selected = {
+                            attack   : detail.attack,
+                            quadrant : string,
+                        });
+                        
+                        state.send("NEW_TARGET", detail);
+                    }
+                } 
+                on:deletion={
+                    ({ detail }) => {
+                        state.send("DELETING", {
+                            slot : {
+                                row    : slot.row,
+                                column : detail.column,
+                                alternate,
+                            },
+                        });
+                    }
+                    }
+                }
+            />
+
+            <div class="selection">
+                {#each pool as { origin, stance : quadrant, attacks } (quadrant)}
+                    <div class="heading"> 
+                        Ends in <Stance {quadrant} /> 
+                    </div>
+                    <div class="attacks">
+                        {#each attacks as attack (attack.name)}
+                            <Attack
+                                {attack}
+                                {origin}
+                                equipped={$equipped.includes(attack.name)}
+                                facing="{quadrant.split("_")[1]}"
+                                on:selection={() => state.send("ATTACK_SELECTED", { attack })}
+                                on:hover={({ detail : attack }) => {
+                                    (selected = { attack, quadrant });
+                                }}
+                            />
+                        {/each} 
+                    </div>
+                {/each}
+            </div>
         </div>
     </div>
 
@@ -140,7 +144,7 @@ $: active = alternate ? $alternates[slot.row] : $primaries[slot.row];
         background: rgba(0,0,0, 0.3);
 
         /* TODO: Probably repeating grid instead of hardcoding this? lmao. */
-        height: 70vh;
+        height: 65vh;
         width: var(--attack-selection-attack-pool-width, initial);
         overflow-y: scroll;
         padding: 0 0 0.5rem 0;
@@ -149,11 +153,30 @@ $: active = alternate ? $alternates[slot.row] : $primaries[slot.row];
     .structure {
         display: flex;
         justify-content: center;
-        align-items: center;
-        flex-flow: column nowrap;
+        align-items: flex-start;
 
         grid-area: structure;
 
         overflow: hidden;
+    }
+
+    .back {
+        color: var(--color-mork-cream);
+        background-color: var(--color-mork-red);
+        padding: 1rem;
+        margin: 2rem 1rem;
+
+        outline: 0;
+        border: 0;
+        cursor: pointer;
+
+        font-weight: bold;
+    }
+
+    .back:hover {
+        background-color: var(--color-mork-cream);
+        color: var(--color-mork-red);
+
+        outline: 0.2rem solid var(--color-mork-red);
     }
 </style>

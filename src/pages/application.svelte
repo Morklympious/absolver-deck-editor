@@ -1,7 +1,12 @@
+<svelte:body on:keyup={({ keyCode }) => {
+    console.log( keyCode);
+    keyCode === 27 ? state.send("BACK") : false} 
+}/>
+
 <div class="application variables" data-overview="{overview}">
     <div class="menu">
-        <!-- <MenuBar /> -->
         <Hamburger />
+        <span class="weapon">{$weapon}</span>
         <SideDrawer />
     </div>
 
@@ -11,6 +16,10 @@
             {children}
             {...props}
         />
+    </div>
+
+    <div class="footer">
+        <span class="text">Authored by <a href="https://twitter.com/morklympious">Morklympious</a></span>
     </div>
 </div>
 
@@ -22,6 +31,7 @@ import hydrate from "utilities/url-hydrate.js";
 import Hamburger from "components/menu/hamburger.svelte";
 import SideDrawer from "components/menu/side-drawer.svelte";
 
+import weapon from "stores/weapon.js"
 let components = [];
 
 $: [ root = false ] = components;
@@ -49,6 +59,8 @@ if(deck) {
     .variables {
         --color-mork-cream: #f7f4ea;
         --color-mork-dark-blue: #5F6A85;
+        --color-mork-deep-blue: #21243d;
+        --color-mork-red: #e98FA0;
 
         --color-gold: #FBF5DC;
         --color-gray: #545255;
@@ -74,11 +86,8 @@ if(deck) {
         height: 100%;
         font-family: roboto, sans-serif;
 
-        background: 
-            linear-gradient(to right, rgba(0,0,0, 0.5), rgba(0,0,0, 0.5));
-
-        background-position: 0 0;
-        background-repeat: no-repeat;
+        background: rgb(59,66,84);
+        background: linear-gradient(315deg, rgba(59,66,84,1) 25%, rgba(95,106,133,1) 75%);
 
         transition: background-position 250ms ease;
     }
@@ -88,12 +97,23 @@ if(deck) {
     }
 
     .menu {
-        padding: 1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 1.8rem 1rem 1rem 1rem;
+    }
+
+    .weapon {
+        font-size: 2rem;
+        margin-left: 1rem;
+        color: var(--color-mork-cream);
     }
 
     .content {
         padding: 1.5rem 0;
         overflow: hidden;
+
+        flex: 1;
     }
 
     @media only screen 
@@ -123,6 +143,19 @@ if(deck) {
         .content {
             overflow: auto;
         }
+    }
+
+    .footer {
+        display: flex;
+        height: 3rem;
+        padding: 0 1rem;
+
+        font-size: 1.2rem;
+        color: var(--color-mork-cream)
+    }
+
+    a {
+        color: var(--color-mork-deep-blue)
     }
 
 </style>

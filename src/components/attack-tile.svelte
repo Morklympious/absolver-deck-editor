@@ -13,11 +13,12 @@
         <EmptyIcon />
     {:else}   
         {#if deletable}
-        <div class="delete" on:click|stopPropagation={() => bubble("deletion")}> delete </div>
+        <div class="delete" on:click|stopPropagation={() => bubble("deletion")}>X</div>
         {/if}
         <div class="style">
             <StyleIcon style={attack.style} />
-            {hit}
+            <span>{hit}</span>
+            <span class="end">{attack.frames.startup}F</span>
         </div>
 
         <div class="meta">
@@ -66,7 +67,14 @@ $: art = name.split(" ")
 $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 
 $: [ fb, lr ] = origin ? origin.split("_") : [ false, false ];
-$: hit = attack.hits === "same" ? lr : opposite(lr);
+
+let hit;
+$: {
+    hit = attack.hits === "same" ? lr : opposite(lr);
+    if(attack.hits === "both") {
+        hit = "BOTH";
+    }
+}
 
 const stylize = (modifier) => `background-image: url("assets/modifiers/${modifier}.svg");`;
 </script>
@@ -122,14 +130,16 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
 
     .container:hover .delete {
         display: block;
-        color: #ff4d4d;
         position: absolute;
         top: 0;
         right: 0;
-        z-index: 2;
-        font-size: 0.8rem;
+        z-index: 3;
     }
     
+    .container[data-equipped="true"] {
+        opacity: 0.25;
+        pointer-events: none;
+    }
     .container[data-equipped="true"]::before {
         position: absolute;
         content: "";
@@ -137,15 +147,15 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
         right: 0;
         top: 0;
 
-        height: 1rem;
-        width: 1rem;
+        height: 0.5rem;
+        width: 0.5rem;
 
         margin: 0.15rem;
         padding: 0.15rem;
 
         background-image: url(components/icons/equipped-icon.svg);
-        background-color: var(--color-equipped-icon-background);
-        background-size: 80%;
+        background-color: var(--color-mork-cream);
+        background-size: 50%;
         background-repeat: no-repeat;
         background-position: center;
         border-radius: 50%;
@@ -162,7 +172,7 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
         top: 0;
 
         font-size: 0.6rem;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
     }
 
@@ -191,5 +201,25 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .delete {
+        text-align: center;
+        width: 1rem;
+        height: 1rem;
+        font-weight: bold;
+        color: white;
+    }
+
+    .delete::after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        width: 0px;
+        height: 0px;
+        border-top: 2rem solid var(--color-mork-red);
+        border-left: 2rem solid transparent;
+        top: 0;
+        right: 0;
     }
 </style>

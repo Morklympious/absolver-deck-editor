@@ -19,7 +19,8 @@ const reject = transition("REJECT");
 
 <style>
     p {
-        margin: 0;    
+        margin: 0;  
+        font-size: 1.5rem;  
     }
 
     .fullscreen {
@@ -54,14 +55,13 @@ const reject = transition("REJECT");
     .modal {
         display: flex;
         justify-content: space-around;
-        padding: 1rem;
-
+        padding: 2rem;
         flex-flow: column nowrap;
+        width: 50%;
+        height: 25%;
+        background-color: var(--color-mork-deep-blue);
 
-        width: 30rem;
-        height: 10rem;
-
-        background-color: black;
+        border: 0.5rem solid var(--color-mork-cream);
     }
 
     .actions {

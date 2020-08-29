@@ -587,7 +587,7 @@
                 "BACK_LEFT": "BACK_LEFT"
             }
         },
-        "hits": "same",
+        "hits": "diff",
         "height": "mid",
         "type": "vertical",
         "frames": {
