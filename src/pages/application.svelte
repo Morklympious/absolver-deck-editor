@@ -10,7 +10,7 @@
         <SideDrawer />
     </div>
 
-    <div class="content">
+    <div class="content" on:click={conditionalhide}>
         <svelte:component 
             this={component}
             {children}
@@ -53,6 +53,8 @@ if(deck) {
 
     hydrate(decoded);
 }
+
+const conditionalhide = () => $state.matches("menu.shown") ? state.send("HIDE_MENU") : false
 </script>
 
 <style>

@@ -1713,7 +1713,7 @@
                 "BACK_LEFT": "FRONT_RIGHT"
             }
         },
-        "hits": "diff",
+        "hits": "same",
         "height": "mid",
         "type": "thrust",
         "frames": {

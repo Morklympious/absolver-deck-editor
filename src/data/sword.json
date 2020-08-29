@@ -67,7 +67,7 @@
         ]
     },
     {
-        "name": "Kitsueno Cut",
+        "name": "Neck Slash",
         "style": "faejin",
         "stance": {
             "barehands": false,
@@ -218,7 +218,7 @@
         "modifiers": []
     },
     {
-        "name": "Kitsueno Cut",
+        "name": "Ducking Spike",
         "style": "windfall",
         "stance": {
             "barehands": false,

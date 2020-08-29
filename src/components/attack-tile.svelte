@@ -4,7 +4,7 @@
     data-equipped={equipped}
     data-hit={hit}
     {style}
-    on:click={() => bubble("selection", attack)}
+    on:click={equipped ? () => {} : () => bubble("selection", attack)}
     on:mouseenter={() => bubble("hover", attack)}
     use:click
     use:hover
@@ -22,6 +22,7 @@
         </div>
 
         <div class="meta">
+            <span>+{frames.advantage.hit} / +{frames.advantage.guard}</span>
             {#each modifiers as modifier}   
                 {#if modifier === "double"}
                 <div class="meta-trait">2X</div>
@@ -69,6 +70,8 @@ $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 $: [ fb, lr ] = origin ? origin.split("_") : [ false, false ];
 
 let hit;
+
+$: console.log(attack)
 $: {
     hit = attack.hits === "same" ? lr : opposite(lr);
     if(attack.hits === "both") {
@@ -138,27 +141,6 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
     
     .container[data-equipped="true"] {
         opacity: 0.25;
-        pointer-events: none;
-    }
-    .container[data-equipped="true"]::before {
-        position: absolute;
-        content: "";
-
-        right: 0;
-        top: 0;
-
-        height: 0.5rem;
-        width: 0.5rem;
-
-        margin: 0.15rem;
-        padding: 0.15rem;
-
-        background-image: url(components/icons/equipped-icon.svg);
-        background-color: var(--color-mork-cream);
-        background-size: 50%;
-        background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 50%;
     }
 
     .style {
@@ -188,6 +170,9 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
         font-size: 0.6rem;
 
         justify-content: flex-end;
+
+        align-items: center;
+        justify-content: space-between;
     }
 
     .meta-trait + .meta-trait {
