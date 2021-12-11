@@ -5898,7 +5898,7 @@
     			sword: false
     		},
     		hits: "diff",
-    		lands: "high",
+    		height: "high",
     		type: "thrust",
     		frames: {
     			startup: 12,
@@ -6154,7 +6154,7 @@
     			}
     		},
     		hits: "same",
-    		height: "high",
+    		height: "mid",
     		type: "thrust",
     		frames: {
     			startup: 14,
