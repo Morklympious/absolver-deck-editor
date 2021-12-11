@@ -211,7 +211,7 @@
             "sword": false
         },
         "hits": "diff",
-        "lands": "high",
+        "height": "high",
         "type": "thrust",
         "frames": {
             "startup": 12,
@@ -464,7 +464,7 @@
             }
         },
         "hits": "same",
-        "height": "high",
+        "height": "mid",
         "type": "thrust",
         "frames": {
             "startup": 14,
@@ -1940,7 +1940,7 @@
                 "BACK_LEFT": "FRONT_LEFT"
             }
         },
-        "side": "same",
+        "hits": "same",
         "height": "high",
         "type": "thrust",
         "frames": {
