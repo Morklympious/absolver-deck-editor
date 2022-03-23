@@ -347,9 +347,7 @@
                 "guard": 1
             }
         },
-        "modifiers": [
-            "strafe"
-        ]
+        "modifiers": []
     },
     {
         "name": "Charged Haymaker",
