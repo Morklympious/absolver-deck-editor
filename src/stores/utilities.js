@@ -1,5 +1,4 @@
 import quadrants from "utilities/quadrants.js";
-import { equipped } from "stores/weapon.js";
 
 /**
  * Generate an empty deck slot object

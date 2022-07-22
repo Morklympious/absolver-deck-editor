@@ -4,6 +4,7 @@ import xct from "xstate-component-tree";
 import { alternates, primaries, reset } from "stores/deck.js";
 import { equip } from "stores/weapon.js";
 import { insert, remove } from "stores/utilities.js";
+import { all } from "data/all.js";
 
 import storify from "utilities/chart-store.js";
 import followups from "utilities/followups.js";
@@ -14,6 +15,19 @@ import Selection from "pages/attack-selection.svelte";
 import Override from "components/override.svelte";
 
 const { assign } = actions;
+
+const IS_PLUS = window.location.href.includes("plus");
+
+const URLS = {
+    vanilla : {
+        barehands : "https://api.absolver.dev/barehands.json",
+        sword : "https://api.absolver.dev/sword.json",
+    },
+    plus : {
+        barehands : "https://api.absolver.dev/plus/barehands.json",
+        sword : "https://api.absolver.dev/sword.json",
+    }
+}
 
 const yeet = (context, { slot }) => {
     // Remove everything at slot and forward.
@@ -44,7 +58,7 @@ const statechart = machine({
 
     states : {
         editor : {
-            initial : "overview",
+            initial : "initialize",
 
             on : {
                 OVERVIEW : ".overview",
@@ -68,6 +82,31 @@ const statechart = machine({
             },
 
             states : {
+                initialize : {
+                    invoke : {
+                        /** This currently pulls moves from Absolver.dev, this isn't elegant, but it works!! */
+                        src : async () => { 
+                                
+                            const [ barehands, sword ] = await Promise.all([
+                                await fetch(IS_PLUS ? URLS.plus.barehands : URLS.vanilla.barehands),
+                                await fetch(IS_PLUS ? URLS.plus.sword : URLS.vanilla.sword),
+                            ]);
+
+                            const resolved = await Promise.all([ barehands.json(), sword.json() ]); 
+
+                            if(!resolved) {
+                                return Promise.reject();
+                            }
+
+                            all.set([...resolved[0], ...resolved[1]]);
+
+                            return resolved;
+                        },                          
+                        onDone  : "overview",
+                        onError : "overview",
+                    },
+                },
+
                 overview : {
                     on : {
                         SELECTING : "selecting",

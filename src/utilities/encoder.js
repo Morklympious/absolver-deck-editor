@@ -1,9 +1,11 @@
 import Hash from "hashids";
+import { get } from "svelte/store";
 import { primaries, alternates } from "stores/deck.js";
 import { equip, equipped } from "stores/weapon.js";
 
 // Every attack.
-import { all as attacks } from "data/all.js";
+import { all } from "data/all.js";
+const attacks = get(all);
 
 // Obfuscator: For encoding attacks into indexes.
 // Clarifier: For decoding indexes back into attacks.

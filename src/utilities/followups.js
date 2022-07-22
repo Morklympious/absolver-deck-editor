@@ -1,3 +1,4 @@
+import { get } from "svelte/store";
 import { all } from "data/all.js";
 import quadrants from "utilities/quadrants.js";
 import { equipped } from "stores/weapon.js";
@@ -15,7 +16,7 @@ const cache = new Map();
  * @returns {Object} A Map of move options that can originate from the source
  */
 const followups = (source, options = false) => {
-    const attacks = all;
+    const attacks = get(all);
     const armament = equipped();
 
     if(!source) {

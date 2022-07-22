@@ -71,7 +71,6 @@ $: [ fb, lr ] = origin ? origin.split("_") : [ false, false ];
 
 let hit;
 
-$: console.log(attack)
 $: {
     hit = attack.hits === "same" ? lr : opposite(lr);
     if(attack.hits === "both") {

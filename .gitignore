@@ -59,3 +59,4 @@ typings/
 
 # goddammit, dist.
 dist/
+dist/bundle.js
