@@ -58,5 +58,5 @@ typings/
 .env
 
 # goddammit, dist.
-dist/
+dist
 dist/bundle.js

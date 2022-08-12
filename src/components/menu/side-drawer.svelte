@@ -120,7 +120,7 @@ import transition from "actions/send-state.js";
 
 import { encode } from "utilities/encoder.js";
 
-$: url = `https://absolver.dev/?deck=${encode($deck)}}`;
+$: url = `https://absolver.dev/?deck=${encode($deck)}${window.location.href.includes("plus") ? "&plus" : "" }`;
 
 const clippy = new clipboard("[data-clipboard-dependent]");
 
