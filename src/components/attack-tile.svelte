@@ -1,285 +1,288 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  import followups from "utilities/followups.js";
-  import { click, hover } from "actions/audio.js";
+    import { createEventDispatcher } from "svelte";
+    import followups from "utilities/followups.js";
+    import { click, hover } from "actions/audio.js";
 
-  import EmptyIcon from "components/icons/empty-icon.svelte";
-  import StyleIcon from "components/icons/style-icon.svelte";
+    import EmptyIcon from "components/icons/empty-icon.svelte";
+    import StyleIcon from "components/icons/style-icon.svelte";
 
-  import { enableColors, enableHitLocationOnTile } from "stores/settings.js";
+    import { enableColors, enableHitLocationOnTile } from "stores/settings.js";
 
-  const fallback = (value, fallback) => (value ? value : fallback);
+    const fallback = (value, fallback) => (value ? value : fallback);
 
-  const bubble = createEventDispatcher();
+    const bubble = createEventDispatcher();
 
-  const opposite = (side) => (side === "LEFT" ? "RIGHT" : "LEFT");
+    const opposite = (side) => (side === "LEFT" ? "RIGHT" : "LEFT");
 
-  export let attack = false;
-  export let target = false;
-  export let equipped = false;
-  export let deletable = false;
-  export let origin;
+    export let attack = false;
+    export let target = false;
+    export let equipped = false;
+    export let deletable = false;
+    export let origin;
 
-  $: name = fallback(attack.name, "");
-  $: height = fallback(attack.height, "");
-  $: type = fallback(attack.type, "");
-  $: stance = fallback(attack.stance, {});
-  $: frames = fallback(attack.frames, {});
-  $: modifiers = fallback(attack.modifiers, []);
-  $: _meta = fallback(attack._meta, {});
+    $: name = fallback(attack.name, "");
+    $: height = fallback(attack.height, "");
+    $: type = fallback(attack.type, "");
+    $: stance = fallback(attack.stance, {});
+    $: frames = fallback(attack.frames, {});
+    $: modifiers = fallback(attack.modifiers, []);
+    $: _meta = fallback(attack._meta, {});
 
-  $: art = name.split(" ").join("-").toLowerCase();
-  $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
+    $: art = name.split(" ").join("-").toLowerCase();
+    $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 
-  $: [fb, lr] = origin ? origin.split("_") : [false, false];
+    $: [fb, lr] = origin ? origin.split("_") : [false, false];
 
-  let hit;
+    let hit;
 
-  $: {
-    hit = attack.hits === "same" ? lr : opposite(lr);
-    if (attack.hits === "both") {
-      hit = "BOTH";
+    $: {
+        hit = attack.hits === "same" ? lr : opposite(lr);
+        if (attack.hits === "both") {
+            hit = "BOTH";
+        }
     }
-  }
 
-  const stylize = (modifier) => {
-    if (!$enableColors)
-      return `background-image: url(assets/modifiers/${modifier}.svg)`;
+    const stylize = (modifier) => {
+        if (!$enableColors)
+            return `background-image: url(assets/modifiers/${modifier}.svg)`;
 
-    return `-webkit-mask-image: url(assets/modifiers/${modifier}.svg); mask-image: url(assets/modifiers/${modifier}.svg);`;
-  };
+        return `-webkit-mask-image: url(assets/modifiers/${modifier}.svg); mask-image: url(assets/modifiers/${modifier}.svg);`;
+    };
 
-  const getHitSideClass = (side) => {
-    if (!$enableColors) return;
+    const getHitSideClass = (side) => {
+        if (!$enableColors) return;
 
-    if (side === "RIGHT") return "hit-right";
-    if (side === "LEFT") return "hit-left";
-    if (side === "BOTH") return "hit-both";
-  };
+        if (side === "RIGHT") return "hit-right";
+        if (side === "LEFT") return "hit-left";
+        if (side === "BOTH") return "hit-both";
+    };
 
-  const getModifierClass = (modifier) => {
-    if (!$enableColors) return;
+    const getModifierClass = (modifier) => {
+        if (!$enableColors) return;
 
-    if (modifier === "jump" || modifier === "duck" || modifier === "strafe")
-      return "modifier-avoid";
-    if (modifier === "break") return "modifier-break";
-    if (modifier === "charge") return "modifier-charge";
-    if (modifier === "hit-left" || modifier == "hit-right")
-      return "modifier-parry";
-    if (modifier === "stop") return "modifier-stop";
-  };
+        if (modifier === "jump" || modifier === "duck" || modifier === "strafe")
+            return "modifier-avoid";
+        if (modifier === "break") return "modifier-break";
+        if (modifier === "charge") return "modifier-charge";
+        if (modifier === "hit-left" || modifier == "hit-right")
+            return "modifier-parry";
+        if (modifier === "stop") return "modifier-stop";
+    };
 </script>
 
 <div
-  class="flex container"
-  data-current-target={target}
-  data-equipped={equipped}
-  data-hit={hit}
-  {style}
-  on:click={equipped ? () => {} : () => bubble("selection", attack)}
-  on:mouseenter={() => bubble("hover", attack)}
-  use:click
-  use:hover
+    class="flex container"
+    data-current-target={target}
+    data-equipped={equipped}
+    data-hit={hit}
+    {style}
+    on:click={equipped ? () => {} : () => bubble("selection", attack)}
+    on:mouseenter={() => bubble("hover", attack)}
+    use:click
+    use:hover
 >
-  {#if _meta.empty}
-    <EmptyIcon />
-  {:else}
-    {#if deletable}
-      <div class="delete" on:click|stopPropagation={() => bubble("deletion")}>
-        X
-      </div>
-    {/if}
-    <div class="style">
-      <StyleIcon style={attack.style} />
-      <span class={getHitSideClass(hit)}>{hit}</span>
-      <span class="end">{attack.frames.startup}F</span>
-    </div>
-
-    {#if $enableHitLocationOnTile}
-      <div class="hit-location">
-        {height + " - " + type}
-      </div>
-    {/if}
-
-    <div class="meta">
-      <span>+{frames.advantage.hit} / +{frames.advantage.guard}</span>
-      {#each modifiers as modifier}
-        {#if modifier === "double"}
-          <div class="meta-trait">2X</div>
-        {:else}
-          <div
-            class="meta-trait {getModifierClass(modifier)}"
-            style={stylize(modifier)}
-          ></div>
+    {#if _meta.empty}
+        <EmptyIcon />
+    {:else}
+        {#if deletable}
+            <div
+                class="delete"
+                on:click|stopPropagation={() => bubble("deletion")}
+            >
+                X
+            </div>
         {/if}
-      {/each}
-    </div>
-  {/if}
+        <div class="style">
+            <StyleIcon style={attack.style} />
+            <span class={getHitSideClass(hit)}>{hit}</span>
+            <span class="end">{attack.frames.startup}F</span>
+        </div>
+
+        {#if $enableHitLocationOnTile}
+            <div class="hit-location">
+                {height + " - " + type}
+            </div>
+        {/if}
+
+        <div class="meta">
+            <span>+{frames.advantage.hit} / +{frames.advantage.guard}</span>
+            {#each modifiers as modifier}
+                {#if modifier === "double"}
+                    <div class="meta-trait">2X</div>
+                {:else}
+                    <div
+                        class="meta-trait {getModifierClass(modifier)}"
+                        style={stylize(modifier)}
+                    ></div>
+                {/if}
+            {/each}
+        </div>
+    {/if}
 </div>
 
 <style>
-  @keyframes oscillate {
-    0% {
-      outline: 0.15rem solid var(--color-gold);
+    @keyframes oscillate {
+        0% {
+            outline: 0.15rem solid var(--color-gold);
+        }
+
+        50% {
+            outline: 0.15rem solid transparent;
+        }
+
+        100% {
+            outline: 0.15rem solid var(--color-gold);
+        }
     }
 
-    50% {
-      outline: 0.15rem solid transparent;
+    .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    100% {
-      outline: 0.15rem solid var(--color-gold);
+    .container {
+        position: relative;
+
+        height: var(--deck-overview-attack-tile-height);
+        width: var(--deck-overview-attack-tile-width);
+
+        background-color: rgba(0, 0, 0, 0.55);
+        color: #fff;
+
+        background-size: 90%;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        cursor: pointer;
+        user-select: none;
     }
-  }
 
-  .flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    .container:hover,
+    .container[data-current-target="true"] {
+        animation-name: oscillate;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+    }
 
-  .container {
-    position: relative;
+    .container .delete {
+        display: none;
+    }
 
-    height: var(--deck-overview-attack-tile-height);
-    width: var(--deck-overview-attack-tile-width);
+    .container:hover .delete {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 3;
+    }
 
-    background-color: rgba(0, 0, 0, 0.55);
-    color: #fff;
+    .container[data-equipped="true"] {
+        opacity: 0.25;
+    }
 
-    background-size: 90%;
-    background-position: center;
-    background-repeat: no-repeat;
+    .style {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+        height: 1rem;
+        padding: 0.4rem 0.2rem;
 
-    cursor: pointer;
-    user-select: none;
-  }
+        position: absolute;
+        top: 0;
 
-  .container:hover,
-  .container[data-current-target="true"] {
-    animation-name: oscillate;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-  }
+        font-size: 0.6rem;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-  .container .delete {
-    display: none;
-  }
+    .meta {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+        padding: 0.2rem;
 
-  .container:hover .delete {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 3;
-  }
+        position: absolute;
+        bottom: 0;
 
-  .container[data-equipped="true"] {
-    opacity: 0.25;
-  }
+        font-size: 0.6rem;
 
-  .style {
-    display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    height: 1rem;
-    padding: 0.4rem 0.2rem;
+        justify-content: flex-end;
 
-    position: absolute;
-    top: 0;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-    font-size: 0.6rem;
-    justify-content: space-between;
-    align-items: center;
-  }
+    .meta-trait + .meta-trait {
+        padding: 0 0.2rem;
+    }
 
-  .meta {
-    display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    padding: 0.2rem;
+    .meta-trait {
+        height: 1rem;
+        width: 1rem;
 
-    position: absolute;
-    bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-    font-size: 0.6rem;
+    .delete {
+        text-align: center;
+        width: 1rem;
+        height: 1rem;
+        font-weight: bold;
+        color: white;
+    }
 
-    justify-content: flex-end;
+    .delete::after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        width: 0px;
+        height: 0px;
+        border-top: 2rem solid var(--color-mork-red);
+        border-left: 2rem solid transparent;
+        top: 0;
+        right: 0;
+    }
 
-    align-items: center;
-    justify-content: space-between;
-  }
+    .hit-left {
+        color: var(--color-hit-left);
+    }
 
-  .meta-trait + .meta-trait {
-    padding: 0 0.2rem;
-  }
+    .hit-right {
+        color: var(--color-hit-right);
+    }
 
-  .meta-trait {
-    height: 1rem;
-    width: 1rem;
+    .hit-both {
+        color: var(--color-hit-both);
+    }
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .modifier-avoid {
+        background-color: var(--color-modifier-avoid);
+    }
 
-  .delete {
-    text-align: center;
-    width: 1rem;
-    height: 1rem;
-    font-weight: bold;
-    color: white;
-  }
+    .modifier-break {
+        background-color: var(--color-modifier-break);
+    }
 
-  .delete::after {
-    position: absolute;
-    z-index: -1;
-    content: "";
-    width: 0px;
-    height: 0px;
-    border-top: 2rem solid var(--color-mork-red);
-    border-left: 2rem solid transparent;
-    top: 0;
-    right: 0;
-  }
+    .modifier-charge {
+        background-color: var(--color-modifier-charge);
+    }
 
-  .hit-left {
-    color: var(--color-hit-left);
-  }
+    .modifier-parry {
+        background-color: var(--color-modifier-parry);
+    }
 
-  .hit-right {
-    color: var(--color-hit-right);
-  }
+    .modifier-stop {
+        background-color: var(--color-modifier-stop);
+    }
 
-  .hit-both {
-    color: var(--color-hit-both);
-  }
-
-  .modifier-avoid {
-    background-color: var(--color-modifier-avoid);
-  }
-
-  .modifier-break {
-    background-color: var(--color-modifier-break);
-  }
-
-  .modifier-charge {
-    background-color: var(--color-modifier-charge);
-  }
-
-  .modifier-parry {
-    background-color: var(--color-modifier-parry);
-  }
-
-  .modifier-stop {
-    background-color: var(--color-modifier-stop);
-  }
-
-  .hit-location {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.65);
-    font-size: 13px;
-  }
+    .hit-location {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.65);
+        font-size: 13px;
+    }
 </style>
