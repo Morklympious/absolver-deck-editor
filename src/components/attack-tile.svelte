@@ -6,6 +6,8 @@
   import EmptyIcon from "components/icons/empty-icon.svelte";
   import StyleIcon from "components/icons/style-icon.svelte";
 
+  import { colorEnabled } from "stores/settings.js";
+
   const fallback = (value, fallback) => (value ? value : fallback);
 
   const bubble = createEventDispatcher();
@@ -41,25 +43,30 @@
   }
 
   const stylize = (modifier) => {
-    const modURL = `assets/modifiers/${modifier}.svg`;
-    return `-webkit-mask-image: url(${modURL}); mask-image: url(${modURL});`;
-    // return `background-image: url(${modURL}); // old
+    if (!$colorEnabled)
+      return `background-image: url(assets/modifiers/${modifier}.svg)`;
+
+    return `-webkit-mask-image: url(assets/modifiers/${modifier}.svg); mask-image: url(assets/modifiers/${modifier}.svg);`;
   };
 
   const getHitSideClass = (side) => {
-    if (side == "RIGHT") return "hit-right";
-    if (side == "LEFT") return "hit-left";
-    if (side == "BOTH") return "hit-both";
+    if (!$colorEnabled) return;
+
+    if (side === "RIGHT") return "hit-right";
+    if (side === "LEFT") return "hit-left";
+    if (side === "BOTH") return "hit-both";
   };
 
   const getModifierClass = (modifier) => {
-    if (modifier == "jump" || modifier == "duck" || modifier == "strafe")
+    if (!$colorEnabled) return;
+
+    if (modifier === "jump" || modifier === "duck" || modifier === "strafe")
       return "modifier-dodge";
-    if (modifier == "break") return "modifier-break";
-    if (modifier == "charge") return "modifier-charge";
-    if (modifier == "hit-left" || modifier == "hit-right")
+    if (modifier === "break") return "modifier-break";
+    if (modifier === "charge") return "modifier-charge";
+    if (modifier === "hit-left" || modifier == "hit-right")
       return "modifier-parry";
-    if (modifier == "stop") return "modifier-stop";
+    if (modifier === "stop") return "modifier-stop";
   };
 </script>
 
