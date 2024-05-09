@@ -49,18 +49,18 @@
         <div class="section">
             <h1 class="section-header">Display Settings</h1>
             <div class="section-content">
-                <p class="setting-text">Enable Colors:</p>
                 <label class="switch">
                     <input type="checkbox" bind:checked={$enableColors} />
                     <span class="slider round"></span>
                 </label>
+                <p class="setting-text">Enable Colors</p>
             </div>
             <div class="section-content">
-                <p class="setting-text">Enable Hit Location Label:</p>
                 <label class="switch">
                     <input type="checkbox" bind:checked={$enableTypeLabel} />
                     <span class="slider round"></span>
                 </label>
+                <p class="setting-text">Enable Hit Location Label</p>
             </div>
         </div>
 
@@ -155,7 +155,7 @@
 
     .setting-text {
         font-weight: bold;
-        margin-right: 0.5rem;
+        margin-left: 0.8rem;
     }
 
     /* The switch - the box around the slider */
