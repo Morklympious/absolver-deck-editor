@@ -1,31 +1,3 @@
-<script>
-    import { fly } from "svelte/transition";
-    import { state } from "state/state.js";
-
-    $: show = $state.matches("menu.shown");
-
-    import clipboard from "clipboard";
-    import { deck } from "stores/deck.js";
-    import weapon, { equip } from "stores/weapon.js";
-    import { enableColors, enableTypeLabel } from "stores/settings.js";
-
-    import transition from "actions/send-state.js";
-
-    import { encode } from "utilities/encoder.js";
-
-    $: url = `https://absolver.dev/?deck=${encode($deck)}${window.location.href.includes("plus") ? "&plus" : ""}`;
-
-    const clippy = new clipboard("[data-clipboard-dependent]");
-
-    const sword = transition("EQUIP_SWORD");
-    const barehands = transition("EQUIP_BAREHANDS");
-
-    $: hands = $weapon === "barehands";
-    $: blade = $weapon === "sword";
-
-    clippy.on("success", () => (copied = true));
-</script>
-
 {#if show}
     <div class="container" transition:fly={{ x: -500 }}>
         <div class="title">Absolver.dev</div>
@@ -77,6 +49,34 @@
         </div>
     </div>
 {/if}
+
+<script>
+    import { fly } from "svelte/transition";
+    import { state } from "state/state.js";
+
+    $: show = $state.matches("menu.shown");
+
+    import clipboard from "clipboard";
+    import { deck } from "stores/deck.js";
+    import weapon, { equip } from "stores/weapon.js";
+    import { enableColors, enableTypeLabel } from "stores/settings.js";
+
+    import transition from "actions/send-state.js";
+
+    import { encode } from "utilities/encoder.js";
+
+    $: url = `https://absolver.dev/?deck=${encode($deck)}${window.location.href.includes("plus") ? "&plus" : ""}`;
+
+    const clippy = new clipboard("[data-clipboard-dependent]");
+
+    const sword = transition("EQUIP_SWORD");
+    const barehands = transition("EQUIP_BAREHANDS");
+
+    $: hands = $weapon === "barehands";
+    $: blade = $weapon === "sword";
+
+    clippy.on("success", () => (copied = true));
+</script>
 
 <style>
     .title {

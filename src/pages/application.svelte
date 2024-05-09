@@ -1,3 +1,30 @@
+<svelte:body
+    on:keyup={({ keyCode }) => {
+        console.log(keyCode);
+        keyCode === 27 ? state.send("BACK") : false;
+    }}
+/>
+
+<div class="application variables" data-overview={overview}>
+    <div class="menu">
+        <Hamburger />
+        <span class="weapon">{$weapon}</span>
+        <SideDrawer />
+    </div>
+
+    <div class="content" on:click={conditionalhide}>
+        <svelte:component this={component} {children} {...props} />
+    </div>
+
+    <div class="footer">
+        <span class="text"
+            >Authored by <a href="https://twitter.com/morklympious"
+                >Morklympious</a
+            ></span
+        >
+    </div>
+</div>
+
 <script>
     import { tree, state } from "state/state.js";
     import { decode } from "utilities/encoder.js";
@@ -32,33 +59,6 @@
     const conditionalhide = () =>
         $state.matches("menu.shown") ? state.send("HIDE_MENU") : false;
 </script>
-
-<svelte:body
-    on:keyup={({ keyCode }) => {
-        console.log(keyCode);
-        keyCode === 27 ? state.send("BACK") : false;
-    }}
-/>
-
-<div class="application variables" data-overview={overview}>
-    <div class="menu">
-        <Hamburger />
-        <span class="weapon">{$weapon}</span>
-        <SideDrawer />
-    </div>
-
-    <div class="content" on:click={conditionalhide}>
-        <svelte:component this={component} {children} {...props} />
-    </div>
-
-    <div class="footer">
-        <span class="text"
-            >Authored by <a href="https://twitter.com/morklympious"
-                >Morklympious</a
-            ></span
-        >
-    </div>
-</div>
 
 <style>
     .variables {

@@ -1,3 +1,59 @@
+<div
+    class="flex container"
+    data-current-target={target}
+    data-equipped={equipped}
+    data-hit={hit}
+    {style}
+    on:click={equipped ? () => {} : () => bubble("selection", attack)}
+    on:mouseenter={() => bubble("hover", attack)}
+    use:click
+    use:hover
+>
+    {#if _meta.empty}
+        <EmptyIcon />
+    {:else}
+        {#if deletable}
+            <div
+                class="delete"
+                on:click|stopPropagation={() => bubble("deletion")}
+            >
+                X
+            </div>
+        {/if}
+        <div class="style">
+            <StyleIcon style={attack.style} />
+            <span class={$enableColors ? getHitSideClass(hit) : null}
+                >{hit}</span
+            >
+            <span class="end">{attack.frames.startup}F</span>
+        </div>
+
+        {#if $enableTypeLabel}
+            <div class="type-label">
+                {height + " - " + type}
+            </div>
+        {/if}
+
+        <div class="meta">
+            <span>+{frames.advantage.hit} / +{frames.advantage.guard}</span>
+            {#each modifiers as modifier}
+                {#if modifier === "double"}
+                    <div class="meta-trait">2X</div>
+                {:else}
+                    <div
+                        class="meta-trait {$enableColors
+                            ? getModifierClass(modifier)
+                            : null}"
+                        style={$enableColors
+                            ? stylizeColor(modifier)
+                            : stylize(modifier)}
+                    ></div>
+                {/if}
+            {/each}
+        </div>
+    {/if}
+</div>
+
 <script>
     import { createEventDispatcher } from "svelte";
     import followups from "utilities/followups.js";
@@ -66,62 +122,6 @@
         if (modifier === "stop") return "modifier-stop";
     };
 </script>
-
-<div
-    class="flex container"
-    data-current-target={target}
-    data-equipped={equipped}
-    data-hit={hit}
-    {style}
-    on:click={equipped ? () => {} : () => bubble("selection", attack)}
-    on:mouseenter={() => bubble("hover", attack)}
-    use:click
-    use:hover
->
-    {#if _meta.empty}
-        <EmptyIcon />
-    {:else}
-        {#if deletable}
-            <div
-                class="delete"
-                on:click|stopPropagation={() => bubble("deletion")}
-            >
-                X
-            </div>
-        {/if}
-        <div class="style">
-            <StyleIcon style={attack.style} />
-            <span class={$enableColors ? getHitSideClass(hit) : null}
-                >{hit}</span
-            >
-            <span class="end">{attack.frames.startup}F</span>
-        </div>
-
-        {#if $enableTypeLabel}
-            <div class="type-label">
-                {height + " - " + type}
-            </div>
-        {/if}
-
-        <div class="meta">
-            <span>+{frames.advantage.hit} / +{frames.advantage.guard}</span>
-            {#each modifiers as modifier}
-                {#if modifier === "double"}
-                    <div class="meta-trait">2X</div>
-                {:else}
-                    <div
-                        class="meta-trait {$enableColors
-                            ? getModifierClass(modifier)
-                            : null}"
-                        style={$enableColors
-                            ? stylizeColor(modifier)
-                            : stylize(modifier)}
-                    ></div>
-                {/if}
-            {/each}
-        </div>
-    {/if}
-</div>
 
 <style>
     @keyframes oscillate {
