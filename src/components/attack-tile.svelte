@@ -6,7 +6,7 @@
     import EmptyIcon from "components/icons/empty-icon.svelte";
     import StyleIcon from "components/icons/style-icon.svelte";
 
-    import { enableColors, enableHitLocationOnTile } from "stores/settings.js";
+    import { enableColors, enableTypeLabel } from "stores/settings.js";
 
     const fallback = (value, fallback) => (value ? value : fallback);
 
@@ -98,8 +98,8 @@
             <span class="end">{attack.frames.startup}F</span>
         </div>
 
-        {#if $enableHitLocationOnTile}
-            <div class="hit-location">
+        {#if $enableTypeLabel}
+            <div class="type-label">
                 {height + " - " + type}
             </div>
         {/if}
@@ -278,7 +278,7 @@
         background-color: var(--color-modifier-stop);
     }
 
-    .hit-location {
+    .type-label {
         display: flex;
         justify-content: center;
         width: 100%;
