@@ -61,7 +61,7 @@
     if (!$colorEnabled) return;
 
     if (modifier === "jump" || modifier === "duck" || modifier === "strafe")
-      return "modifier-dodge";
+      return "modifier-avoid";
     if (modifier === "break") return "modifier-break";
     if (modifier === "charge") return "modifier-charge";
     if (modifier === "hit-left" || modifier == "hit-right")
@@ -249,8 +249,8 @@
     color: var(--color-hit-both);
   }
 
-  .modifier-dodge {
-    background-color: var(--color-modifier-dodge);
+  .modifier-avoid {
+    background-color: var(--color-modifier-avoid);
   }
 
   .modifier-break {
