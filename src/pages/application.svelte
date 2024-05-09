@@ -72,10 +72,10 @@
     --color-gray-lighter: #677479;
 
     --color-modifier-break: #f9993e;
-    --color-modifier-stop: #ed3123;
-    --color-modifier-charge: #9ce9fc;
-    --color-modifier-avoid: #fce5b3;
-    --color-modifier-parry: #2335d9;
+    --color-modifier-stop: #d6392a;
+    --color-modifier-charge: #cce4ea;
+    --color-modifier-avoid: #eada98;
+    --color-modifier-parry: #3d2dce;
 
     --color-hit-right: #db5746;
     --color-hit-left: #4ea2d3;
