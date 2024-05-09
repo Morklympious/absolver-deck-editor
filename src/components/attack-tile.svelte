@@ -40,14 +40,26 @@
     }
   }
 
-  const stylize = (modifier) =>
-    `background-image: url("assets/modifiers/${modifier}.svg");`;
+  const stylize = (modifier) => {
+    const modURL = `assets/modifiers/${modifier}.svg`;
+    return `-webkit-mask-image: url(${modURL}); mask-image: url(${modURL});`;
+    // return `background-image: url(${modURL}); // old
+  };
 
   const getHitSideClass = (side) => {
     if (side == "RIGHT") return "hit-right";
     if (side == "LEFT") return "hit-left";
     if (side == "BOTH") return "hit-both";
-    return "";
+  };
+
+  const getModifierClass = (modifier) => {
+    if (modifier == "jump" || modifier == "duck" || modifier == "strafe")
+      return "modifier-dodge";
+    if (modifier == "break") return "modifier-break";
+    if (modifier == "charge") return "modifier-charge";
+    if (modifier == "hit-left" || modifier == "hit-right")
+      return "modifier-parry";
+    if (modifier == "stop") return "modifier-stop";
   };
 </script>
 
@@ -82,7 +94,10 @@
         {#if modifier === "double"}
           <div class="meta-trait">2X</div>
         {:else}
-          <div class="meta-trait" style={stylize(modifier)}></div>
+          <div
+            class="meta-trait {getModifierClass(modifier)}"
+            style={stylize(modifier)}
+          ></div>
         {/if}
       {/each}
     </div>
@@ -225,5 +240,25 @@
 
   .hit-both {
     color: var(--color-hit-both);
+  }
+
+  .modifier-dodge {
+    background-color: var(--color-modifier-dodge);
+  }
+
+  .modifier-break {
+    background-color: var(--color-modifier-break);
+  }
+
+  .modifier-charge {
+    background-color: var(--color-modifier-charge);
+  }
+
+  .modifier-parry {
+    background-color: var(--color-modifier-parry);
+  }
+
+  .modifier-stop {
+    background-color: var(--color-modifier-stop);
   }
 </style>

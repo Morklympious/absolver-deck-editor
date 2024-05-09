@@ -74,7 +74,8 @@
     --color-modifier-break: #f9993e;
     --color-modifier-stop: #ed3123;
     --color-modifier-charge: #9ce9fc;
-    --color-modifier-dodge: #fcf1d9;
+    --color-modifier-dodge: #fce5b3;
+    --color-modifier-parry: #2335d9;
 
     --color-hit-right: #db5746;
     --color-hit-left: #4ea2d3;
