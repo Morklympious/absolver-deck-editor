@@ -286,6 +286,7 @@
         justify-content: center;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.65);
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+        text-transform: uppercase;
     }
 </style>
