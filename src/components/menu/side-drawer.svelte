@@ -56,7 +56,7 @@
                 </label>
             </div>
             <div class="section-content">
-                <p class="setting-text">Enable Visible Hit Location:</p>
+                <p class="setting-text">Enable Hit Location Label:</p>
                 <label class="switch">
                     <input type="checkbox" bind:checked={$enableTypeLabel} />
                     <span class="slider round"></span>
