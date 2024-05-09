@@ -43,23 +43,20 @@
     }
 
     const stylize = (modifier) => {
-        if (!$enableColors)
-            return `background-image: url(assets/modifiers/${modifier}.svg)`;
+        return `background-image: url(assets/modifiers/${modifier}.svg)`;
+    };
 
+    const stylizeColor = (modifier) => {
         return `-webkit-mask-image: url(assets/modifiers/${modifier}.svg); mask-image: url(assets/modifiers/${modifier}.svg);`;
     };
 
     const getHitSideClass = (side) => {
-        if (!$enableColors) return;
-
         if (side === "RIGHT") return "hit-right";
         if (side === "LEFT") return "hit-left";
         if (side === "BOTH") return "hit-both";
     };
 
     const getModifierClass = (modifier) => {
-        if (!$enableColors) return;
-
         if (modifier === "jump" || modifier === "duck" || modifier === "strafe")
             return "modifier-avoid";
         if (modifier === "break") return "modifier-break";
@@ -94,7 +91,9 @@
         {/if}
         <div class="style">
             <StyleIcon style={attack.style} />
-            <span class={getHitSideClass(hit)}>{hit}</span>
+            <span class={$enableColors ? getHitSideClass(hit) : null}
+                >{hit}</span
+            >
             <span class="end">{attack.frames.startup}F</span>
         </div>
 
@@ -111,8 +110,12 @@
                     <div class="meta-trait">2X</div>
                 {:else}
                     <div
-                        class="meta-trait {getModifierClass(modifier)}"
-                        style={stylize(modifier)}
+                        class="meta-trait {$enableColors
+                            ? getModifierClass(modifier)
+                            : null}"
+                        style={$enableColors
+                            ? stylizeColor(modifier)
+                            : stylize(modifier)}
                     ></div>
                 {/if}
             {/each}
