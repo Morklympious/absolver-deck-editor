@@ -7,7 +7,7 @@
   import clipboard from "clipboard";
   import { deck } from "stores/deck.js";
   import weapon, { equip } from "stores/weapon.js";
-  import { colorEnabled } from "stores/settings.js";
+  import { enableColors, enableHitLocationOnTile } from "stores/settings.js";
 
   import transition from "actions/send-state.js";
 
@@ -47,7 +47,14 @@
       <div class="section-content">
         <p class="setting-text">Enable Colors:</p>
         <label class="switch">
-          <input type="checkbox" bind:checked={$colorEnabled} />
+          <input type="checkbox" bind:checked={$enableColors} />
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="section-content">
+        <p class="setting-text">Enable Visible Hit Location:</p>
+        <label class="switch">
+          <input type="checkbox" bind:checked={$enableHitLocationOnTile} />
           <span class="slider round"></span>
         </label>
       </div>

@@ -6,7 +6,7 @@
   import EmptyIcon from "components/icons/empty-icon.svelte";
   import StyleIcon from "components/icons/style-icon.svelte";
 
-  import { colorEnabled } from "stores/settings.js";
+  import { enableColors, enableHitLocationOnTile } from "stores/settings.js";
 
   const fallback = (value, fallback) => (value ? value : fallback);
 
@@ -43,14 +43,14 @@
   }
 
   const stylize = (modifier) => {
-    if (!$colorEnabled)
+    if (!$enableColors)
       return `background-image: url(assets/modifiers/${modifier}.svg)`;
 
     return `-webkit-mask-image: url(assets/modifiers/${modifier}.svg); mask-image: url(assets/modifiers/${modifier}.svg);`;
   };
 
   const getHitSideClass = (side) => {
-    if (!$colorEnabled) return;
+    if (!$enableColors) return;
 
     if (side === "RIGHT") return "hit-right";
     if (side === "LEFT") return "hit-left";
@@ -58,7 +58,7 @@
   };
 
   const getModifierClass = (modifier) => {
-    if (!$colorEnabled) return;
+    if (!$enableColors) return;
 
     if (modifier === "jump" || modifier === "duck" || modifier === "strafe")
       return "modifier-avoid";
@@ -94,6 +94,12 @@
       <span class={getHitSideClass(hit)}>{hit}</span>
       <span class="end">{attack.frames.startup}F</span>
     </div>
+
+    {#if $enableHitLocationOnTile}
+      <div class="hit-location">
+        {height + " - " + type}
+      </div>
+    {/if}
 
     <div class="meta">
       <span>+{frames.advantage.hit} / +{frames.advantage.guard}</span>
@@ -267,5 +273,13 @@
 
   .modifier-stop {
     background-color: var(--color-modifier-stop);
+  }
+
+  .hit-location {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    font-size: 13px;
   }
 </style>
