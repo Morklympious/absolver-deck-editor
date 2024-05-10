@@ -17,11 +17,10 @@
     </div>
 
     <div class="footer">
-        <span class="text"
-            >Authored by <a href="https://twitter.com/morklympious"
-                >Morklympious</a
-            ></span
-        >
+        <span class="text">
+            Authored by
+            <a href="https://twitter.com/morklympious"> Morklympious </a>
+        </span>
     </div>
 </div>
 
