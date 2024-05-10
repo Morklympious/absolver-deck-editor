@@ -1,5 +1,5 @@
-<div 
-    class="flex container" 
+<div
+    class="flex container"
     data-current-target={target}
     data-equipped={equipped}
     data-hit={hit}
@@ -11,23 +11,43 @@
 >
     {#if _meta.empty}
         <EmptyIcon />
-    {:else}   
+    {:else}
         {#if deletable}
-        <div class="delete" on:click|stopPropagation={() => bubble("deletion")}>X</div>
+            <div
+                class="delete"
+                on:click|stopPropagation={() => bubble("deletion")}
+            >
+                X
+            </div>
         {/if}
         <div class="style">
             <StyleIcon style={attack.style} />
-            <span>{hit}</span>
+            <span class={$enableColors ? getHitSideClass(hit) : null}
+                >{hit}</span
+            >
             <span class="end">{attack.frames.startup}F</span>
         </div>
 
+        {#if $enableTypeLabel}
+            <div class="type-label">
+                {height + " - " + type}
+            </div>
+        {/if}
+
         <div class="meta">
             <span>+{frames.advantage.hit} / +{frames.advantage.guard}</span>
-            {#each modifiers as modifier}   
+            {#each modifiers as modifier}
                 {#if modifier === "double"}
-                <div class="meta-trait">2X</div>
+                    <div class="meta-trait">2X</div>
                 {:else}
-                <div class="meta-trait" style="{stylize(modifier)}"></div>
+                    <div
+                        class="meta-trait {$enableColors
+                            ? getModifierClass(modifier)
+                            : null}"
+                        style={$enableColors
+                            ? stylizeColor(modifier)
+                            : stylize(modifier)}
+                    ></div>
                 {/if}
             {/each}
         </div>
@@ -35,50 +55,72 @@
 </div>
 
 <script>
-import { createEventDispatcher } from "svelte";
-import followups from "utilities/followups.js";
-import { click, hover } from "actions/audio.js";
+    import { createEventDispatcher } from "svelte";
+    import followups from "utilities/followups.js";
+    import { click, hover } from "actions/audio.js";
 
-import EmptyIcon from "components/icons/empty-icon.svelte";
-import StyleIcon from "components/icons/style-icon.svelte";
+    import EmptyIcon from "components/icons/empty-icon.svelte";
+    import StyleIcon from "components/icons/style-icon.svelte";
 
-const fallback = (value, fallback) => (value ? value : fallback);
+    import { enableColors, enableTypeLabel } from "stores/settings.js";
 
-const bubble = createEventDispatcher();
+    const fallback = (value, fallback) => (value ? value : fallback);
 
-const opposite = (side) => (side === "LEFT" ? "RIGHT" : "LEFT");
+    const bubble = createEventDispatcher();
 
-export let attack = false;
-export let target = false;
-export let equipped = false;
-export let deletable = false;
-export let origin;
+    const opposite = (side) => (side === "LEFT" ? "RIGHT" : "LEFT");
 
-$: name      = fallback(attack.name, "");
-$: height    = fallback(attack.height, "");
-$: type      = fallback(attack.type, "");
-$: stance    = fallback(attack.stance, {});
-$: frames    = fallback(attack.frames, {});
-$: modifiers = fallback(attack.modifiers, []);
-$: _meta     = fallback(attack._meta, {});
+    export let attack = false;
+    export let target = false;
+    export let equipped = false;
+    export let deletable = false;
+    export let origin;
 
-$: art = name.split(" ")
-    .join("-")
-    .toLowerCase();
-$: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
+    $: name = fallback(attack.name, "");
+    $: height = fallback(attack.height, "");
+    $: type = fallback(attack.type, "");
+    $: stance = fallback(attack.stance, {});
+    $: frames = fallback(attack.frames, {});
+    $: modifiers = fallback(attack.modifiers, []);
+    $: _meta = fallback(attack._meta, {});
 
-$: [ fb, lr ] = origin ? origin.split("_") : [ false, false ];
+    $: art = name.split(" ").join("-").toLowerCase();
+    $: style = art ? `background-image: url("assets/images/${art}.png")` : ``;
 
-let hit;
+    $: [fb, lr] = origin ? origin.split("_") : [false, false];
 
-$: {
-    hit = attack.hits === "same" ? lr : opposite(lr);
-    if(attack.hits === "both") {
-        hit = "BOTH";
+    let hit;
+
+    $: {
+        hit = attack.hits === "same" ? lr : opposite(lr);
+        if (attack.hits === "both") {
+            hit = "BOTH";
+        }
     }
-}
 
-const stylize = (modifier) => `background-image: url("assets/modifiers/${modifier}.svg");`;
+    const stylize = (modifier) => {
+        return `background-image: url(assets/modifiers/${modifier}.svg)`;
+    };
+
+    const stylizeColor = (modifier) => {
+        return `-webkit-mask-image: url(assets/modifiers/${modifier}.svg); mask-image: url(assets/modifiers/${modifier}.svg);`;
+    };
+
+    const getHitSideClass = (side) => {
+        if (side === "RIGHT") return "hit-right";
+        if (side === "LEFT") return "hit-left";
+        if (side === "BOTH") return "hit-both";
+    };
+
+    const getModifierClass = (modifier) => {
+        if (modifier === "jump" || modifier === "duck" || modifier === "strafe")
+            return "modifier-avoid";
+        if (modifier === "break") return "modifier-break";
+        if (modifier === "charge") return "modifier-charge";
+        if (modifier === "hit-left" || modifier == "hit-right")
+            return "modifier-parry";
+        if (modifier === "stop") return "modifier-stop";
+    };
 </script>
 
 <style>
@@ -107,15 +149,15 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
 
         height: var(--deck-overview-attack-tile-height);
         width: var(--deck-overview-attack-tile-width);
-        
+
         background-color: rgba(0, 0, 0, 0.55);
-        color: #FFF;
+        color: #fff;
 
         background-size: 90%;
         background-position: center;
         background-repeat: no-repeat;
 
-        cursor : pointer;
+        cursor: pointer;
         user-select: none;
     }
 
@@ -137,7 +179,7 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
         right: 0;
         z-index: 3;
     }
-    
+
     .container[data-equipped="true"] {
         opacity: 0.25;
     }
@@ -145,7 +187,7 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
     .style {
         display: flex;
         flex-flow: row nowrap;
-        width: 100%; 
+        width: 100%;
         height: 1rem;
         padding: 0.4rem 0.2rem;
 
@@ -205,5 +247,46 @@ const stylize = (modifier) => `background-image: url("assets/modifiers/${modifie
         border-left: 2rem solid transparent;
         top: 0;
         right: 0;
+    }
+
+    .hit-left {
+        color: var(--color-hit-left);
+    }
+
+    .hit-right {
+        color: var(--color-hit-right);
+    }
+
+    .hit-both {
+        color: var(--color-hit-both);
+    }
+
+    .modifier-avoid {
+        background-color: var(--color-modifier-avoid);
+    }
+
+    .modifier-break {
+        background-color: var(--color-modifier-break);
+    }
+
+    .modifier-charge {
+        background-color: var(--color-modifier-charge);
+    }
+
+    .modifier-parry {
+        background-color: var(--color-modifier-parry);
+    }
+
+    .modifier-stop {
+        background-color: var(--color-modifier-stop);
+    }
+
+    .type-label {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.65);
+        font-size: 0.7rem;
+        text-transform: uppercase;
     }
 </style>

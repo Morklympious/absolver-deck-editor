@@ -1,9 +1,11 @@
-<svelte:body on:keyup={({ keyCode }) => {
-    console.log( keyCode);
-    keyCode === 27 ? state.send("BACK") : false} 
-}/>
+<svelte:body
+    on:keyup={({ keyCode }) => {
+        console.log(keyCode);
+        keyCode === 27 ? state.send("BACK") : false;
+    }}
+/>
 
-<div class="application variables" data-overview="{overview}">
+<div class="application variables" data-overview={overview}>
     <div class="menu">
         <Hamburger />
         <span class="weapon">{$weapon}</span>
@@ -11,63 +13,73 @@
     </div>
 
     <div class="content" on:click={conditionalhide}>
-        <svelte:component 
-            this={component}
-            {children}
-            {...props}
-        />
+        <svelte:component this={component} {children} {...props} />
     </div>
 
     <div class="footer">
-        <span class="text">Authored by <a href="https://twitter.com/morklympious">Morklympious</a></span>
+        <span class="text">
+            Authored by
+            <a href="https://twitter.com/morklympious"> Morklympious </a>
+        </span>
     </div>
 </div>
 
 <script>
-import { tree, state } from "state/state.js";
-import { decode } from "utilities/encoder.js";
-import hydrate from "utilities/url-hydrate.js";
+    import { tree, state } from "state/state.js";
+    import { decode } from "utilities/encoder.js";
+    import hydrate from "utilities/url-hydrate.js";
 
-import Hamburger from "components/menu/hamburger.svelte";
-import SideDrawer from "components/menu/side-drawer.svelte";
+    import Hamburger from "components/menu/hamburger.svelte";
+    import SideDrawer from "components/menu/side-drawer.svelte";
 
-import weapon from "stores/weapon.js"
-let components = [];
+    import weapon from "stores/weapon.js";
+    let components = [];
 
-$: [ root = false ] = components;
-$: ({ component, children, props } = root);
-$: overview = $state.matches("overview");
-$: selecting = !overview;
+    $: [root = false] = components;
+    $: ({ component, children, props } = root);
+    $: overview = $state.matches("overview");
+    $: selecting = !overview;
 
-// We only care about the first chart
-tree(([ structure ]) => {
-    components = structure.children;
-});
+    // We only care about the first chart
+    tree(([structure]) => {
+        components = structure.children;
+    });
 
-// We hydrate the deck if a shared param exists, This is what allows you to share decks.
-const params = new URLSearchParams(window.location.search);
-const deck = params.has("deck") ? params.get("deck") : false;
+    // We hydrate the deck if a shared param exists, This is what allows you to share decks.
+    const params = new URLSearchParams(window.location.search);
+    const deck = params.has("deck") ? params.get("deck") : false;
 
-if(deck) {
-    const decoded = decode(params.get("deck"));
+    if (deck) {
+        const decoded = decode(params.get("deck"));
 
-    hydrate(decoded);
-}
+        hydrate(decoded);
+    }
 
-const conditionalhide = () => $state.matches("menu.shown") ? state.send("HIDE_MENU") : false
+    const conditionalhide = () =>
+        $state.matches("menu.shown") ? state.send("HIDE_MENU") : false;
 </script>
 
 <style>
     .variables {
         --color-mork-cream: #f7f4ea;
-        --color-mork-dark-blue: #5F6A85;
+        --color-mork-dark-blue: #5f6a85;
         --color-mork-deep-blue: #21243d;
-        --color-mork-red: #e98FA0;
+        --color-mork-red: #e98fa0;
 
-        --color-gold: #FBF5DC;
+        --color-gold: #fbf5dc;
         --color-gray: #545255;
         --color-gray-darker: #444;
         --color-gray-lighter: #677479;
+
+        --color-modifier-break: #f9993e;
+        --color-modifier-stop: #d6392a;
+        --color-modifier-charge: #cce4ea;
+        --color-modifier-avoid: #eada98;
+        --color-modifier-parry: #3d2dce;
+
+        --color-hit-right: #db5746;
+        --color-hit-left: #4ea2d3;
+        --color-hit-both: #c25ce8;
 
         --color-equipped-icon-background: #e0c220;
 
@@ -81,20 +93,23 @@ const conditionalhide = () => $state.matches("menu.shown") ? state.send("HIDE_ME
     }
 
     .application {
-
         display: flex;
         flex-flow: column nowrap;
 
         height: 100%;
         font-family: roboto, sans-serif;
 
-        background: rgb(59,66,84);
-        background: linear-gradient(315deg, rgba(59,66,84,1) 25%, rgba(95,106,133,1) 75%);
+        background: rgb(59, 66, 84);
+        background: linear-gradient(
+            315deg,
+            rgba(59, 66, 84, 1) 25%,
+            rgba(95, 106, 133, 1) 75%
+        );
 
         transition: background-position 250ms ease;
     }
 
-    .application[data-overview="false"]  {            
+    .application[data-overview="false"] {
         background-position: 100% 0;
     }
 
@@ -118,10 +133,7 @@ const conditionalhide = () => $state.matches("menu.shown") ? state.send("HIDE_ME
         flex: 1;
     }
 
-    @media only screen 
-    and (min-device-width: 320px) 
-    and (max-device-width: 568px)
-    and (-webkit-min-device-pixel-ratio: 2) {
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
         .variables {
             --deck-overview-attack-tile-height: 16rem;
             --deck-overview-attack-tile-width: 16rem;
@@ -153,11 +165,10 @@ const conditionalhide = () => $state.matches("menu.shown") ? state.send("HIDE_ME
         padding: 0 1rem;
 
         font-size: 1.2rem;
-        color: var(--color-mork-cream)
+        color: var(--color-mork-cream);
     }
 
     a {
-        color: var(--color-mork-deep-blue)
+        color: var(--color-mork-deep-blue);
     }
-
 </style>
